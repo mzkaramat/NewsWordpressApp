@@ -1,16 +1,18 @@
 package com.example.administrator.newsexplorer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends Activity {
-
+    StorageSharedPref sharedStorage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedStorage = new StorageSharedPref(MainActivity.this);
     }
 
     @Override
@@ -25,7 +27,14 @@ public class MainActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+        sharedStorage.StorePrefs("user_id",null);
+        sharedStorage.StorePrefs("fb_account", null);
 
+
+        Intent intent=new Intent(MainActivity.this,SignIn.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
 
         return super.onOptionsItemSelected(item);
     }

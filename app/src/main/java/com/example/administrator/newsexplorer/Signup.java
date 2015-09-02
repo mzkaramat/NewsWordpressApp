@@ -52,7 +52,7 @@ public class Signup extends Activity {
                                 Toast.makeText(getApplicationContext(), "UserName should'nt be empty", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "Email should'nt be empty", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Number should'nt be empty", Toast.LENGTH_LONG).show();
                         }
                     } else {
                         Toast.makeText(getApplicationContext(), "Password mismatch occer", Toast.LENGTH_LONG).show();

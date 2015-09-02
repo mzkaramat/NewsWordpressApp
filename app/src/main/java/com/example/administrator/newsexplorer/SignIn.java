@@ -57,7 +57,7 @@ public class SignIn extends Activity {
         }
 
         setContentView(R.layout.ui_parse_login_fragment);
-
+        //getActionBar().setHomeButtonEnabled(true);
         Email= (EditText) findViewById(R.id.login_username_input);
 
         Password= (EditText) findViewById(R.id.login_password_input);
@@ -74,7 +74,7 @@ public class SignIn extends Activity {
                             new SignUpTask(SignIn.this).execute(new String[]{Email.getText().toString(), Password.getText().toString()});
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "Email should'nt be empty", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Number should'nt be empty", Toast.LENGTH_LONG).show();
                         }
 
 

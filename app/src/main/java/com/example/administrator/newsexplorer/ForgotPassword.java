@@ -46,7 +46,7 @@ public class ForgotPassword extends Activity {
                             new SignUpTask(ForgotPassword.this).execute(new String[]{Email.getText().toString()});
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "Email should'nt be empty", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Number should'nt be empty", Toast.LENGTH_LONG).show();
                         }
 
 
