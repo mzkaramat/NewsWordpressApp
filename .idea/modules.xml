@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ParseLoginUI/ParseLoginUI.iml" filepath="$PROJECT_DIR$/ParseLoginUI/ParseLoginUI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SocailBase.iml" filepath="$PROJECT_DIR$/SocailBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NewsExplorer.iml" filepath="$PROJECT_DIR$/NewsExplorer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/crop/crop.iml" filepath="$PROJECT_DIR$/crop/crop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
     </modules>
   </component>
 </project>
-

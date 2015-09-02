@@ -1,1 +1,1 @@
-include ':app', ':facebook', ':ParseLoginUI', ':crop'
+include ':app'

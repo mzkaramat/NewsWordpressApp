@@ -1,56 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">NewsExplorer</string>
 
-    <string name="app_name">SocailBase</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="app_id">620045984793650</string>
-    <string name="google_maps_key" templateMergeStrategy="preserve">AIzaSyBbm7m02HBHX-5f1mAwiyiDgOQw-B0u0so</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="action_example">Example action</string>
-    <string name="title_activity_image_slider">ImageSlider</string>
-    <string name="action_settings">Settings</string>
-    <string name="drawer_open">Slider Menu Opened</string>
-    <string name="drawer_close">Slider Menu Closed</string>
-    <string name="parse_app_id">SWG1OIOE7NRDt2YJM5rXzMUS5pRdczA443mg6M62</string>
-    <string name="parse_client_key">s4UpRgz9wfTcl9WAMeLlsfkM5KOMt41Qr3QAE21s</string>
-    <string name="facebook_app_id">620045984793650</string>
-    <string name="twitter_consumer_key">YOUR_TWITTER_CONSUMER_KEY</string>
-    <string name="twitter_consumer_secret">YOUR_TWITTER_CONSUMER_SECRET</string>
-    <string name="profile_logo_content_description">Logo</string>
-    <string name="profile_title_logged_in">Your are logged in as</string>
-    <string name="profile_logout_button_label">Log out</string>
-    <string name="profile_title_logged_out">You must be logged in to view your profile</string>
-    <string name="profile_login_button_label">Log in</string>
-    <string name="title_activity_event">EventActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="api_map_key">AIzaSyBbm7m02HBHX-5f1mAwiyiDgOQw-B0u0so</string>
-    <!-- Nav Drawer Menu Items -->
-    <string-array name="nav_drawer_items">
-        <item>Home</item>
-        <item>Profile</item>
-        <item>Communities</item>
-        <item>App Settings</item>
-        <item>Log Out</item>
-    </string-array>
-
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
-    <array name="nav_drawer_icons">
-        <item>@drawable/ic_people</item>
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_photos</item>
-        <item>@drawable/ic_communities</item>
-        <item>@drawable/ic_pages</item>
-    </array>
-
-    <!-- Content Description -->
-    <string name="desc_list_item_icon">Item Icon</string>
-    <string name="title_activity_control">ControlActivity</string>
-    <string name="title_activity_adress_search">AdressSearchActivity</string>
-
+    <string name="action_settings">Settings</string>
+    <string name="com_parse_ui_logo_content_description">Logo</string>
+    <string name="com_parse_ui_username_input_hint">Username</string>
+    <string name="com_parse_ui_password_input_hint">Password</string>
+    <string name="com_parse_ui_forgot_password_button_label"><u>Forgot password</u></string>
+    <string name="com_parse_ui_parse_login_button_label">Log in</string>
+    <string name="com_parse_ui_parse_signup_button_label">Sign up</string>
+    <string name="com_parse_ui_login_help_instructions">Enter your email to recover your password</string>
+    <string name="com_parse_ui_login_help_email_input_hint">Email</string>
+    <string name="com_parse_ui_login_help_submit_button_label">Submit</string>
+    <string name="com_parse_ui_login_help_login_again_button_label">Back to Login</string>
+    <string name="com_parse_ui_login_help_submit_failed_unknown">Failed to request password reset, please try again</string>
+    <string name="com_parse_ui_login_help_email_sent">Please check your email for instructions on how to access your account</string>
+    <string name="com_parse_ui_confirm_password_input_hint">Re-enter password</string>
+    <string name="com_parse_ui_name_input_hint">Name</string>
+    <string name="com_parse_ui_create_account_button_label">Create account</string>
+    <string name="com_parse_ui_no_username_toast">Please enter your username</string>
+    <string name="com_parse_ui_no_password_toast">Please enter your password</string>
+    <string name="com_parse_ui_email_input_hint">Email</string>
 </resources>
