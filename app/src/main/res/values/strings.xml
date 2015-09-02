@@ -4,13 +4,13 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="com_parse_ui_logo_content_description">Logo</string>
-    <string name="com_parse_ui_username_input_hint">Username</string>
+    <string name="com_parse_ui_username_input_hint">Mobile Number</string>
     <string name="com_parse_ui_password_input_hint">Password</string>
     <string name="com_parse_ui_forgot_password_button_label"><u>Forgot password</u></string>
     <string name="com_parse_ui_parse_login_button_label">Log in</string>
     <string name="com_parse_ui_parse_signup_button_label">Sign up</string>
-    <string name="com_parse_ui_login_help_instructions">Enter your email to recover your password</string>
-    <string name="com_parse_ui_login_help_email_input_hint">Email</string>
+    <string name="com_parse_ui_login_help_instructions">Enter your mobile number to recover your password</string>
+    <string name="com_parse_ui_login_help_email_input_hint">Mobile Number</string>
     <string name="com_parse_ui_login_help_submit_button_label">Submit</string>
     <string name="com_parse_ui_login_help_login_again_button_label">Back to Login</string>
     <string name="com_parse_ui_login_help_submit_failed_unknown">Failed to request password reset, please try again</string>
@@ -20,5 +20,5 @@
     <string name="com_parse_ui_create_account_button_label">Create account</string>
     <string name="com_parse_ui_no_username_toast">Please enter your username</string>
     <string name="com_parse_ui_no_password_toast">Please enter your password</string>
-    <string name="com_parse_ui_email_input_hint">Email</string>
+    <string name="com_parse_ui_email_input_hint">UserName</string>
 </resources>

@@ -76,7 +76,7 @@ public class ForgotPassword extends Activity {
 
             try {
                 //------------------>>
-                HttpGet httppost = new HttpGet(("http://droidcube.move.pk/JMS/ForgotPassword.php?proj_username=" +
+                HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/ForgotPassword.php?proj_username=" +
                         encodeHTML(urls[0]) ).replaceAll(" ", "%20") );
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);

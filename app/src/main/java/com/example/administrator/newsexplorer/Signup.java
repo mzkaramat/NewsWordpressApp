@@ -86,7 +86,7 @@ public class Signup extends Activity {
             if(IsUerNameValid(urls[0])){
             try {
                     //------------------>>
-                    HttpGet httppost = new HttpGet(("http://droidcube.move.pk/JMS/signup.php?proj_username=" +
+                    HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/signup.php?proj_username=" +
                             encodeHTML(urls[0]) +
                             "&proj_password=" +
                             encodeHTML(urls[1]) +
@@ -155,7 +155,7 @@ public class Signup extends Activity {
         try {
 
             //------------------>>
-            HttpGet httppost = new HttpGet(("http://droidcube.move.pk/JMS/userNameCheck.php?proj_username=" +
+            HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/userNameCheck.php?proj_username=" +
                     encodeHTML(userName)).replaceAll(" ", "%20"));
             HttpClient httpclient = new DefaultHttpClient();
             HttpResponse response = httpclient.execute(httppost);
