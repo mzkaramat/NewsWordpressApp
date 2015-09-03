@@ -38,6 +38,18 @@
             android:label="@string/app_name" >
 
         </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".ConfirmRegistration"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".UpdateMobileNumber"
+            android:label="@string/app_name" >
+
+        </activity>
     </application>
 
 </manifest>

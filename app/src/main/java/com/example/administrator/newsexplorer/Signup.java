@@ -124,6 +124,7 @@ public class Signup extends Activity {
             if(success==200){
 //                Toast.makeText(context,"User Created Successfullly",Toast.LENGTH_LONG).show();
                 //sharedStorage.StorePrefs("login_cred","1");
+
                 showHomeListActivity();
             }else if(success==201){
                 Toast.makeText(context,"Username already exist",Toast.LENGTH_LONG).show();
@@ -186,7 +187,9 @@ public class Signup extends Activity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
     private void showHomeListActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        sharedStorage.StorePrefs("confirm_user","0");
+
+        Intent intent = new Intent(this, ConfirmRegistration.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                 | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

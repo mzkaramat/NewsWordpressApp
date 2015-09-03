@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/login_help_instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ParseLoginUI.TextView"
+        android:gravity="center"
+        android:text="Enter your new mobile number" />
+
+    <EditText
+        android:id="@+id/registration_code"
+        android:layout_width="match_parent"
+        android:textColor="#fff"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/com_parse_ui_xlarge_vertical_spacing"
+        android:hint="Enter your mobile number"
+        android:inputType="number"></EditText>
+
+    <Button
+        android:id="@+id/submit_code"
+        style="@style/ParseLoginUI.Button"
+        android:layout_marginTop="@dimen/com_parse_ui_xlarge_vertical_spacing"
+        android:text="@string/com_parse_ui_login_help_submit_button_label" />
+    <Button
+        android:id="@+id/change_number_button"
+        style="@style/ParseLoginUI.HelpButton"
+        android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
+        android:layout_marginBottom="@dimen/com_parse_ui_small_vertical_spacing"
+        android:text="Enter Code" />
+</LinearLayout>
