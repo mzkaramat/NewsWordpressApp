@@ -125,13 +125,78 @@ public class Signup extends Activity {
 //                Toast.makeText(context,"User Created Successfullly",Toast.LENGTH_LONG).show();
                 //sharedStorage.StorePrefs("login_cred","1");
 
-                showHomeListActivity();
+                new ConfirmRegistration(Signup.this).execute(new String[]{sharedStorage.GetPrefs("user_id","")});
             }else if(success==201){
                 Toast.makeText(context,"Username already exist",Toast.LENGTH_LONG).show();
                 //sharedStorage.StorePrefs("login_cred","1");
                 //showHomeListActivity();
             }else if(success==0){
                 Toast.makeText(context,"Some error occurred",Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+    class ConfirmRegistration extends AsyncTask<String, Void, Integer> {
+
+        private ProgressDialog dialog;
+        Context context;
+        public ConfirmRegistration(Context c) {
+            dialog = new ProgressDialog(c);
+            context= c;
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            this.dialog.setMessage("Progress start");
+            this.dialog.show();
+        }
+
+        @Override
+        protected Integer doInBackground(String... urls) {
+
+                try {
+                    //------------------>>
+                    HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/send_sms.php?proj_username=" +
+                            encodeHTML(urls[0])).replaceAll(" ", "%20"));
+                    HttpClient httpclient = new DefaultHttpClient();
+                    HttpResponse response = httpclient.execute(httppost);
+
+                    // StatusLine stat = response.getStatusLine();
+                    int status = response.getStatusLine().getStatusCode();
+
+                    if (status == 200) {
+                        HttpEntity entity = response.getEntity();
+                        String[] data = EntityUtils.toString(entity).split(":");
+                        sharedStorage.StorePrefs("user_id",data[1]);
+                        return 200;
+                    }
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return 0;
+                }
+
+            return 0;
+        }
+
+        @Override
+        protected void onPostExecute(final Integer success) {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+            if(success==200){
+//                Toast.makeText(context,"User Created Successfullly",Toast.LENGTH_LONG).show();
+                //sharedStorage.StorePrefs("login_cred","1");
+
+                showHomeListActivity();
+            }else if(success==201){
+                Toast.makeText(context,"Sms not sent",Toast.LENGTH_LONG).show();
+               // showHomeListActivity();
+                //sharedStorage.StorePrefs("login_cred","1");
+                //showHomeListActivity();
+            }else if(success==0){
+                Toast.makeText(context,"Some error occurred",Toast.LENGTH_LONG).show();
+                //showHomeListActivity();
             }
         }
     }
