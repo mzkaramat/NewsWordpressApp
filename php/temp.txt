@@ -1,0 +1,3 @@
+http://xeamphiil.co.nf/News/SubitCode.php?proj_code=20eabe&proj_user=123456
+http://xeamphiil.co.nf/News/send_sms.php?proj_username=1234567
+http://xeamphiil.co.nf/News/UpdateMobileNumber.php?proj_mobile=123&proj_user=956

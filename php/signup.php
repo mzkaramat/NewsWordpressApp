@@ -29,7 +29,7 @@ die("404");
 $querry = "INSERT INTO `tb_news_user`(`username`, `password`, `email`, `is_fb_account`) VALUES ('{$proj_username}','{$proj_password}','{$proj_email}',0)";
 
 if (mysqli_query($conn, $querry)) {
-	$querry = "INSERT INTO `tb_news_user_details`(`id`, `display_name`) VALUES ((SELECT id FROM `tb_jms_user` WHERE `username` = '{$proj_username}'),'{$proj_username}')";
+	$querry = "INSERT INTO `tb_news_user_details`(`id`) VALUES ((SELECT id FROM `tb_jms_user` WHERE `username` = '{$proj_username}'),'{$proj_username}')";
         mysqli_query($conn, $querry);
 } else {
 	echo "Error: " . $querry . "<br>" . mysqli_error($conn);

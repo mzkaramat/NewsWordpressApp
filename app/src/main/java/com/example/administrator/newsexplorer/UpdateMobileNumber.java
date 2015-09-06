@@ -121,7 +121,7 @@ public class UpdateMobileNumber extends Activity {
                 dialog.dismiss();
             }
             if(success==200){
-                //sharedStorage.StorePrefs("confirm_user","1");
+                sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
                 Toast.makeText(context, "Sending sms to your mobile number", Toast.LENGTH_LONG).show();
                 Intent i = new Intent(UpdateMobileNumber.this, ConfirmRegistration.class);
                 startActivity(i);

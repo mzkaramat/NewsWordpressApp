@@ -3,6 +3,7 @@ package com.example.administrator.newsexplorer;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -109,12 +110,17 @@ public class ForgotPassword extends Activity {
                 dialog.dismiss();
             }
             if(success==200){
-                Toast.makeText(context,"Change password email sent",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Change password sms sent",Toast.LENGTH_LONG).show();
             }else if(success==404){
                 Toast.makeText(context,"Username not exist",Toast.LENGTH_LONG).show();
             }else if(success==0){
                 Toast.makeText(context,"Some error occurred",Toast.LENGTH_LONG).show();
             }
+            Intent intent = new Intent(ForgotPassword.this, SignIn.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         }
     }
     public static String encodeHTML(String s)

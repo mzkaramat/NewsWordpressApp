@@ -45,7 +45,8 @@ public class ConfirmRegistration extends Activity {
                 if(RegistrationCode.getText().toString().trim().length() == 6){
                     if (isNetworkAvailable()) {
 
-                        new ConfirmCode(ConfirmRegistration.this).execute(new String[]{RegistrationCode.getText().toString()});
+                        new ConfirmCode(ConfirmRegistration.this).execute(new String[]{RegistrationCode.getText().toString(),
+                                sharedStorage.GetPrefs("user_id",null)});
 
                     } else {
                         Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
@@ -87,7 +88,9 @@ public class ConfirmRegistration extends Activity {
             try {
                 //------------------>>
                 HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/SubitCode.php?proj_code=" +
-                        encodeHTML(urls[0]) ).replaceAll(" ", "%20") );
+                        encodeHTML(urls[0]) +"" +
+                        "proj_user" +
+                        encodeHTML(urls[1])).replaceAll(" ", "%20") );
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);
 
