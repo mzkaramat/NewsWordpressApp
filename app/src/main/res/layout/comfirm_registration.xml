@@ -18,8 +18,7 @@
         android:textColor="#fff"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/com_parse_ui_xlarge_vertical_spacing"
-        android:hint="Enter your code"
-        android:inputType="number"></EditText>
+        android:hint="Enter your code"></EditText>
 
     <Button
         android:id="@+id/submit_code"

@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -87,10 +88,14 @@ public class ConfirmRegistration extends Activity {
 
             try {
                 //------------------>>
-                HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/SubitCode.php?proj_code=" +
+                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/SubitCode.php?proj_code=" +
                         encodeHTML(urls[0]) +"" +
-                        "proj_user" +
+                        "&proj_user=" +
                         encodeHTML(urls[1])).replaceAll(" ", "%20") );
+                Log.e("Error",("http://ghanchidarpan.org/news/SubitCode.php?proj_code=" +
+                        encodeHTML(urls[0]) +"" +
+                        "&proj_user=" +
+                        encodeHTML(urls[1])).replaceAll(" ", "%20"));
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);
 
@@ -100,7 +105,7 @@ public class ConfirmRegistration extends Activity {
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
                     String data = EntityUtils.toString(entity);
-                    if(data.equals("200")){
+                    if(data.equals("100:")){
                         return 200;
                     }else{
                         return 404;
@@ -124,6 +129,7 @@ public class ConfirmRegistration extends Activity {
             if(success==200){
                 sharedStorage.StorePrefs("confirm_user","1");
                 Toast.makeText(context, "Mobile number confirmed", Toast.LENGTH_LONG).show();
+                showHomeListActivity();
             }else if(success==404){
                 Toast.makeText(context,"Wrong code",Toast.LENGTH_LONG).show();
             }else if(success==0){
@@ -154,5 +160,14 @@ public class ConfirmRegistration extends Activity {
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    private void showHomeListActivity() {
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish(); // This closes the login screen so it's not on the back stack
+
     }
 }

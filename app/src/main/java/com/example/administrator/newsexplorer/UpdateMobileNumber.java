@@ -45,7 +45,7 @@ public class UpdateMobileNumber extends Activity {
                 if (RegistrationCode.getText().toString().trim().length() >0) {
                     if (isNetworkAvailable()) {
 
-                        new ConfirmCode(UpdateMobileNumber.this).execute(new String[]{RegistrationCode.getText().toString()});
+                        new ConfirmCode(UpdateMobileNumber.this).execute(new String[]{sharedStorage.GetPrefs("user_id",null),RegistrationCode.getText().toString()});
 
                     } else {
                         Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
@@ -77,7 +77,7 @@ public class UpdateMobileNumber extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            this.dialog.setMessage("Submitting your code");
+            this.dialog.setMessage("Submitting your mobile number");
             this.dialog.show();
         }
 
@@ -86,9 +86,9 @@ public class UpdateMobileNumber extends Activity {
 
             try {
                 //------------------>>
-                HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/UpdateMobileNumber.php?proj_user=" +
+                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/UpdateMobileNumber.php?proj_user=" +
                         encodeHTML(urls[0])+"" +
-                        "&proj_mobile" +
+                        "&proj_mobile=" +
                         encodeHTML(urls[1]) ).replaceAll(" ", "%20") );
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);
@@ -98,7 +98,7 @@ public class UpdateMobileNumber extends Activity {
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
-                    String data = EntityUtils.toString(entity);
+                    String data = EntityUtils.toString(entity).trim();
                     if(data.equals("200")){
                         return 200;
                     }else{
@@ -121,7 +121,7 @@ public class UpdateMobileNumber extends Activity {
                 dialog.dismiss();
             }
             if(success==200){
-                sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
+                //sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
                 Toast.makeText(context, "Sending sms to your mobile number", Toast.LENGTH_LONG).show();
                 Intent i = new Intent(UpdateMobileNumber.this, ConfirmRegistration.class);
                 startActivity(i);

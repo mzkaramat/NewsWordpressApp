@@ -77,7 +77,7 @@ public class ForgotPassword extends Activity {
 
             try {
                 //------------------>>
-                HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/ForgotPassword.php?proj_username=" +
+                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/ForgotPassword.php?proj_username=" +
                         encodeHTML(urls[0]) ).replaceAll(" ", "%20") );
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);
@@ -87,7 +87,7 @@ public class ForgotPassword extends Activity {
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
-                    String data = EntityUtils.toString(entity);
+                    String data = EntityUtils.toString(entity).trim();
                     if(data.equals("200")){
                         return 200;
                     }else{

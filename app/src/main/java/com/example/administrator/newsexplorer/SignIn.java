@@ -135,7 +135,7 @@ public class SignIn extends Activity {
 
                 try {
                     //------------------>>
-                    HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/SignIn.php?proj_email=" +
+                    HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/SignIn.php?proj_email=" +
                             encodeHTML(urls[0]) +
                             "&proj_password=" +
                             encodeHTML(urls[1])).replaceAll(" ", "%20") );
