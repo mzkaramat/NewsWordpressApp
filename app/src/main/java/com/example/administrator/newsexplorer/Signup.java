@@ -1,10 +1,8 @@
 package com.example.administrator.newsexplorer;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -193,43 +191,12 @@ public class Signup extends Activity {
     }
     private void showHomeListActivity() {
         sharedStorage.StorePrefs("confirm_user","0");
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                Signup.this);
 
-        // set title
-        alertDialogBuilder.setTitle("Quick todo");
-
-        // set dialog message
-        alertDialogBuilder
-                .setMessage("Please insert your personal details for community")
-                .setCancelable(false)
-                .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        Intent intent = new Intent(Signup.this, UserDetails.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
-                        dialog.cancel();
-                    }
-                })
-                .setNegativeButton("No",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        Intent intent = new Intent(Signup.this, ConfirmRegistration.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                        finish();
-                        dialog.cancel();
-                    }
-                });
-
-        // create alert dialog
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        // show it
-        alertDialog.show();
-         // This closes the login screen so it's not on the back stack
+        Intent intent = new Intent(this, ConfirmRegistration.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish(); // This closes the login screen so it's not on the back stack
 
     }
 }
