@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:fillViewport="true"
+    android:layout_height="fill_parent" >
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/pic_box"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="#c0c0c0"
+            android:layout_margin="15dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="170dp"
+                android:id="@+id/image_to_upload"
+                android:background="@android:drawable/ic_menu_camera"
+                android:scaleType="fitXY"
+                android:padding="4dp"
+                android:layout_height="170dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/breif_descp"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@+id/pic_box"
+            android:layout_height="wrap_content
+        ">
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="fill_parent"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter address"
+                />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_margin="5dp"
+                android:id="@+id/dob"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Date of birth"
+                />
+            <Spinner
+                android:id="@+id/select_gender"
+                android:padding="10dp"
+                android:layout_width="fill_parent"
+                android:layout_margin="5dp"
+                android:entries="@array/genders"
+                android:prompt="Select gender"
+                android:layout_height="wrap_content"
+
+                />
+            <EditText
+                android:id="@+id/age_et"
+                android:layout_width="fill_parent"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:hint="Enter age"
+                />
+
+        </LinearLayout>
+        <EditText
+            android:id="@+id/descp"
+            android:layout_below="@+id/breif_descp"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="top|left"
+            android:layout_margin="10dp"
+            android:hint="Enter your brief description"
+            android:maxLines="10"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:scrollbars="vertical"
+            />
+        <CheckBox
+            android:id="@+id/private_profile_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descp"
+            android:text="Make profile private"
+            android:layout_margin="10dp"
+            android:checked="false"
+            />
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_submit_details"
+            android:layout_alignParentBottom="true"
+            android:text="Submit"
+            />
+
+
+    </RelativeLayout>
+
+</ScrollView>

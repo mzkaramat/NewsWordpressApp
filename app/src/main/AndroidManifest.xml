@@ -50,6 +50,25 @@
             android:label="@string/app_name" >
 
         </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".sections.EntertainmentNewsSec"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".sections.MembersList"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".sections.NewsSection"
+            android:label="@string/app_name" >
+
+        </activity>
+
     </application>
 
 </manifest>

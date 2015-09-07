@@ -30,7 +30,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <ImageButton
-                    android:id="@+id/update_db"
+                    android:id="@+id/news_sec"
                     android:layout_width="100dp"
 
                     android:layout_centerHorizontal="true"
@@ -45,7 +45,7 @@
                     android:layout_marginTop="5dp"
                     android:textSize="17dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/update_db"
+                    android:layout_below="@+id/news_sec"
                     android:text="News"/>
             </RelativeLayout>
 
@@ -64,7 +64,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <ImageButton
-                    android:id="@+id/about_us"
+                    android:id="@+id/members_sec"
                     android:layout_width="100dp"
 
                     android:layout_centerHorizontal="true"
@@ -79,7 +79,7 @@
                     android:layout_marginTop="5dp"
                     android:textSize="17dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/about_us"
+                    android:layout_below="@+id/members_sec"
                     android:text="Members"/>
             </RelativeLayout>
 
@@ -97,7 +97,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content">
                 <ImageButton
-                    android:id="@+id/metro_map"
+                    android:id="@+id/ent_news"
                     android:layout_width="100dp"
                     android:layout_centerHorizontal="true"
 
@@ -112,7 +112,7 @@
                     android:layout_marginTop="5dp"
                     android:textSize="17dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/metro_map"
+                    android:layout_below="@+id/ent_news"
                     android:text="Entertainment News"/>
 
             </RelativeLayout>
