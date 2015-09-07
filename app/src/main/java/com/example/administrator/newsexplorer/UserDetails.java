@@ -35,15 +35,18 @@ public class UserDetails extends Activity {
     Button SubmitButton;
     ImageView CameraAct;
     CheckBox MakePrivate;
+    StorageSharedPref sharedStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_details);
+
         Address = (EditText) findViewById(R.id.address);
         Dob = (EditText) findViewById(R.id.dob);
         Age = (EditText) findViewById(R.id.age_et);
         BriefDescp = (EditText) findViewById(R.id.descp);
+        sharedStorage = new StorageSharedPref(UserDetails.this);
 
         SubmitButton = (Button) findViewById(R.id.button_submit_details);
 
@@ -54,16 +57,30 @@ public class UserDetails extends Activity {
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isNetworkAvailable()) {
 
+                    new InputUserDet(UserDetails.this).execute(new String[]{sharedStorage.GetPrefs("user_id",null),
+                            Address.getText().toString().trim(),
+                            Dob.getText().toString().trim(),
+                            Age.getText().toString().trim(),
+                            BriefDescp.getText().toString().trim(),
+                            GenderSelect.getSelectedItem().toString().trim(),
+                            BooltoString(MakePrivate.isChecked())
+                    });
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
+
+                }
             }
         });
 
     }
-    class ConfirmCode extends AsyncTask<String, Void, Integer> {
+    class InputUserDet extends AsyncTask<String, Void, Integer> {
 
         private ProgressDialog dialog;
         Context context;
-        public ConfirmCode(Context c) {
+        public InputUserDet(Context c) {
             dialog = new ProgressDialog(c);
             context= c;
         }
@@ -79,10 +96,20 @@ public class UserDetails extends Activity {
 
             try {
                 //------------------>>
-                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/UpdateMobileNumber.php?proj_user=" +
-                        encodeHTML(urls[0])+"" +
-                        "&proj_mobile=" +
-                        encodeHTML(urls[1]) ).replaceAll(" ", "%20") );
+                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/InputUserDetails.php?user_id=" +
+                        encodeHTML(urls[0]) +
+                        "&user_address=" +
+                        encodeHTML(urls[1]) +
+                        "&dob=" +
+                        encodeHTML(urls[2]) +
+                        "&age=" +
+                        encodeHTML(urls[3]) +
+                        "&about=" +
+                        encodeHTML(urls[4]) +
+                        "&gender=" +
+                        encodeHTML(urls[5]) +
+                        "&private_mem=" +
+                        encodeHTML(urls[6])).replaceAll(" ", "%20") );
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);
 
@@ -115,11 +142,11 @@ public class UserDetails extends Activity {
             }
             if(success==200){
                 //sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
-                Toast.makeText(context, "Sending sms to your mobile number", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(UpdateMobileNumber.this, ConfirmRegistration.class);
+                Toast.makeText(context, "Profile Details Saved", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(UserDetails.this, MainActivity.class);
                 startActivity(i);
             }else if(success==404){
-                Toast.makeText(context,"Wrong code",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Some thing missing",Toast.LENGTH_LONG).show();
             }else if(success==0){
                 Toast.makeText(context,"Some error occurred",Toast.LENGTH_LONG).show();
             }
@@ -149,4 +176,8 @@ public class UserDetails extends Activity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+        public String BooltoString(boolean value) {
+            return value ? "1" : "0";
+        }
 }
+
