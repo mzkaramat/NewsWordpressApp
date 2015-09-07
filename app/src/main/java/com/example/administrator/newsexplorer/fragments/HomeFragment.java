@@ -1,6 +1,7 @@
 package com.example.administrator.newsexplorer.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.example.administrator.newsexplorer.R;
+import com.example.administrator.newsexplorer.sections.EntertainmentNewsSec;
+import com.example.administrator.newsexplorer.sections.MembersList;
+import com.example.administrator.newsexplorer.sections.NewsSection;
 
 public class HomeFragment extends Fragment {
 	
@@ -27,21 +31,24 @@ public class HomeFragment extends Fragment {
         MembersSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent i = new Intent(getActivity(), MembersList.class);
+                startActivity(i);
             }
         });
 
         News.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getActivity(), NewsSection.class);
+                startActivity(i);
             }
         });
 
         EnterNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getActivity(), EntertainmentNewsSec.class);
+                startActivity(i);
             }
         });
         return rootView;
