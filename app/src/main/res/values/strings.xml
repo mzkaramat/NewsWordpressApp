@@ -20,7 +20,7 @@
     <string name="com_parse_ui_create_account_button_label">Create account</string>
     <string name="com_parse_ui_no_username_toast">Please enter your username</string>
     <string name="com_parse_ui_no_password_toast">Please enter your password</string>
-    <string name="com_parse_ui_email_input_hint">UserName</string>
+    <string name="com_parse_ui_email_input_hint">Name</string>
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item >Home</item>
