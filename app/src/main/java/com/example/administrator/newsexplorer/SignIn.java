@@ -53,7 +53,19 @@ public class SignIn extends Activity {
 //        }
         sharedStorage = new StorageSharedPref(SignIn.this);
         if(sharedStorage.GetPrefs("user_id",null)!=null){
-            showHomeListActivity();
+            if(sharedStorage.GetPrefs("confirm_user",null).equals("0")){
+                Intent intent = new Intent(this, ConfirmRegistration.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }else{
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish(); // This closes the login screen so it's not on the back stack
+            }
         }
 
         setContentView(R.layout.ui_parse_login_fragment);
@@ -123,7 +135,7 @@ public class SignIn extends Activity {
 
                 try {
                     //------------------>>
-                    HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/SignIn.php?proj_email=" +
+                    HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/SignIn.php?proj_email=" +
                             encodeHTML(urls[0]) +
                             "&proj_password=" +
                             encodeHTML(urls[1])).replaceAll(" ", "%20") );
@@ -139,7 +151,8 @@ public class SignIn extends Activity {
                         if(data.equals("404:")){
                             return 404;
                         }else{
-                            sharedStorage.StorePrefs("user_id",data.split(":")[1]);
+                            sharedStorage.StorePrefs("user_id",data.split(":")[1].trim());
+                            sharedStorage.StorePrefs("confirm_user",data.split(":")[2].trim());
                             return 200;
                         }
                     }
@@ -196,11 +209,19 @@ public class SignIn extends Activity {
 
 
     private void showHomeListActivity() {
+        if(sharedStorage.GetPrefs("confirm_user",null).equals("0")){
+            Intent intent = new Intent(this, ConfirmRegistration.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        }else{
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                 | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish(); // This closes the login screen so it's not on the back stack
+        }
     }
 
 }
