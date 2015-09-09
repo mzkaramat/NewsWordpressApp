@@ -20,38 +20,5 @@
     <string name="com_parse_ui_create_account_button_label">Create account</string>
     <string name="com_parse_ui_no_username_toast">Please enter your username</string>
     <string name="com_parse_ui_no_password_toast">Please enter your password</string>
-    <string name="com_parse_ui_email_input_hint">Name</string>
-    <!-- Nav Drawer Menu Items -->
-    <string-array name="nav_drawer_items">
-        <item >Home</item>
-        <item >Sponsers</item>
-        <item >Share app</item>
-        <item >Terms</item>
-        <item >About</item>
-        <item >Contact</item>
-        <item >Team</item>
-        <item >Logout</item>
-    </string-array>
-
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
-    <array name="nav_drawer_icons">
-        <item>@mipmap/home</item>
-        <item>@mipmap/sponsers</item>
-        <item>@mipmap/share</item>
-        <item>@mipmap/terms</item>
-        <item>@mipmap/about</item>
-        <item>@mipmap/contact</item>
-        <item>@mipmap/partners</item>
-        <item>@mipmap/logout</item>
-    </array>
-
-    <!-- Content Description -->
-    <string name="desc_list_item_icon">Item Icon</string>
-    <string-array name="genders">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Others</item>
-
-    </string-array>
+    <string name="com_parse_ui_email_input_hint">UserName</string>
 </resources>

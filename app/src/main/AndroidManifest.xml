@@ -3,9 +3,6 @@
     package="com.example.administrator.newsexplorer" >
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.camera"></uses-feature>
-    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +12,6 @@
             android:icon="@mipmap/ic_launcher"
             android:name=".MainActivity"
             android:label="@string/app_name" >
-
 
         </activity>
         <activity
@@ -27,7 +23,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:icon="@mipmap/ic_launcher"
@@ -41,43 +36,6 @@
             android:label="@string/app_name" >
 
         </activity>
-        <activity
-            android:icon="@mipmap/ic_launcher"
-            android:name=".ConfirmRegistration"
-            android:label="@string/app_name" >
-
-        </activity>
-        <activity
-            android:icon="@mipmap/ic_launcher"
-            android:name=".UpdateMobileNumber"
-            android:label="@string/app_name" >
-
-        </activity>
-        <activity
-            android:icon="@mipmap/ic_launcher"
-            android:name=".sections.EntertainmentNewsSec"
-            android:label="@string/app_name" >
-
-        </activity>
-        <activity
-            android:icon="@mipmap/ic_launcher"
-            android:name=".sections.MembersList"
-            android:label="@string/app_name" >
-
-        </activity>
-        <activity
-        android:icon="@mipmap/ic_launcher"
-        android:name=".sections.NewsSection"
-        android:label="@string/app_name" >
-
-    </activity>
-        <activity
-            android:icon="@mipmap/ic_launcher"
-            android:name=".UserDetails"
-            android:label="@string/app_name" >
-
-        </activity>
-
     </application>
 
 </manifest>

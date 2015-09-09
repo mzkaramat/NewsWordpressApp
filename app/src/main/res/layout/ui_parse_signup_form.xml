@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ParseLoginUI.EditText"
-        android:textColor="#fff"
         android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
         android:hint="@string/com_parse_ui_email_input_hint"
         android:inputType="textEmailAddress" />
@@ -18,7 +17,6 @@
         android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
         android:inputType="number"
         android:layout_width="match_parent"
-        android:textColor="#fff"
         android:layout_height="wrap_content"
         style="@style/ParseLoginUI.EditText"
         android:hint="@string/com_parse_ui_username_input_hint"></EditText>
@@ -27,7 +25,6 @@
         android:id="@+id/signup_password_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#fff"
         style="@style/ParseLoginUI.EditText"
         android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
         android:fontFamily="sans-serif"
@@ -37,7 +34,6 @@
 
     <EditText
         android:id="@+id/signup_confirm_password_input"
-        android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ParseLoginUI.EditText"

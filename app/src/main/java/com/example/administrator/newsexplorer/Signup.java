@@ -86,7 +86,7 @@ public class Signup extends Activity {
             if(IsUerNameValid(urls[0])){
             try {
                     //------------------>>
-                    HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/signup.php?proj_username=" +
+                    HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/signup.php?proj_username=" +
                             encodeHTML(urls[0]) +
                             "&proj_password=" +
                             encodeHTML(urls[1]) +
@@ -124,10 +124,7 @@ public class Signup extends Activity {
             if(success==200){
 //                Toast.makeText(context,"User Created Successfullly",Toast.LENGTH_LONG).show();
                 //sharedStorage.StorePrefs("login_cred","1");
-
-//                new ConfirmRegistration(Signup.this).execute(new String[]{sharedStorage.GetPrefs("user_id","")});
-               showHomeListActivity();
-                Toast.makeText(context,"Confirm Registration",Toast.LENGTH_LONG).show();
+                showHomeListActivity();
             }else if(success==201){
                 Toast.makeText(context,"Username already exist",Toast.LENGTH_LONG).show();
                 //sharedStorage.StorePrefs("login_cred","1");
@@ -137,7 +134,6 @@ public class Signup extends Activity {
             }
         }
     }
-
     public static String encodeHTML(String s)
     {
         StringBuffer out = new StringBuffer();
@@ -159,7 +155,7 @@ public class Signup extends Activity {
         try {
 
             //------------------>>
-            HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/userNameCheck.php?proj_username=" +
+            HttpGet httppost = new HttpGet(("http://xeamphiil.co.nf/News/userNameCheck.php?proj_username=" +
                     encodeHTML(userName)).replaceAll(" ", "%20"));
             HttpClient httpclient = new DefaultHttpClient();
             HttpResponse response = httpclient.execute(httppost);
@@ -190,13 +186,10 @@ public class Signup extends Activity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
     private void showHomeListActivity() {
-        sharedStorage.StorePrefs("confirm_user","0");
-
-        Intent intent = new Intent(this, ConfirmRegistration.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                 | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish(); // This closes the login screen so it's not on the back stack
-
     }
 }
