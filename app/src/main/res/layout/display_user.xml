@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/temp_personal_info"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Personal Information"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/pic_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/temp_personal_info"
+            android:layout_margin="15dp"
+            android:background="#c0c0c0">
+
+            <ImageView
+                android:id="@+id/image_to_upload"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:background="@android:drawable/ic_menu_camera"
+                android:padding="4dp"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/breif_descp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/temp_personal_info"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/pic_box"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+
+                android:enabled="false"
+                android:hint="Enter Name"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/dob"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Date of birth"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Gender" />
+
+            <Spinner
+                android:id="@+id/select_gender"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:entries="@array/genders"
+                android:padding="10dp"
+                android:prompt="@string/select_gen" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/temp_id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/breif_descp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Select Martial Status" />
+
+            <Spinner
+                android:id="@+id/select_maritial_status"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:entries="@array/maritial_status"
+                android:padding="10dp"
+                android:prompt="@string/select_mar"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Select Occupation" />
+
+            <Spinner
+                android:id="@+id/select_occupation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+
+                android:entries="@array/select_occupation"
+                android:padding="10dp"
+                android:prompt="@string/select_occ" />
+
+            <EditText
+                android:id="@+id/age_et"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Enter age"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/mothers_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Mother’s Name"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/mothers_age"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Mother’s Age"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/father_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Father’s (Husband) Name"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/father_age"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Father’s (Husband) Age"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/grand_father_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Grand Father’s (Father in low)  Name"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/grand_father_age"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Grand Father’s (Father in low)  Age"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Select Cast" />
+
+            <Spinner
+                android:id="@+id/personal_select_cast"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:entries="@array/cast"
+                android:padding="10dp"
+                android:prompt="@string/select_cas"
+
+                />
+
+            <EditText
+                android:id="@+id/personal_sub_cast"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="SubCast"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/personal_qualification"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Qualification"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Family Sort Details "
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/wife_fathers_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Wife (Father’s) Name"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/wife_fathers_sub_cast"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Sub cast"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/nandial_place"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Nandiyal Place"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/famliy_qualification"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Qualification"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/famliy_dob"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="DOB"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/no_of_sons"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="No of Sons"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/no_of_daughters"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="No of Daughters"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Contact Information"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mobile_no"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Mobile no."
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/landline_no"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Landline no."
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/email_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Email id"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/skype_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Skype id"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Permanent Address"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/permanent_street"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Street"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/permanent_city"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="City"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/permanent_pincode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Pin code"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/permanent_tehsil"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Tehsil"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/permanent_district"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="District"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/permanent_state"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="State"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Business Address"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/business_shop_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Shop Name"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/business_contact_number"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Contact Number"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/business_street"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Street"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/business_city"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="City"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/business_pincode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Pin code"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/business_tehsil"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Tehsil"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/business_district"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="District"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/business_state"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="State"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Govt. Service "
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/govt_post"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Post"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/govt_post_place"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Posting Place"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Private Service "
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/private_post"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Post"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/private_post_place"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Posting Place"
+                android:padding="10dp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:background="#c0c0c0" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Student "
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/school_course"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Class/Course"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/school_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="School/College"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/school_place"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:enabled="false"
+                android:hint="Place"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Select Housewife status" />
+
+            <Spinner
+                android:id="@+id/select_house_wifes"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:entries="@array/house_wife_stats"
+                android:padding="10dp"
+                android:prompt="@string/select_wife_status"
+
+                />
+
+            <CheckBox
+                android:id="@+id/private_profile_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:checked="false"
+                android:text="Make profile private" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/button_submit_details"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/temp_id"
+            android:layout_marginTop="20dp"
+            android:text="Submit" />
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -14,6 +14,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -225,7 +226,7 @@ public class UserDetails extends Activity {
 
             try {
                 //------------------>>
-                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/InputUserDetails.php?id=" +
+                String url_ = ("http://ghanchidarpan.org/news/insert_profile_details.php?id=" +
                         encodeHTML(urls[0]) +
                         "&dob=" +
                         encodeHTML(urls[2]) +
@@ -324,7 +325,9 @@ public class UserDetails extends Activity {
                         "&student_place=" +
                         encodeHTML(urls[49]) +
                         "&house_wife=" +
-                        encodeHTML(urls[50])).replaceAll(" ", "%20") );
+                        encodeHTML(urls[50])).replaceAll(" ", "%20");
+                Log.e("ULR",url_);
+                HttpGet httppost = new HttpGet(url_ );
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpResponse response = httpclient.execute(httppost);
 
