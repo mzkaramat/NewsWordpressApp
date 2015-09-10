@@ -53,7 +53,7 @@ public class UserDetails extends Activity {
             p_post_place,student_course,student_school,student_place;
     Spinner GenderSelect,MartialStatus,Cast,Occupation,HouseWifeStatus;
     Button SubmitButton;
-
+    boolean isSnap = false;
     CheckBox MakePrivate;
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
@@ -362,7 +362,9 @@ public class UserDetails extends Activity {
             if(success==200){
                 //sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
                 Toast.makeText(context, "Profile Details Saved, Now uploading Image", Toast.LENGTH_LONG).show();
-                upload();
+                if(isSnap) {
+                    upload();
+                }
 
             }else if(success==404){
                 Toast.makeText(context,"Some thing missing",Toast.LENGTH_LONG).show();
@@ -404,7 +406,7 @@ public class UserDetails extends Activity {
             CameraAct.setImageBitmap(photo);
             selectedImage = data.getData();
             photo = (Bitmap) data.getExtras().get("data");
-
+            isSnap = true;
             // Cursor to get image uri to display
 
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -463,7 +465,7 @@ public class UserDetails extends Activity {
         // Image
         Bitmap bm = BitmapFactory.decodeFile(picturePath);
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+        bm.compress(Bitmap.CompressFormat.JPEG, 30, bao);
         byte[] ba = bao.toByteArray();
         ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
 

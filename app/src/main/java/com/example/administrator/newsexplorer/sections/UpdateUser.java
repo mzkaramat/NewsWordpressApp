@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -57,6 +58,7 @@ public class UpdateUser extends Activity {
             p_post_place, student_course, student_school, student_place;
     ImageLoader imageLoader;
 
+    boolean isSnap = false;
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
 
@@ -72,6 +74,8 @@ public class UpdateUser extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_user_details);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
         CameraAct = (ImageView) findViewById(R.id.image_to_upload);
         Name = (EditText) findViewById(R.id.name);
         FatherName = (EditText) findViewById(R.id.father_name);
@@ -377,8 +381,9 @@ public class UpdateUser extends Activity {
             if(success==200){
                 //sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
                 Toast.makeText(context, "Profile Details Saved, Now uploading Image", Toast.LENGTH_LONG).show();
-                upload();
-
+                if(isSnap) {
+                    upload();
+                }
             }else if(success==404){
                 Toast.makeText(context,"Some thing missing",Toast.LENGTH_LONG).show();
             }else if(success==0){
@@ -419,7 +424,7 @@ public class UpdateUser extends Activity {
             CameraAct.setImageBitmap(photo);
             selectedImage = data.getData();
             photo = (Bitmap) data.getExtras().get("data");
-
+            isSnap = true;
             // Cursor to get image uri to display
 
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -478,7 +483,7 @@ public class UpdateUser extends Activity {
         // Image
         Bitmap bm = BitmapFactory.decodeFile(picturePath);
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 90, bao);
+        bm.compress(Bitmap.CompressFormat.JPEG, 30, bao);
         byte[] ba = bao.toByteArray();
         ba1 = Base64.encodeToString(ba, Base64.DEFAULT);
 
@@ -530,6 +535,9 @@ public class UpdateUser extends Activity {
             super.onPostExecute(result);
             pd.hide();
             pd.dismiss();
+            if(!result.trim().equals("404:")){
+
+
             String[] data = result.split(":",-1);
             dob.setText(data[0]);
             GenderSelect.setSelection(GetArrayLoc(data[1],R.array.genders));
@@ -580,6 +588,7 @@ public class UpdateUser extends Activity {
             HouseWifeStatus.setSelection(GetArrayLoc(data[46],R.array.house_wife_stats));
 
             imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg", CameraAct);
+            }
         }
     }
     int GetArrayLoc(String ArrayName,int key){
@@ -589,5 +598,15 @@ public class UpdateUser extends Activity {
                 return i;
         }
         return -1;
+    }@Override
+     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // app icon in action bar clicked; goto parent activity.
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

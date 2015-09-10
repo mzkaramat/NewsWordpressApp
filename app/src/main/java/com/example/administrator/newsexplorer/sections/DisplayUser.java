@@ -8,6 +8,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -122,12 +125,14 @@ public class DisplayUser extends Activity {
 //        Age = (EditText) findViewById(R.id.age_et);
 //        BriefDescp = (EditText) findViewById(R.id.descp);
         sharedStorage = new StorageSharedPref(DisplayUser.this);
+
         if (isNetworkAvailable()) {
             new uploadToServer().execute(new String[]{Id});
         } else {
             Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
 
         }
+      //  hideKeyboard();
 //
     }
 
@@ -222,7 +227,11 @@ public class DisplayUser extends Activity {
             HouseWifeStatus.setText(data[46]);
 
             imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg", CameraAct);
+            getWindow().setSoftInputMode(
+                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+            );
         }
+
     }
 
     public static String encodeHTML(String s) {
@@ -244,4 +253,5 @@ public class DisplayUser extends Activity {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
 }
