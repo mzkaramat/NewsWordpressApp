@@ -56,8 +56,9 @@ public class UserDetails extends Activity {
 
     CheckBox MakePrivate;
     ImageView CameraAct;
-    private static final int CAMERA_REQUEST = 1888;
     StorageSharedPref sharedStorage;
+    private static final int CAMERA_REQUEST = 1888;
+
     String ba1,picturePath;
     Uri selectedImage;
 

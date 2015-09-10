@@ -37,6 +37,7 @@
         </RelativeLayout>
 
         <LinearLayout
+
             android:id="@+id/breif_descp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -65,62 +66,60 @@
                 android:hint="Date of birth"
                 android:padding="10dp" />
 
-            <TextView
+            TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select Gender" />
 
-            <Spinner
+            <EditText
                 android:id="@+id/select_gender"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:entries="@array/genders"
-                android:padding="10dp"
-                android:prompt="@string/select_gen" />
+                android:enabled="false"
+                android:padding="10dp" />
 
 
         </LinearLayout>
 
         <LinearLayout
+
             android:id="@+id/temp_id"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/breif_descp"
+            android:layout_below="@+id/pic_box"
             android:orientation="vertical">
 
-            <TextView
+            TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Select Martial Status" />
 
-            <Spinner
+            <EditText
                 android:id="@+id/select_maritial_status"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:layout_margin="5dp"
-                android:entries="@array/maritial_status"
                 android:padding="10dp"
-                android:prompt="@string/select_mar"
 
                 />
 
-            <TextView
+            TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Select Occupation" />
 
-            <Spinner
+            <EditText
+                android:enabled="false"
                 android:id="@+id/select_occupation"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
 
-                android:entries="@array/select_occupation"
-                android:padding="10dp"
-                android:prompt="@string/select_occ" />
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/age_et"
@@ -185,20 +184,19 @@
                 android:hint="Grand Father’s (Father in low)  Age"
                 android:padding="10dp" />
 
-            <TextView
+            TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Select Cast" />
 
-            <Spinner
+            <EditText
                 android:id="@+id/personal_select_cast"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:entries="@array/cast"
                 android:padding="10dp"
-                android:prompt="@string/select_cas"
 
                 />
 
@@ -612,14 +610,13 @@
                 android:layout_margin="5dp"
                 android:text="Select Housewife status" />
 
-            <Spinner
+            <EditText
                 android:id="@+id/select_house_wifes"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:entries="@array/house_wife_stats"
                 android:padding="10dp"
-                android:prompt="@string/select_wife_status"
 
                 />
 

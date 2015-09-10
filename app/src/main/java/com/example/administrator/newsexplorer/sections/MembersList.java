@@ -3,10 +3,13 @@ package com.example.administrator.newsexplorer.sections;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -46,6 +49,19 @@ public class MembersList extends Activity {
             Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
 
         }
+        Members.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(Memberslist.get(position).isVisible.equals("1")){
+                    Intent i = new Intent(MembersList.this,DisplayUser.class);
+                    i.putExtra("UserId",Memberslist.get(position).id);
+                    startActivity(i);
+
+                }else{
+                    Toast.makeText(getApplicationContext(),"This has not shared his profile",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
     class uploadToServer extends AsyncTask<Void, Void, String> {
 
@@ -72,9 +88,9 @@ public class MembersList extends Activity {
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
-                    String[] data = EntityUtils.toString(entity).split(";");
+                    String[] data = EntityUtils.toString(entity).split(";",-1);
                    for(int i = 0 ; i < data.length;i++){
-                       Memberslist.add(new MemberModel(data[i].split(":")[1],data[i].split(":")[0]));
+                       Memberslist.add(new MemberModel(data[i].split(":",-1)[1],data[i].split(":",-1)[0],data[i].split(":",-1)[2]));
                    }
                 }
 
