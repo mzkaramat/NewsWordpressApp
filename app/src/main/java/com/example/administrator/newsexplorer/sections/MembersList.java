@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,8 +37,11 @@ import java.util.List;
  */
 public class MembersList extends Activity {
     StorageSharedPref sharedStorage;
-    List<MemberModel> Memberslist;
+    List<MemberModel> Memberslist,TempMemberlist;
     ListView Members;
+    Button SearchMember;
+    EditText SearchString;
+    MemberListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class MembersList extends Activity {
         setContentView(R.layout.members_list);
         sharedStorage = new StorageSharedPref(MembersList.this);
         Memberslist = new ArrayList<>();
+        SearchMember = (Button) findViewById(R.id.search_button);
+        SearchString = (EditText) findViewById(R.id.member_name);
         Members = (ListView) findViewById(R.id.members_list_);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
@@ -62,6 +69,20 @@ public class MembersList extends Activity {
 
                 }else{
                     Toast.makeText(getApplicationContext(),"This has not shared his profile",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        SearchMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!SearchString.getText().toString().trim().equals("")){
+                    Memberslist.clear();
+                    for(int i = 0 ; i <TempMemberlist.size();i++){
+                        if(TempMemberlist.get(i).name.toLowerCase().trim().contains(SearchString.getText().toString().trim().toLowerCase())){
+                            Memberslist.add((TempMemberlist.get(i)));
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
                 }
             }
         });
@@ -95,6 +116,7 @@ public class MembersList extends Activity {
                    for(int i = 0 ; i < data.length;i++){
                        Memberslist.add(new MemberModel(data[i].split(":",-1)[1],data[i].split(":",-1)[0],data[i].split(":",-1)[2].trim()));
                    }
+                    TempMemberlist = new ArrayList<>(Memberslist);
                 }
 
             } catch (IOException e) {
@@ -109,7 +131,8 @@ public class MembersList extends Activity {
             super.onPostExecute(result);
             pd.hide();
             pd.dismiss();
-            Members.setAdapter(new MemberListAdapter(MembersList.this, Memberslist));
+            adapter= new MemberListAdapter(MembersList.this, Memberslist);
+            Members.setAdapter(adapter);
         }
     }
     public static String encodeHTML(String s)
