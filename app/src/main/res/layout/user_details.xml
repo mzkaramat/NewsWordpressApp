@@ -21,7 +21,7 @@
             android:id="@+id/pic_box"
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="#c0c0c0"
+
             android:layout_margin="15dp"
             android:layout_height="wrap_content">
             <ImageView
@@ -31,6 +31,16 @@
                 android:scaleType="fitXY"
                 android:padding="4dp"
                 android:layout_height="170dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="browse"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/browse"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/image_to_upload"
+                />
+
         </RelativeLayout>
 
         <LinearLayout
