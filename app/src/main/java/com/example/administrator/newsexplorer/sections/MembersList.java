@@ -76,11 +76,18 @@ public class MembersList extends Activity {
             @Override
             public void onClick(View v) {
                 if(!SearchString.getText().toString().trim().equals("")){
+                        Memberslist.clear();
+                        for(int i = 0 ; i <TempMemberlist.size();i++){
+                            if(TempMemberlist.get(i).name.toLowerCase().trim().contains(SearchString.getText().toString().trim().toLowerCase())){
+                                Memberslist.add((TempMemberlist.get(i)));
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                }else{
                     Memberslist.clear();
                     for(int i = 0 ; i <TempMemberlist.size();i++){
-                        if(TempMemberlist.get(i).name.toLowerCase().trim().contains(SearchString.getText().toString().trim().toLowerCase())){
                             Memberslist.add((TempMemberlist.get(i)));
-                        }
+
                     }
                     adapter.notifyDataSetChanged();
                 }

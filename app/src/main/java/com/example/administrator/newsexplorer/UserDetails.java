@@ -363,7 +363,8 @@ public class UserDetails extends Activity {
                 //sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
                 Toast.makeText(context, "Profile Details Saved, Now uploading Image", Toast.LENGTH_LONG).show();
                 if(isSnap) {
-                    upload();
+                   // upload();
+                    new uploadToServer().execute();
                 }
 
             }else if(success==404){
@@ -404,19 +405,29 @@ public class UserDetails extends Activity {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             CameraAct.setImageBitmap(photo);
-            selectedImage = data.getData();
-            photo = (Bitmap) data.getExtras().get("data");
+//            selectedImage = data.getData();
+//            photo = (Bitmap) data.getExtras().get("data");
             isSnap = true;
-            // Cursor to get image uri to display
+//            // Cursor to get image uri to display
+//
+//            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+//            Cursor cursor = getContentResolver().query(selectedImage,
+//                    filePathColumn, null, null, null);
+//            cursor.moveToFirst();
+//
+//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//            picturePath = cursor.getString(columnIndex);
+////            cursor.close();
+//            Bitmap bm = BitmapFactory.decodeFile(picturePath);
+            ByteArrayOutputStream bao = new ByteArrayOutputStream();
+            photo.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+            byte[] ba = bao.toByteArray();
+            ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
 
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
+//        Log.e("base64", "-----" + ba1);
 
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            picturePath = cursor.getString(columnIndex);
-            cursor.close();
+            // Upload image to server
+
         }
     }
      class uploadToServer extends AsyncTask<Void, Void, String> {

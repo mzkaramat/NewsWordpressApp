@@ -382,7 +382,7 @@ public class UpdateUser extends Activity {
                 //sharedStorage.StorePrefs("user_id",RegistrationCode.getText().toString().trim());
                 Toast.makeText(context, "Profile Details Saved, Now uploading Image", Toast.LENGTH_LONG).show();
                 if(isSnap) {
-                    upload();
+                    new uploadToServer().execute();
                 }
             }else if(success==404){
                 Toast.makeText(context,"Some thing missing",Toast.LENGTH_LONG).show();
@@ -422,19 +422,24 @@ public class UpdateUser extends Activity {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             CameraAct.setImageBitmap(photo);
-            selectedImage = data.getData();
-            photo = (Bitmap) data.getExtras().get("data");
+//            selectedImage = data.getData();
+//            photo = (Bitmap) data.getExtras().get("data");
             isSnap = true;
-            // Cursor to get image uri to display
-
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            picturePath = cursor.getString(columnIndex);
-            cursor.close();
+//            // Cursor to get image uri to display
+//
+//            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+//            Cursor cursor = getContentResolver().query(selectedImage,
+//                    filePathColumn, null, null, null);
+//            cursor.moveToFirst();
+//
+//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+//            picturePath = cursor.getString(columnIndex);
+////            cursor.close();
+//            Bitmap bm = BitmapFactory.decodeFile(picturePath);
+            ByteArrayOutputStream bao = new ByteArrayOutputStream();
+            photo.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+            byte[] ba = bao.toByteArray();
+            ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
         }
     }
     class uploadToServer extends AsyncTask<Void, Void, String> {
