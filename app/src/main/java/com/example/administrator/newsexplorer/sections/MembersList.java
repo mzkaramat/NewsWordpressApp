@@ -52,7 +52,7 @@ public class MembersList extends Activity {
         Members.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(Memberslist.get(position).isVisible.equals("1")){
+                if(Memberslist.get(position).isVisible.contains("1")){
                     Intent i = new Intent(MembersList.this,DisplayUser.class);
                     i.putExtra("UserId",Memberslist.get(position).id);
                     startActivity(i);
@@ -90,7 +90,7 @@ public class MembersList extends Activity {
                     HttpEntity entity = response.getEntity();
                     String[] data = EntityUtils.toString(entity).split(";",-1);
                    for(int i = 0 ; i < data.length;i++){
-                       Memberslist.add(new MemberModel(data[i].split(":",-1)[1],data[i].split(":",-1)[0],data[i].split(":",-1)[2]));
+                       Memberslist.add(new MemberModel(data[i].split(":",-1)[1],data[i].split(":",-1)[0],data[i].split(":",-1)[2].trim()));
                    }
                 }
 

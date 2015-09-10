@@ -154,55 +154,7 @@ public class DisplayUser extends Activity {
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
-                    String[] data = EntityUtils.toString(entity).split(";");
-                    dob.setText(data[0]);
-                    GenderSelect.setText(data[1]);
-                    Name.setText(data[2]);
-                    MartialStatus.setText(data[3]);
-                    MotherName.setText(data[4]);
-                    MotherAge.setText(data[5]);
-                    FatherName.setText(data[6]);
-                    FatherAge.setText(data[7]);
-                    GrandFatherName.setText(data[8]);
-                    GrandFatherAge.setText(data[9]);
-                    Cast.setText(data[10]);
-                    sub_cast.setText(data[11]);
-                    qualification.setText(data[12]);
-                    famliy_name.setText(data[13]);
-                    famliy_sub_cast.setText(data[14]);
-                    family_nandial.setText(data[15]);
-                    family_qualiffication.setText(data[16]);
-                    family_dob.setText(data[17]);
-                    no_son.setText(data[18]);
-                    no_daugther.setText(data[19]);
-                    mobile_no.setText(data[20]);
-                    landline_number.setText(data[21]);
-                    email_id.setText(data[22]);
-                    skype_id.setText(data[23]);
-                    p_street.setText(data[24]);
-                    p_city.setText(data[25]);
-                    p_pincode.setText(data[26]);
-                    p_tehsil.setText(data[27]);
-                    p_district.setText(data[28]);
-                    p_state.setText(data[29]);
-                    Occupation.setText(data[30]);
-                    b_shopname.setText(data[31]);
-                    b_contactnumber.setText(data[32]);
-                    b_street.setText(data[33]);
-                    b_city.setText(data[34]);
-                    b_pincode.setText(data[35]);
-                    b_tehsil.setText(data[36]);
-                    b_district.setText(data[37]);
-                    b_state.setText(data[38]);
-                    govt_post.setText(data[39]);
-                    govt_post_place.setText(data[40]);
-                    p_post.setText(data[41]);
-                    p_post_place.setText(data[42]);
-                    student_course.setText(data[43]);
-                    student_school.setText(data[44]);
-                    student_place.setText(data[45]);
-                    HouseWifeStatus.setText(data[46]);
-
+                   return EntityUtils.toString(entity);
                 }
 
             } catch (IOException e) {
@@ -217,6 +169,55 @@ public class DisplayUser extends Activity {
             super.onPostExecute(result);
             pd.hide();
             pd.dismiss();
+            String[] data = result.split(":",-1);
+            dob.setText(data[0]);
+            GenderSelect.setText(data[1]);
+            Name.setText(data[2]);
+            MartialStatus.setText(data[3]);
+            MotherName.setText(data[4]);
+            MotherAge.setText(data[5]);
+            FatherName.setText(data[6]);
+            FatherAge.setText(data[7]);
+            GrandFatherName.setText(data[8]);
+            GrandFatherAge.setText(data[9]);
+            Cast.setText(data[10]);
+            sub_cast.setText(data[11]);
+            qualification.setText(data[12]);
+            famliy_name.setText(data[13]);
+            famliy_sub_cast.setText(data[14]);
+            family_nandial.setText(data[15]);
+            family_qualiffication.setText(data[16]);
+            family_dob.setText(data[17]);
+            no_son.setText(data[18]);
+            no_daugther.setText(data[19]);
+            mobile_no.setText(data[20]);
+            landline_number.setText(data[21]);
+            email_id.setText(data[22]);
+            skype_id.setText(data[23]);
+            p_street.setText(data[24]);
+            p_city.setText(data[25]);
+            p_pincode.setText(data[26]);
+            p_tehsil.setText(data[27]);
+            p_district.setText(data[28]);
+            p_state.setText(data[29]);
+            Occupation.setText(data[30]);
+            b_shopname.setText(data[31]);
+            b_contactnumber.setText(data[32]);
+            b_street.setText(data[33]);
+            b_city.setText(data[34]);
+            b_pincode.setText(data[35]);
+            b_tehsil.setText(data[36]);
+            b_district.setText(data[37]);
+            b_state.setText(data[38]);
+            govt_post.setText(data[39]);
+            govt_post_place.setText(data[40]);
+            p_post.setText(data[41]);
+            p_post_place.setText(data[42]);
+            student_course.setText(data[43]);
+            student_school.setText(data[44]);
+            student_place.setText(data[45]);
+            HouseWifeStatus.setText(data[46]);
+
         }
     }
 
