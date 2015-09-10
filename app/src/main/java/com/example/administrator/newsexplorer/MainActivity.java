@@ -30,6 +30,7 @@ import com.example.administrator.newsexplorer.fragments.SponsersFragment;
 import com.example.administrator.newsexplorer.fragments.TermsFragment;
 import com.example.administrator.newsexplorer.fragments.ContactFragment;
 import com.example.administrator.newsexplorer.model.NavDrawerItem;
+import com.example.administrator.newsexplorer.sections.UpdateUser;
 
 import java.util.ArrayList;
 
@@ -155,7 +156,9 @@ public class MainActivity extends ActionBarActivity {
         }
         // Handle action bar actions click
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_update:
+                    Intent i = new Intent(MainActivity.this, UpdateUser.class);
+                    startActivity(i);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -169,7 +172,7 @@ public class MainActivity extends ActionBarActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         // if nav drawer is opened, hide the action items
         boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+        menu.findItem(R.id.action_update).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 

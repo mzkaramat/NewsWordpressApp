@@ -72,7 +72,6 @@ public class UpdateUser extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_user_details);
-        imageLoader.init(ImageLoaderConfiguration.createDefault(UpdateUser.this));
         CameraAct = (ImageView) findViewById(R.id.image_to_upload);
         Name = (EditText) findViewById(R.id.name);
         FatherName = (EditText) findViewById(R.id.father_name);
@@ -84,6 +83,9 @@ public class UpdateUser extends Activity {
         dob = (EditText) findViewById(R.id.dob);
         sub_cast = (EditText) findViewById(R.id.personal_sub_cast);
         qualification = (EditText) findViewById(R.id.personal_qualification);
+        imageLoader = ImageLoader.getInstance();
+
+        imageLoader.init(ImageLoaderConfiguration.createDefault(UpdateUser.this));
 
         famliy_name = (EditText) findViewById(R.id.father_name);
         famliy_sub_cast = (EditText) findViewById(R.id.wife_fathers_sub_cast);
@@ -211,6 +213,13 @@ public class UpdateUser extends Activity {
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
+        if (isNetworkAvailable()) {
+            new GetData().execute();
+        } else {
+            Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
+
+        }
+
     }
 
     class InputUserDet extends AsyncTask<String, Void, Integer> {
@@ -523,16 +532,16 @@ public class UpdateUser extends Activity {
             pd.dismiss();
             String[] data = result.split(":",-1);
             dob.setText(data[0]);
-            GenderSelect.setText(data[1]);
+            GenderSelect.setSelection(GetArrayLoc(data[1],R.array.genders));
             Name.setText(data[2]);
-            MartialStatus.setText(data[3]);
+            MartialStatus.setSelection(GetArrayLoc(data[3],R.array.maritial_status));
             MotherName.setText(data[4]);
             MotherAge.setText(data[5]);
             FatherName.setText(data[6]);
             FatherAge.setText(data[7]);
             GrandFatherName.setText(data[8]);
             GrandFatherAge.setText(data[9]);
-            Cast.setText(data[10]);
+            Cast.setSelection(GetArrayLoc(data[10],R.array.cast));
             sub_cast.setText(data[11]);
             qualification.setText(data[12]);
             famliy_name.setText(data[13]);
@@ -552,7 +561,7 @@ public class UpdateUser extends Activity {
             p_tehsil.setText(data[27]);
             p_district.setText(data[28]);
             p_state.setText(data[29]);
-            Occupation.setText(data[30]);
+            Occupation.setSelection(GetArrayLoc(data[30],R.array.select_occupation));
             b_shopname.setText(data[31]);
             b_contactnumber.setText(data[32]);
             b_street.setText(data[33]);
@@ -568,9 +577,17 @@ public class UpdateUser extends Activity {
             student_course.setText(data[43]);
             student_school.setText(data[44]);
             student_place.setText(data[45]);
-            HouseWifeStatus.setText(data[46]);
+            HouseWifeStatus.setSelection(GetArrayLoc(data[46],R.array.house_wife_stats));
 
             imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg", CameraAct);
         }
+    }
+    int GetArrayLoc(String ArrayName,int key){
+        String[] testArray = getResources().getStringArray(key);
+        for(int  i = 0 ; i < testArray.length;i++){
+            if(testArray[i].equals(ArrayName))
+                return i;
+        }
+        return -1;
     }
 }

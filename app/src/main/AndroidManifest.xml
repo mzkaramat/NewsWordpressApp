@@ -83,6 +83,12 @@
             android:label="@string/app_name" >
 
         </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".sections.UpdateUser"
+            android:label="@string/app_name" >
+
+        </activity>
 
 
     </application>

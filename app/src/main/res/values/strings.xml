@@ -2,7 +2,7 @@
     <string name="app_name">NewsExplorer</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Update User</string>
     <string name="com_parse_ui_logo_content_description">Logo</string>
     <string name="com_parse_ui_username_input_hint">Mobile Number</string>
     <string name="com_parse_ui_password_input_hint">Password</string>
