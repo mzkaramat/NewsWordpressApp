@@ -52,7 +52,7 @@ public class MembersList extends Activity {
         Members.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(Memberslist.get(position).isVisible.contains("1")){
+                if(Memberslist.get(position).isVisible.contains("0")){
                     Intent i = new Intent(MembersList.this,DisplayUser.class);
                     i.putExtra("UserId",Memberslist.get(position).id);
                     startActivity(i);

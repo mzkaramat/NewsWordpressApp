@@ -20,6 +20,8 @@ import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
 import com.example.administrator.newsexplorer.adapter.MemberListAdapter;
 import com.example.administrator.newsexplorer.model.MemberModel;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -47,9 +49,8 @@ public class DisplayUser extends Activity {
             b_pincode, b_tehsil, b_state, b_district, govt_post, govt_post_place, p_post,
             p_post_place, student_course, student_school, student_place;
     EditText GenderSelect, MartialStatus, Cast, Occupation, HouseWifeStatus;
-    Button SubmitButton;
+    ImageLoader imageLoader;
 
-    CheckBox MakePrivate;
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
 
@@ -58,8 +59,10 @@ public class DisplayUser extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_user);
         Intent i = getIntent();
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(DisplayUser.this));
         String Id = i.getStringExtra("UserId");
-
+        CameraAct = (ImageView) findViewById(R.id.image_to_upload);
         Name = (EditText) findViewById(R.id.name);
         FatherName = (EditText) findViewById(R.id.father_name);
         FatherAge = (EditText) findViewById(R.id.father_age);
@@ -218,6 +221,7 @@ public class DisplayUser extends Activity {
             student_place.setText(data[45]);
             HouseWifeStatus.setText(data[46]);
 
+            imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg", CameraAct);
         }
     }
 
