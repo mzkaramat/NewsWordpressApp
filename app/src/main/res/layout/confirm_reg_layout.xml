@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/com_parse_ui_vertical_margin"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@mipmap/background">
+    android:background="#e1e1e1">
 
     <include
         layout="@layout/ui_parse_login_app_logo"
