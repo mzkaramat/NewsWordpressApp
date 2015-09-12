@@ -1,6 +1,7 @@
 package com.example.administrator.newsexplorer;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -19,10 +20,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -39,7 +42,10 @@ import org.apache.http.util.EntityUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 
 /**
@@ -57,18 +63,27 @@ public class UserDetails extends Activity {
     Spinner GenderSelect,MartialStatus,Cast,Occupation,HouseWifeStatus;
     Button SubmitButton;
     boolean isSnap = false;
+    final Calendar myCalendar = Calendar.getInstance();
     CheckBox MakePrivate;
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
     private static final int CAMERA_REQUEST = 1888;
     private static final int SELECT_PHOTO = 100;
     String ba1,picturePath;
+    TextView FatherNameTv,FatherAgeTv,GrandFatheName,GrandFahterAge,FamliyName;
     Button BrowseImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_details);
+
+        FatherNameTv = (TextView) findViewById(R.id.father_name_text);
+        FatherAgeTv = (TextView) findViewById(R.id.father_age_text);
+        GrandFatheName = (TextView) findViewById(R.id.grand_father_name_text);
+        GrandFahterAge = (TextView) findViewById(R.id.grand_father_age_text);
+        FamliyName = (TextView) findViewById(R.id.wife_name_text);
+
 
         Name= (EditText) findViewById(R.id.name);
         FatherName= (EditText) findViewById(R.id.father_name);
@@ -129,6 +144,99 @@ public class UserDetails extends Activity {
 
         GenderSelect= (Spinner) findViewById(R.id.select_gender);
         MartialStatus= (Spinner) findViewById(R.id.select_maritial_status);
+        GenderSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        FatherNameTv.setText("Father's Name");
+                        FatherAgeTv.setText("Father's Age");
+                        GrandFatheName.setText("Grand Father's Name");
+                        GrandFahterAge.setText("Grand Father's Age");
+                        FamliyName.setText("Wife Name");
+                        break;
+                    case 1:
+                        FatherNameTv.setText("Husband Name");
+                        FatherAgeTv.setText("Husband Age");
+                        GrandFatheName.setText("Father in law Name");
+                        GrandFahterAge.setText("Father in law Age");
+                        FamliyName.setText("Father's Name");
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        MartialStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(GenderSelect.getSelectedItemPosition() == 1&& position == 1){
+                    MotherName.setVisibility(View.GONE);
+                    MotherAge.setVisibility(View.GONE);
+                    family_dob.setVisibility(View.GONE);
+                }else{
+                    MotherName.setVisibility(View.VISIBLE);
+                    MotherAge.setVisibility(View.VISIBLE);
+                    family_dob.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+        final DatePickerDialog.OnDateSetListener dateFamily = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabelFamily();
+            }
+
+        };
+        dob.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                new DatePickerDialog(UserDetails.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+            }
+        });
+        family_dob.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    new DatePickerDialog(UserDetails.this, dateFamily, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                }
+            }
+        });
         Cast= (Spinner) findViewById(R.id.personal_select_cast);
         HouseWifeStatus= (Spinner) findViewById(R.id.select_house_wifes);
         Occupation= (Spinner) findViewById(R.id.select_occupation);
@@ -575,6 +683,20 @@ public class UserDetails extends Activity {
         o2.inSampleSize = scale;
         return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
 
+    }
+    private void updateLabel() {
+
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        dob.setText(sdf.format(myCalendar.getTime()));
+    }
+    private void updateLabelFamily() {
+
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        family_dob.setText(sdf.format(myCalendar.getTime()));
     }
 }
 
