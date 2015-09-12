@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
@@ -11,6 +12,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
@@ -40,7 +42,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -64,8 +65,6 @@ public class UpdateUser extends Activity {
     Spinner GenderSelect,MartialStatus,Cast,Occupation,HouseWifeStatus;
 
     String ba1,picturePath;
-    private static final int SELECT_PHOTO = 100;
-    Button BrowsePic;
     Uri selectedImage;
     Button SubmitButton;
     private static final int CAMERA_REQUEST = 1888;
@@ -77,16 +76,6 @@ public class UpdateUser extends Activity {
         setContentView(R.layout.update_user_details);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        BrowsePic= (Button) findViewById(R.id.browse);
-        BrowsePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                startActivityForResult(photoPickerIntent, SELECT_PHOTO);
-
-            }
-        });
         CameraAct = (ImageView) findViewById(R.id.image_to_upload);
         Name = (EditText) findViewById(R.id.name);
         FatherName = (EditText) findViewById(R.id.father_name);
@@ -451,33 +440,6 @@ public class UpdateUser extends Activity {
             photo.compress(Bitmap.CompressFormat.JPEG, 30, bao);
             byte[] ba = bao.toByteArray();
             ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
-        }else if(requestCode == SELECT_PHOTO){
-            if(resultCode == RESULT_OK){
-                Uri selectedImage = data.getData();
-                Bitmap imageStream = null;
-                try {
-                    imageStream = decodeUri(selectedImage);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                isSnap = true;
-                CameraAct.setImageBitmap(imageStream);
-//            // Cursor to get image uri to display
-//
-//            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-//            Cursor cursor = getContentResolver().query(selectedImage,
-//                    filePathColumn, null, null, null);
-//            cursor.moveToFirst();
-//
-//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//            picturePath = cursor.getString(columnIndex);
-////            cursor.close();
-//            Bitmap bm = BitmapFactory.decodeFile(picturePath);
-                ByteArrayOutputStream bao = new ByteArrayOutputStream();
-                imageStream.compress(Bitmap.CompressFormat.JPEG, 30, bao);
-                byte[] ba = bao.toByteArray();
-                ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
-            }
         }
     }
     class uploadToServer extends AsyncTask<Void, Void, String> {
@@ -651,34 +613,5 @@ public class UpdateUser extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
-    private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
-
-        // Decode image size
-        BitmapFactory.Options o = new BitmapFactory.Options();
-        o.inJustDecodeBounds = true;
-        BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o);
-
-        // The new size we want to scale to
-        final int REQUIRED_SIZE = 140;
-
-        // Find the correct scale value. It should be the power of 2.
-        int width_tmp = o.outWidth, height_tmp = o.outHeight;
-        int scale = 1;
-        while (true) {
-            if (width_tmp / 2 < REQUIRED_SIZE
-                    || height_tmp / 2 < REQUIRED_SIZE) {
-                break;
-            }
-            width_tmp /= 2;
-            height_tmp /= 2;
-            scale *= 2;
-        }
-
-        // Decode with inSampleSize
-        BitmapFactory.Options o2 = new BitmapFactory.Options();
-        o2.inSampleSize = scale;
-        return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
-
     }
 }

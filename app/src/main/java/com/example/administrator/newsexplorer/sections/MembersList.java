@@ -10,7 +10,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,27 +75,24 @@ public class MembersList extends Activity {
         SearchMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!SearchString.getText().toString().trim().equals("")) {
-                    Memberslist.clear();
-                    for (int i = 0; i < TempMemberlist.size(); i++) {
-                        if (TempMemberlist.get(i).name.toLowerCase().trim().contains(SearchString.getText().toString().trim().toLowerCase())) {
-                            Memberslist.add((TempMemberlist.get(i)));
+                if(!SearchString.getText().toString().trim().equals("")){
+                        Memberslist.clear();
+                        for(int i = 0 ; i <TempMemberlist.size();i++){
+                            if(TempMemberlist.get(i).name.toLowerCase().trim().contains(SearchString.getText().toString().trim().toLowerCase())){
+                                Memberslist.add((TempMemberlist.get(i)));
+                            }
                         }
-                    }
-                    adapter.notifyDataSetChanged();
-                } else {
+                        adapter.notifyDataSetChanged();
+                }else{
                     Memberslist.clear();
-                    for (int i = 0; i < TempMemberlist.size(); i++) {
-                        Memberslist.add((TempMemberlist.get(i)));
+                    for(int i = 0 ; i <TempMemberlist.size();i++){
+                            Memberslist.add((TempMemberlist.get(i)));
 
                     }
                     adapter.notifyDataSetChanged();
                 }
             }
         });
-        getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
-        );
     }
     class uploadToServer extends AsyncTask<Void, Void, String> {
 
