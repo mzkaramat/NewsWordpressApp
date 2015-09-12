@@ -10,6 +10,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +40,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     StorageSharedPref sharedStorage;
-
+    Fragment fragment = null;
     // nav drawer title
     private CharSequence mDrawerTitle;
 
@@ -181,7 +182,7 @@ public class MainActivity extends ActionBarActivity {
      * */
     private void displayView(int position) {
         // update the main content by replacing fragments
-        Fragment fragment = null;
+
         switch (position) {
             case 0:
                 fragment = new HomeFragment();
@@ -258,4 +259,17 @@ public class MainActivity extends ActionBarActivity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if(event.getAction() == KeyEvent.ACTION_DOWN){
+//            switch(keyCode)
+//            {
+//                case KeyEvent.KEYCODE_BACK:
+//                    ((AboutFragment)fragment).myOnKeyDownTemp(keyCode);
+//                    return true;
+//            }
+//
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }

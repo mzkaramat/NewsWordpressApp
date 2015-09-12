@@ -1,6 +1,7 @@
 package com.example.administrator.newsexplorer.sections;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -28,7 +29,30 @@ public class EntertainmentNewsSec extends Activity {
         webDesigner = (WebView) findViewById(R.id.web_designer);
         if(isNetworkAvailable()){
             webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/category/entertainment/");
-            webDesigner.setWebViewClient(new WebViewClient());
+            webDesigner.setWebViewClient(new WebViewClient() {
+                ProgressDialog progressDialog;
+
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    view.loadUrl(url);
+                    return true;
+                }
+
+                public void onLoadResource(WebView view, String url) {
+
+                    if (progressDialog == null) {
+                        progressDialog = new ProgressDialog(EntertainmentNewsSec.this);
+                        progressDialog.setMessage("Loading news");
+                        progressDialog.show();
+                    }
+                }
+
+                public void onPageFinished(WebView view, String url) {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                        progressDialog = null;
+                    }
+                }
+            });
         }else {
             Toast.makeText(getApplicationContext(), "No internet connection present", Toast.LENGTH_LONG).show();
         }
@@ -45,7 +69,7 @@ public class EntertainmentNewsSec extends Activity {
         }
     }
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+      public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(event.getAction() == KeyEvent.ACTION_DOWN){
             switch(keyCode)
             {
