@@ -118,4 +118,9 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
+    <ImageView
+        android:id="@+id/adv_img"
+        android:scaleType="fitXY"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
 </LinearLayout>

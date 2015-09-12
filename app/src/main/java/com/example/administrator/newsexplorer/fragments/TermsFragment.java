@@ -11,12 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class TermsFragment extends Fragment {
-    WebView webDesigner;
+    ImageView AdvImage;
+    ImageLoader imageLoader;
+
 	public TermsFragment(){}
 	
 	@Override
@@ -24,42 +29,11 @@ public class TermsFragment extends Fragment {
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.fragment_terms, container, false);
-        webDesigner = (WebView) rootView.findViewById(R.id.web_designer);
-        if(isNetworkAvailable()){
-            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/terms-and-conditions/");
-            webDesigner.setWebViewClient(new WebViewClient() {
-                ProgressDialog progressDialog;
-
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
-                    return true;
-                }
-
-                public void onLoadResource(WebView view, String url) {
-
-                    if (progressDialog == null) {
-                        progressDialog = new ProgressDialog(getActivity());
-                        progressDialog.setMessage("Loading contents");
-                        progressDialog.show();
-                    }
-                }
-
-                public void onPageFinished(WebView view, String url) {
-                    if (progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                        progressDialog = null;
-                    }
-                }
-            });
-        }else {
-            Toast.makeText(getActivity(), "No internet connection present", Toast.LENGTH_LONG).show();
-        }
+        AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
+        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         return rootView;
     }
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
+
 }

@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
 import com.example.administrator.newsexplorer.adapter.MemberListAdapter;
 import com.example.administrator.newsexplorer.model.MemberModel;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -43,7 +46,8 @@ public class MembersList extends Activity {
     Button SearchMember;
     EditText SearchString;
     MemberListAdapter adapter;
-
+    ImageView AdvImage;
+    ImageLoader imageLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +56,10 @@ public class MembersList extends Activity {
         Memberslist = new ArrayList<>();
         SearchMember = (Button) findViewById(R.id.search_button);
         SearchString = (EditText) findViewById(R.id.member_name);
+        AdvImage= (ImageView)findViewById(R.id.adv_img);
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
+        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         Members = (ListView) findViewById(R.id.members_list_);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);

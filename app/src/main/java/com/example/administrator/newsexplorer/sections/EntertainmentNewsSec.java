@@ -10,22 +10,30 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 /**
  * Created by Xeaphii on 9/6/2015.
  */
 public class EntertainmentNewsSec extends Activity {
     WebView webDesigner;
-
+    ImageView AdvImage;
+    ImageLoader imageLoader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.entertainment_news_sec);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+        AdvImage= (ImageView)findViewById(R.id.adv_img);
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
+        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         webDesigner = (WebView) findViewById(R.id.web_designer);
         if(isNetworkAvailable()){
             webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/category/entertainment/");

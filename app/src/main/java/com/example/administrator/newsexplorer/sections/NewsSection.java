@@ -10,16 +10,20 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 /**
  * Created by Xeaphii on 9/6/2015.
  */
 public class NewsSection extends Activity {
     WebView webDesigner;
-
+    ImageView AdvImage;
+    ImageLoader imageLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,10 @@ public class NewsSection extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
         webDesigner = (WebView) findViewById(R.id.web_designer);
+        AdvImage= (ImageView)findViewById(R.id.adv_img);
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
+        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         if(isNetworkAvailable()){
         webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/category/Uncategorized/");
         webDesigner.setWebViewClient(new WebViewClient() {

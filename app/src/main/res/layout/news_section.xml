@@ -5,5 +5,11 @@
 <WebView
     android:id="@+id/web_designer"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"></WebView>
+    android:layout_height="wrap_content"
+    android:layout_weight="1"></WebView>
+    <ImageView
+        android:id="@+id/adv_img"
+        android:scaleType="fitXY"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" />
 </LinearLayout>

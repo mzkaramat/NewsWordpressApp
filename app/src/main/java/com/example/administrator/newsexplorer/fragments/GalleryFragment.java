@@ -21,25 +21,25 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 /**
  * Created by Sunny on 9/2/2015.
  */
-public class TeamFragment extends Fragment {
+public class GalleryFragment extends Fragment {
     WebView webDesigner;
     ImageView AdvImage;
     ImageLoader imageLoader;
 
-    public TeamFragment(){}
+    public GalleryFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_team, container, false);
+        View rootView = inflater.inflate(R.layout.gallery_fragment, container, false);
         AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         webDesigner = (WebView) rootView.findViewById(R.id.web_designer);
         if(isNetworkAvailable()){
-            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/our-team/");
+            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/sample-page/");
             webDesigner.setWebViewClient(new WebViewClient() {
                 ProgressDialog progressDialog1;
 

@@ -21,6 +21,8 @@ import android.widget.ListView;
 import com.example.administrator.newsexplorer.adapter.NavDrawerListAdapter;
 import com.example.administrator.newsexplorer.fragments.AboutFragment;
 import com.example.administrator.newsexplorer.fragments.ContactFragment;
+import com.example.administrator.newsexplorer.fragments.GalleryFragment;
+import com.example.administrator.newsexplorer.fragments.TeamFragment;
 import com.example.administrator.newsexplorer.fragments.TermsFragment;
 import com.example.administrator.newsexplorer.fragments.ShareAppFragment;
 import com.example.administrator.newsexplorer.fragments.SponsersFragment;
@@ -89,6 +91,7 @@ public class MainActivity extends ActionBarActivity {
 
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
         // Recycle the typed array
         navMenuIcons.recycle();
 
@@ -188,24 +191,28 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                fragment = new SponsersFragment();
+                fragment = new GalleryFragment();
                 break;
             case 2:
-                fragment = new ShareAppFragment();
+
+                fragment = new SponsersFragment();
                 break;
             case 3:
-                fragment = new TermsFragment();
+                fragment = new ShareAppFragment();
                 break;
             case 4:
-                fragment = new AboutFragment();
-                break;
-            case 5:
-                fragment = new ContactFragment();
-                break;
-            case 6:
                 fragment = new TermsFragment();
                 break;
+            case 5:
+                fragment = new AboutFragment();
+                break;
+            case 6:
+                fragment = new ContactFragment();
+                break;
             case 7:
+                fragment = new TeamFragment();
+                break;
+            case 8:
                 sharedStorage.StorePrefs("user_id",null);
                 sharedStorage.StorePrefs("fb_account", null);
 

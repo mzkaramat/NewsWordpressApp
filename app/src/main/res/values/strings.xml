@@ -24,6 +24,7 @@
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item >Home</item>
+        <item >Gallery</item>
         <item >Sponsers</item>
         <item >Share app</item>
         <item >Terms</item>
@@ -37,6 +38,7 @@
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
         <item>@mipmap/home</item>
+        <item>@mipmap/gallery</item>
         <item>@mipmap/sponsers</item>
         <item>@mipmap/share</item>
         <item>@mipmap/terms</item>
