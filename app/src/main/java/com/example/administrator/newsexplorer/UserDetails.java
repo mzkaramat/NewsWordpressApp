@@ -122,9 +122,9 @@ public class UserDetails extends Activity {
         Cast= (Spinner) findViewById(R.id.personal_select_cast);
         HouseWifeStatus= (Spinner) findViewById(R.id.select_house_wifes);
         Occupation= (Spinner) findViewById(R.id.select_occupation);
-        Occupation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Occupation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 LinearLayout Business = (LinearLayout) findViewById(R.id.business_address);
                 LinearLayout Govt_Service = (LinearLayout) findViewById(R.id.govt_service);
                 LinearLayout PrivateService = (LinearLayout) findViewById(R.id.private_service);
@@ -147,6 +147,10 @@ public class UserDetails extends Activity {
                         Student.setVisibility(View.VISIBLE);
                         break;
                 }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
