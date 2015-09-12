@@ -7,6 +7,7 @@
     <RelativeLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/temp_personal_info"
             android:layout_width="fill_parent"
@@ -43,7 +44,11 @@
             android:layout_toLeftOf="@+id/pic_box"
             android:layout_height="wrap_content"
             >
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Name"/>
             <EditText
                 android:id="@+id/name"
                 android:layout_width="fill_parent"
@@ -52,6 +57,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter Name"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Date of birth"/>
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -98,21 +108,12 @@
                 android:layout_height="wrap_content"
 
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Select Occupation"/>
-            <Spinner
-                android:id="@+id/select_occupation"
-                android:padding="10dp"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-
-                android:entries="@array/select_occupation"
-                android:layout_height="wrap_content"
-                android:prompt="@string/select_occ"
-                />
+                android:text="Age"/>
             <EditText
                 android:id="@+id/age_et"
                 android:layout_width="fill_parent"
@@ -121,6 +122,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter age"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Mother name"/>
             <EditText
                 android:id="@+id/mothers_name"
                 android:layout_width="fill_parent"
@@ -129,6 +135,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Mother’s Name"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Mother age"/>
             <EditText
                 android:id="@+id/mothers_age"
                 android:layout_width="fill_parent"
@@ -137,6 +148,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Mother’s Age"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Father(Husband) name"/>
             <EditText
                 android:id="@+id/father_name"
                 android:layout_width="fill_parent"
@@ -145,6 +161,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Father’s (Husband) Name"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Father(Husband) age"/>
             <EditText
                 android:id="@+id/father_age"
                 android:layout_width="fill_parent"
@@ -153,6 +174,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Father’s (Husband) Age"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Grand father(father in law) name"/>
             <EditText
                 android:id="@+id/grand_father_name"
                 android:layout_width="fill_parent"
@@ -161,6 +187,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Grand Father’s (Father in low)  Name"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Grand father(father in law) age"/>
             <EditText
                 android:id="@+id/grand_father_age"
                 android:layout_width="fill_parent"
@@ -184,6 +215,11 @@
                 android:prompt="@string/select_cas"
 
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="SubCast"/>
             <EditText
                 android:id="@+id/personal_sub_cast"
                 android:layout_width="fill_parent"
@@ -192,6 +228,11 @@
                 android:layout_height="wrap_content"
                 android:hint="SubCast"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Qualification"/>
             <EditText
                 android:id="@+id/personal_qualification"
                 android:layout_width="fill_parent"
@@ -203,15 +244,27 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+
                 android:background="#c0c0c0" />
             <TextView
                 android:layout_width="fill_parent"
                 android:textSize="22dp"
-                android:layout_marginTop="20dp"
+
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:text="Family Sort Details "
                 android:layout_height="wrap_content" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="10dp"
+                android:background="#c0c0c0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Wife(Father's) name"/>
             <EditText
                 android:id="@+id/wife_fathers_name"
                 android:layout_width="fill_parent"
@@ -220,6 +273,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Wife (Father’s) Name"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Subcast"/>
             <EditText
                 android:id="@+id/wife_fathers_sub_cast"
                 android:layout_width="fill_parent"
@@ -228,6 +286,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Sub cast"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Nandiyal place"/>
             <EditText
                 android:id="@+id/nandial_place"
                 android:layout_width="fill_parent"
@@ -236,6 +299,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Nandiyal Place"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Qualification"/>
             <EditText
                 android:id="@+id/famliy_qualification"
                 android:layout_width="fill_parent"
@@ -244,6 +312,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Qualification"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Date of birth"/>
             <EditText
                 android:id="@+id/famliy_dob"
                 android:layout_width="fill_parent"
@@ -252,6 +325,11 @@
                 android:layout_height="wrap_content"
                 android:hint="DOB"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="No of sons"/>
             <EditText
                 android:id="@+id/no_of_sons"
                 android:layout_width="fill_parent"
@@ -260,6 +338,11 @@
                 android:layout_height="wrap_content"
                 android:hint="No of Sons"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="No of daughters"/>
             <EditText
                 android:id="@+id/no_of_daughters"
                 android:layout_width="fill_parent"
@@ -271,15 +354,27 @@
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+
                 android:background="#c0c0c0" />
             <TextView
                 android:layout_width="fill_parent"
                 android:textSize="22dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:text="Contact Information"
                 android:layout_height="wrap_content" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="10dp"
+
+                android:background="#c0c0c0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Mobile no."/>
             <EditText
                 android:id="@+id/mobile_no"
                 android:layout_width="fill_parent"
@@ -288,6 +383,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Mobile no."
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Landline number"/>
             <EditText
                 android:id="@+id/landline_no"
                 android:layout_width="fill_parent"
@@ -296,6 +396,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Landline no."
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Email id"/>
             <EditText
                 android:id="@+id/email_id"
                 android:layout_width="fill_parent"
@@ -304,6 +409,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Email id"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Skype id"/>
             <EditText
                 android:id="@+id/skype_id"
                 android:layout_width="fill_parent"
@@ -312,18 +422,31 @@
                 android:layout_height="wrap_content"
                 android:hint="Skype id"
                 />
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
+                android:layout_marginTop="10dp"
+
                 android:background="#c0c0c0" />
             <TextView
                 android:layout_width="fill_parent"
                 android:textSize="22dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:text="Permanent Address"
                 android:layout_height="wrap_content" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="3dp"
+                android:layout_marginBottom="10dp"
+
+                android:background="#c0c0c0" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Street"/>
             <EditText
                 android:id="@+id/permanent_street"
                 android:layout_width="fill_parent"
@@ -332,6 +455,12 @@
                 android:layout_height="wrap_content"
                 android:hint="Street"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="City"/>
+
             <EditText
                 android:id="@+id/permanent_city"
                 android:layout_width="fill_parent"
@@ -340,6 +469,11 @@
                 android:layout_height="wrap_content"
                 android:hint="City"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Pincode"/>
             <EditText
                 android:id="@+id/permanent_pincode"
                 android:layout_width="fill_parent"
@@ -348,6 +482,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Pin code"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Tehsil"/>
             <EditText
                 android:id="@+id/permanent_tehsil"
                 android:layout_width="fill_parent"
@@ -356,6 +495,11 @@
                 android:layout_height="wrap_content"
                 android:hint="Tehsil"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="District"/>
             <EditText
                 android:id="@+id/permanent_district"
                 android:layout_width="fill_parent"
@@ -364,6 +508,11 @@
                 android:layout_height="wrap_content"
                 android:hint="District"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="State:"/>
             <EditText
                 android:id="@+id/permanent_state"
                 android:layout_width="fill_parent"
@@ -372,174 +521,325 @@
                 android:layout_height="wrap_content"
                 android:hint="State"
                 />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="3dp"
-                android:background="#c0c0c0" />
             <TextView
-                android:layout_width="fill_parent"
-                android:textSize="22dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:text="Business Address"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/business_shop_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Select Occupation"/>
+            <Spinner
+                android:id="@+id/select_occupation"
+                android:padding="10dp"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
-                android:padding="10dp"
+
+                android:entries="@array/select_occupation"
                 android:layout_height="wrap_content"
-                android:hint="Shop Name"
+                android:prompt="@string/select_occ"
                 />
-            <EditText
-                android:id="@+id/business_contact_number"
+            <LinearLayout
+                android:id="@+id/business_address"
                 android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
-                android:hint="Contact Number"
-                />
-            <EditText
-                android:id="@+id/business_street"
+                android:orientation="vertical"
+                >
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="10dp"
+
+                    android:background="#c0c0c0" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:text="Business Address"
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBott="10dp"
+
+                    android:background="#c0c0c0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Shop name"/>
+                <EditText
+                    android:id="@+id/business_shop_name"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Shop Name"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Contact number"/>
+                <EditText
+                    android:id="@+id/business_contact_number"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Contact Number"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Steet"/>
+                <EditText
+                    android:id="@+id/business_street"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Street"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="City"/>
+                <EditText
+                    android:id="@+id/business_city"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="City"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Pincode"/>
+                <EditText
+                    android:id="@+id/business_pincode"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Pin code"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Tehsil"/>
+                <EditText
+                    android:id="@+id/business_tehsil"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Tehsil"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="District"/>
+                <EditText
+                    android:id="@+id/business_district"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="District"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="State"/>
+                <EditText
+                    android:id="@+id/business_state"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="State"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/govt_service"
                 android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
-                android:hint="Street"
-                />
-            <EditText
-                android:id="@+id/business_city"
+                android:orientation="vertical"
+                >
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="10dp"
+
+                    android:background="#c0c0c0" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:text="Govt. Service "
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+
+                    android:background="#c0c0c0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Post"/>
+                <EditText
+                    android:id="@+id/govt_post"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Post"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Posting place"/>
+                <EditText
+                    android:id="@+id/govt_post_place"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Posting Place"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/private_service"
                 android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
-                android:hint="City"
-                />
-            <EditText
-                android:id="@+id/business_pincode"
+                android:orientation="vertical"
+                >
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="10dp"
+
+                    android:background="#c0c0c0" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:text="Private Service "
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+
+                    android:background="#c0c0c0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Place"/>
+                <EditText
+                    android:id="@+id/private_post"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Post"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Posting place"/>
+                <EditText
+                    android:id="@+id/private_post_place"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Posting Place"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/student_info"
                 android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
                 android:layout_height="wrap_content"
-                android:hint="Pin code"
-                />
-            <EditText
-                android:id="@+id/business_tehsil"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Tehsil"
-                />
-            <EditText
-                android:id="@+id/business_district"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="District"
-                />
-            <EditText
-                android:id="@+id/business_state"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="State"
-                />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="3dp"
-                android:background="#c0c0c0" />
-            <TextView
-                android:layout_width="fill_parent"
-                android:textSize="22dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:text="Govt. Service "
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/govt_post"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Post"
-                />
-            <EditText
-                android:id="@+id/govt_post_place"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Posting Place"
-                />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="3dp"
-                android:background="#c0c0c0" />
-            <TextView
-                android:layout_width="fill_parent"
-                android:textSize="22dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:text="Private Service "
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/private_post"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Post"
-                />
-            <EditText
-                android:id="@+id/private_post_place"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Posting Place"
-                />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="3dp"
-                android:background="#c0c0c0" />
-            <TextView
-                android:layout_width="fill_parent"
-                android:textSize="22dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:text="Student "
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/school_course"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Class/Course"
-                />
-            <EditText
-                android:id="@+id/school_name"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="School/College"
-                />
-            <EditText
-                android:id="@+id/school_place"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Place"
-                />
+                android:orientation="vertical">
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginTop="10dp"
+
+                    android:background="#c0c0c0" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:text="Student "
+                    android:layout_height="wrap_content" />
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginBottom="10dp"
+
+                    android:background="#c0c0c0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Class/Course"/>
+                <EditText
+                    android:id="@+id/school_course"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Class/Course"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="School/College"/>
+                <EditText
+                    android:id="@+id/school_name"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="School/College"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Place"/>
+                <EditText
+                    android:id="@+id/school_place"
+                    android:layout_width="fill_parent"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Place"
+                    />
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -573,7 +873,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/button_submit_details"
             android:layout_alignParentBottom="true"
-            android:text="Submit"
+            android:text="Update"
             />
 
     </RelativeLayout>

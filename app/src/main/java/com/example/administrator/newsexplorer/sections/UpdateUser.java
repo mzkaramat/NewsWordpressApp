@@ -17,10 +17,12 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -132,7 +134,34 @@ public class UpdateUser extends Activity {
         Cast= (Spinner) findViewById(R.id.personal_select_cast);
         HouseWifeStatus= (Spinner) findViewById(R.id.select_house_wifes);
         Occupation= (Spinner) findViewById(R.id.select_occupation);
+        Occupation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LinearLayout Business = (LinearLayout) findViewById(R.id.business_address);
+                LinearLayout Govt_Service = (LinearLayout) findViewById(R.id.govt_service);
+                LinearLayout PrivateService = (LinearLayout) findViewById(R.id.private_service);
+                LinearLayout Student = (LinearLayout) findViewById(R.id.student_info);
+                Business.setVisibility(View.GONE);
+                Govt_Service.setVisibility(View.GONE);
+                PrivateService.setVisibility(View.GONE);
+                Student.setVisibility(View.GONE);
+                switch (position){
+                    case 0:
+                        Business.setVisibility(View.VISIBLE);
+                        break;
+                    case 1:
+                        Govt_Service.setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        PrivateService.setVisibility(View.VISIBLE);
+                        break;
+                    case 3:
+                        Student.setVisibility(View.VISIBLE);
+                        break;
+                }
 
+            }
+        });
 //        Address = (EditText) findViewById(R.id.address);
 //        Dob = (EditText) findViewById(R.id.dob);
 //        Age = (EditText) findViewById(R.id.age_et);
