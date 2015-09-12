@@ -72,6 +72,8 @@ public class UserDetails extends Activity {
     String ba1,picturePath;
     TextView FatherNameTv,FatherAgeTv,GrandFatheName,GrandFahterAge,FamliyName;
     Button BrowseImage;
+    TextView MotherNameTv,MotherAgeTv,FamilyDobTv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,9 @@ public class UserDetails extends Activity {
         GrandFahterAge = (TextView) findViewById(R.id.grand_father_age_text);
         FamliyName = (TextView) findViewById(R.id.wife_name_text);
 
+        MotherNameTv = (TextView) findViewById(R.id.mother_name_tv);
+        MotherAgeTv = (TextView) findViewById(R.id.mother_age_tv);
+        FamilyDobTv = (TextView) findViewById(R.id.family_dob_tv);
 
         Name= (EditText) findViewById(R.id.name);
         FatherName= (EditText) findViewById(R.id.father_name);
@@ -154,6 +159,12 @@ public class UserDetails extends Activity {
                         GrandFatheName.setText("Grand Father's Name");
                         GrandFahterAge.setText("Grand Father's Age");
                         FamliyName.setText("Wife Name");
+
+                        FatherAge.setHint("Father's Age");
+                        FatherName.setHint("Father's Name");
+                        GrandFatheName.setHint("Grand Father's Name");
+                        GrandFahterAge.setHint("Grand Father's Age");
+                        FamliyName.setHint("Wife Name");
                         break;
                     case 1:
                         FatherNameTv.setText("Husband Name");
@@ -161,6 +172,12 @@ public class UserDetails extends Activity {
                         GrandFatheName.setText("Father in law Name");
                         GrandFahterAge.setText("Father in law Age");
                         FamliyName.setText("Father's Name");
+
+                        FatherAge.setHint("Husband Age");
+                        FatherName.setHint("Husband Name");
+                        GrandFatheName.setHint("Father in law Name");
+                        GrandFahterAge.setHint("Father in law Age");
+                        FamliyName.setHint("Father's Name");
                         break;
                 }
             }
@@ -177,10 +194,18 @@ public class UserDetails extends Activity {
                     MotherName.setVisibility(View.GONE);
                     MotherAge.setVisibility(View.GONE);
                     family_dob.setVisibility(View.GONE);
+
+                    MotherNameTv.setVisibility(View.GONE);
+                    MotherAgeTv.setVisibility(View.GONE);
+                    FamilyDobTv.setVisibility(View.GONE);
                 }else{
                     MotherName.setVisibility(View.VISIBLE);
                     MotherAge.setVisibility(View.VISIBLE);
                     family_dob.setVisibility(View.VISIBLE);
+
+                    MotherNameTv.setVisibility(View.VISIBLE);
+                    MotherAgeTv.setVisibility(View.VISIBLE);
+                    FamilyDobTv.setVisibility(View.VISIBLE);
                 }
             }
 

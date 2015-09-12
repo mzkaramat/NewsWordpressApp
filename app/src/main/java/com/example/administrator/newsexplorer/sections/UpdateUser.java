@@ -47,6 +47,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -75,12 +76,12 @@ public class UpdateUser extends Activity {
     StorageSharedPref sharedStorage;
     TextView FatherNameTv,FatherAgeTv,GrandFatheName,GrandFahterAge,FamliyName;
     final Calendar myCalendar = Calendar.getInstance();
+    TextView MotherNameTv,MotherAgeTv,FamilyDobTv;
 
 
     Spinner GenderSelect,MartialStatus,Cast,Occupation,HouseWifeStatus;
 
     String ba1,picturePath;
-    Uri selectedImage;
     Button SubmitButton;
     private static final int CAMERA_REQUEST = 1888;
     CheckBox MakePrivate;
@@ -91,11 +92,15 @@ public class UpdateUser extends Activity {
         setContentView(R.layout.update_user_details);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+        MotherNameTv = (TextView) findViewById(R.id.mother_name_tv);
+        MotherAgeTv = (TextView) findViewById(R.id.mother_age_tv);
+        FamilyDobTv = (TextView) findViewById(R.id.family_dob_tv);
+
         FatherNameTv = (TextView) findViewById(R.id.father_name_text);
         FatherAgeTv = (TextView) findViewById(R.id.father_age_text);
         GrandFatheName = (TextView) findViewById(R.id.grand_father_name_text);
         GrandFahterAge = (TextView) findViewById(R.id.grand_father_age_text);
-        FamliyName = (TextView) findViewById(R.id.wife_name_text);  
+        FamliyName = (TextView) findViewById(R.id.wife_name_text);
         CameraAct = (ImageView) findViewById(R.id.image_to_upload);
         Name = (EditText) findViewById(R.id.name);
         FatherName = (EditText) findViewById(R.id.father_name);
@@ -168,6 +173,12 @@ public class UpdateUser extends Activity {
                         GrandFatheName.setText("Grand Father's Name");
                         GrandFahterAge.setText("Grand Father's Age");
                         FamliyName.setText("Wife Name");
+
+                        FatherAge.setHint("Father's Age");
+                        FatherName.setHint("Father's Name");
+                        GrandFatheName.setHint("Grand Father's Name");
+                        GrandFahterAge.setHint("Grand Father's Age");
+                        FamliyName.setHint("Wife Name");
                         break;
                     case 1:
                         FatherNameTv.setText("Husband Name");
@@ -175,6 +186,12 @@ public class UpdateUser extends Activity {
                         GrandFatheName.setText("Father in law Name");
                         GrandFahterAge.setText("Father in law Age");
                         FamliyName.setText("Father's Name");
+
+                        FatherAge.setHint("Husband Age");
+                        FatherName.setHint("Husband Name");
+                        GrandFatheName.setHint("Father in law Name");
+                        GrandFahterAge.setHint("Father in law Age");
+                        FamliyName.setHint("Father's Name");
                         break;
                 }
             }
@@ -191,10 +208,18 @@ public class UpdateUser extends Activity {
                     MotherName.setVisibility(View.GONE);
                     MotherAge.setVisibility(View.GONE);
                     family_dob.setVisibility(View.GONE);
+
+                    MotherNameTv.setVisibility(View.GONE);
+                    MotherAgeTv.setVisibility(View.GONE);
+                    FamilyDobTv.setVisibility(View.GONE);
                 }else{
                     MotherName.setVisibility(View.VISIBLE);
                     MotherAge.setVisibility(View.VISIBLE);
                     family_dob.setVisibility(View.VISIBLE);
+
+                    MotherNameTv.setVisibility(View.VISIBLE);
+                    MotherAgeTv.setVisibility(View.VISIBLE);
+                    FamilyDobTv.setVisibility(View.VISIBLE);
                 }
             }
 
