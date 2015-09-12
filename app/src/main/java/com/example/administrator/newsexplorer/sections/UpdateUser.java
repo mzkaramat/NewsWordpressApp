@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -45,6 +46,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -60,7 +62,8 @@ public class UpdateUser extends Activity {
             b_pincode, b_tehsil, b_state, b_district, govt_post, govt_post_place, p_post,
             p_post_place, student_course, student_school, student_place;
     ImageLoader imageLoader;
-
+    Button BrowseImage;
+    private static final int SELECT_PHOTO = 100;
     boolean isSnap = false;
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
@@ -87,6 +90,15 @@ public class UpdateUser extends Activity {
         MotherAge = (EditText) findViewById(R.id.mothers_age);
         GrandFatherName = (EditText) findViewById(R.id.grand_father_name);
         GrandFatherAge = (EditText) findViewById(R.id.grand_father_age);
+        BrowseImage = (Button) findViewById(R.id.browse_image);
+        BrowseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+            }
+        });
         dob = (EditText) findViewById(R.id.dob);
         sub_cast = (EditText) findViewById(R.id.personal_sub_cast);
         qualification = (EditText) findViewById(R.id.personal_qualification);
@@ -289,6 +301,9 @@ public class UpdateUser extends Activity {
             Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
 
         }
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
 
     }
 
@@ -506,6 +521,22 @@ public class UpdateUser extends Activity {
             photo.compress(Bitmap.CompressFormat.JPEG, 30, bao);
             byte[] ba = bao.toByteArray();
             ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
+        }else{
+            if(resultCode == RESULT_OK){
+                Uri selectedImage = data.getData();
+                Bitmap imageStream = null;
+                try {
+                    imageStream = decodeUri(selectedImage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                isSnap = true;
+                CameraAct.setImageBitmap(imageStream);
+                ByteArrayOutputStream bao = new ByteArrayOutputStream();
+                imageStream.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+                byte[] ba = bao.toByteArray();
+                ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
+            }
         }
     }
     class uploadToServer extends AsyncTask<Void, Void, String> {
@@ -679,5 +710,34 @@ public class UpdateUser extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
+
+        // Decode image size
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o);
+
+        // The new size we want to scale to
+        final int REQUIRED_SIZE = 140;
+
+        // Find the correct scale value. It should be the power of 2.
+        int width_tmp = o.outWidth, height_tmp = o.outHeight;
+        int scale = 1;
+        while (true) {
+            if (width_tmp / 2 < REQUIRED_SIZE
+                    || height_tmp / 2 < REQUIRED_SIZE) {
+                break;
+            }
+            width_tmp /= 2;
+            height_tmp /= 2;
+            scale *= 2;
+        }
+
+        // Decode with inSampleSize
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
+
     }
 }

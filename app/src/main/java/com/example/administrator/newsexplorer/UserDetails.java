@@ -37,6 +37,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -60,9 +61,9 @@ public class UserDetails extends Activity {
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
     private static final int CAMERA_REQUEST = 1888;
-
+    private static final int SELECT_PHOTO = 100;
     String ba1,picturePath;
-    Uri selectedImage;
+    Button BrowseImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,15 @@ public class UserDetails extends Activity {
         family_dob= (EditText) findViewById(R.id.famliy_dob);
         no_son= (EditText) findViewById(R.id.no_of_sons);
         no_daugther= (EditText) findViewById(R.id.no_of_daughters);
+        BrowseImage = (Button) findViewById(R.id.browse_image);
+        BrowseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                photoPickerIntent.setType("image/*");
+                startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+            }
+        });
 
         mobile_no= (EditText) findViewById(R.id.mobile_no);
         landline_number= (EditText) findViewById(R.id.landline_no);
@@ -462,6 +472,23 @@ public class UserDetails extends Activity {
 
             // Upload image to server
 
+        }else{
+            if(resultCode == RESULT_OK){
+
+                Uri selectedImage = data.getData();
+                Bitmap imageStream = null;
+                try {
+                    imageStream = decodeUri(selectedImage);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                isSnap = true;
+                CameraAct.setImageBitmap(imageStream);
+                ByteArrayOutputStream bao = new ByteArrayOutputStream();
+                imageStream.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+                byte[] ba = bao.toByteArray();
+                ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
+            }
         }
     }
      class uploadToServer extends AsyncTask<Void, Void, String> {
@@ -520,6 +547,34 @@ public class UserDetails extends Activity {
         new uploadToServer().execute();
 
     }
+    private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
 
+        // Decode image size
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o);
+
+        // The new size we want to scale to
+        final int REQUIRED_SIZE = 140;
+
+        // Find the correct scale value. It should be the power of 2.
+        int width_tmp = o.outWidth, height_tmp = o.outHeight;
+        int scale = 1;
+        while (true) {
+            if (width_tmp / 2 < REQUIRED_SIZE
+                    || height_tmp / 2 < REQUIRED_SIZE) {
+                break;
+            }
+            width_tmp /= 2;
+            height_tmp /= 2;
+            scale *= 2;
+        }
+
+        // Decode with inSampleSize
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        return BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage), null, o2);
+
+    }
 }
 

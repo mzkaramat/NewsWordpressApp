@@ -66,8 +66,7 @@
     <string-array name="maritial_status">
         <item>Single</item>
         <item>Married</item>
-        <item>Husband Off</item>
-        <item>Wife Off</item>
+        <item>Divorced</item>
 
     </string-array>
     <string-array name="select_occupation">
