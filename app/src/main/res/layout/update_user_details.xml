@@ -81,7 +81,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Gender"/>
+                android:text="Gender"/>
             <Spinner
                 android:id="@+id/select_gender"
                 android:padding="10dp"
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Select Martial Status"/>
+                android:text="Martial Status"/>
             <Spinner
                 android:id="@+id/select_maritial_status"
                 android:padding="10dp"
@@ -218,7 +218,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Select Cast"/>
+                android:text="Cast"/>
             <Spinner
                 android:id="@+id/personal_select_cast"
                 android:padding="10dp"
@@ -541,7 +541,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Select Occupation"/>
+                android:text="Occupation"/>
             <Spinner
                 android:id="@+id/select_occupation"
                 android:padding="10dp"
@@ -860,7 +860,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Select Housewife status"/>
+                android:text="Housewife status"/>
             <Spinner
                 android:id="@+id/select_house_wifes"
                 android:padding="10dp"

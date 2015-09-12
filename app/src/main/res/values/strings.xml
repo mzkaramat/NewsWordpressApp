@@ -71,8 +71,8 @@
     </string-array>
     <string-array name="select_occupation">
         <item>Business</item>
-        <item>Govt. Service </item>
-        <item>Private </item>
+        <item>Govt. Service</item>
+        <item>Private</item>
         <item>Student</item>
 
     </string-array>

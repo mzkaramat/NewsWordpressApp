@@ -15,7 +15,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.MainActivity;
@@ -39,6 +41,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by Xeaphii on 9/9/2015.
@@ -56,6 +59,8 @@ public class DisplayUser extends Activity {
 
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
+    TextView FatherNameTv,FatherAgeTv,GrandFatheName,GrandFahterAge,FamliyName;
+    TextView MotherNameTv,MotherAgeTv,FamilyDobTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +70,17 @@ public class DisplayUser extends Activity {
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(DisplayUser.this));
         String Id = i.getStringExtra("UserId");
+
+        MotherNameTv = (TextView) findViewById(R.id.mother_name_tv);
+        MotherAgeTv = (TextView) findViewById(R.id.mother_age_tv);
+        FamilyDobTv = (TextView) findViewById(R.id.family_dob_tv);
+
+        FatherNameTv = (TextView) findViewById(R.id.father_name_text);
+        FatherAgeTv = (TextView) findViewById(R.id.father_age_text);
+        GrandFatheName = (TextView) findViewById(R.id.grand_father_name_text);
+        GrandFahterAge = (TextView) findViewById(R.id.grand_father_age_text);
+        FamliyName = (TextView) findViewById(R.id.wife_name_text);
+
         CameraAct = (ImageView) findViewById(R.id.image_to_upload);
         Name = (EditText) findViewById(R.id.name);
         FatherName = (EditText) findViewById(R.id.father_name);
@@ -180,8 +196,50 @@ public class DisplayUser extends Activity {
             String[] data = result.split(":",-1);
             dob.setText(data[0]);
             GenderSelect.setText(data[1]);
+            if(data[1].trim().equals("Male")){
+                FatherNameTv.setText("Father's Name");
+                FatherAgeTv.setText("Father's Age");
+                GrandFatheName.setText("Grand Father's Name");
+                GrandFahterAge.setText("Grand Father's Age");
+                FamliyName.setText("Wife Name");
+
+                FatherAge.setHint("Father's Age");
+                FatherName.setHint("Father's Name");
+                GrandFatheName.setHint("Grand Father's Name");
+                GrandFahterAge.setHint("Grand Father's Age");
+                FamliyName.setHint("Wife Name");
+            }else{
+                FatherNameTv.setText("Husband Name");
+                FatherAgeTv.setText("Husband Age");
+                GrandFatheName.setText("Father in law Name");
+                GrandFahterAge.setText("Father in law Age");
+                FamliyName.setText("Father's Name");
+
+                FatherAge.setHint("Husband Age");
+                FatherName.setHint("Husband Name");
+                GrandFatheName.setHint("Father in law Name");
+                GrandFahterAge.setHint("Father in law Age");
+                FamliyName.setHint("Father's Name");
+            }
             Name.setText(data[2]);
             MartialStatus.setText(data[3]);
+            if(data[3].trim().equals("Married")&&data[1].trim().equals("Female")){
+                MotherName.setVisibility(View.GONE);
+                MotherAge.setVisibility(View.GONE);
+                family_dob.setVisibility(View.GONE);
+
+                MotherNameTv.setVisibility(View.GONE);
+                MotherAgeTv.setVisibility(View.GONE);
+                FamilyDobTv.setVisibility(View.GONE);
+            }else{
+                MotherName.setVisibility(View.VISIBLE);
+                MotherAge.setVisibility(View.VISIBLE);
+                family_dob.setVisibility(View.VISIBLE);
+
+                MotherNameTv.setVisibility(View.VISIBLE);
+                MotherAgeTv.setVisibility(View.VISIBLE);
+                FamilyDobTv.setVisibility(View.VISIBLE);
+            }
             MotherName.setText(data[4]);
             MotherAge.setText(data[5]);
             FatherName.setText(data[6]);
@@ -209,6 +267,24 @@ public class DisplayUser extends Activity {
             p_district.setText(data[28]);
             p_state.setText(data[29]);
             Occupation.setText(data[30]);
+            LinearLayout Business = (LinearLayout) findViewById(R.id.business_address);
+            LinearLayout Govt_Service = (LinearLayout) findViewById(R.id.govt_service);
+            LinearLayout PrivateService = (LinearLayout) findViewById(R.id.private_service);
+            LinearLayout Student = (LinearLayout) findViewById(R.id.student_info);
+            Business.setVisibility(View.GONE);
+            Govt_Service.setVisibility(View.GONE);
+            PrivateService.setVisibility(View.GONE);
+            Student.setVisibility(View.GONE);
+
+            if(data[30].trim().equals("Business")){
+                Business.setVisibility(View.VISIBLE);
+            }else if(data[30].trim().equals("Govt. Service")){
+                Govt_Service.setVisibility(View.VISIBLE);
+            }else if(data[30].trim().equals("Private")){
+                PrivateService.setVisibility(View.VISIBLE);
+            }else if(data[30].trim().equals("Student")){
+                Student.setVisibility(View.VISIBLE);
+            }
             b_shopname.setText(data[31]);
             b_contactnumber.setText(data[32]);
             b_street.setText(data[33]);
