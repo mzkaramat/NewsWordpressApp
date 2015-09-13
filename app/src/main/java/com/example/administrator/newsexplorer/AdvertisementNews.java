@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -26,38 +25,32 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 /**
  * Created by Xeaphii on 9/6/2015.
  */
-public class EntertainmentNewsSec extends Activity {
+public class AdvertisementNews extends Activity {
     WebView webDesigner;
-    ImageView AdvImage;
     ProgressBar progressBar;
-    ImageLoader imageLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.entertainment_news_sec);
+        setContentView(R.layout.advertiseemt_layout);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        AdvImage= (ImageView)findViewById(R.id.adv_img);
-        imageLoader = ImageLoader.getInstance();
-        imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+
         webDesigner = (WebView) findViewById(R.id.web_designer);
+//        webDesigner.getSettings().setJavaScriptEnabled(true);
+//        webDesigner.getSettings().setLoadWithOverviewMode(true);
+//        webDesigner.getSettings().setUseWideViewPort(true);
+//        webDesigner.getSettings().setBuiltInZoomControls(true);
+//        webDesigner.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         progressBar = (ProgressBar) findViewById(R.id.progressBar1);
         webDesigner.setWebViewClient(new myWebClient());
         webDesigner.getSettings().setJavaScriptEnabled(true);
-        AdvImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), com.example.administrator.newsexplorer.sections.AdvertisementNews.class);
-                startActivity(i);
-            }
-        });
         if(isNetworkAvailable()){
             progressBar.setVisibility(View.VISIBLE);
-            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/category/entertainment/");
+            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/ghanchi-darpan/");
 //            webDesigner.setWebViewClient(new WebViewClient() {
 //                ProgressDialog progressDialog;
-//                final AlertDialog alertDialog = new AlertDialog.Builder(EntertainmentNewsSec.this).create();
+//                final AlertDialog alertDialog = new AlertDialog.Builder(CommunityNew.this).create();
 //
 //                public boolean shouldOverrideUrlLoading(WebView view, String url) {
 //                    view.loadUrl(url);
@@ -67,7 +60,7 @@ public class EntertainmentNewsSec extends Activity {
 //                public void onLoadResource(WebView view, String url) {
 //
 //                    if (progressDialog == null) {
-//                        progressDialog = new ProgressDialog(EntertainmentNewsSec.this);
+//                        progressDialog = new ProgressDialog(CommunityNew.this);
 //                        progressDialog.setMessage("Loading news");
 //                        progressDialog.show();
 //                    }
@@ -80,7 +73,7 @@ public class EntertainmentNewsSec extends Activity {
 //                    }
 //                }
 //                public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-//                    Toast.makeText(EntertainmentNewsSec.this, "Oh no! " + description, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(CommunityNew.this, "Oh no! " + description, Toast.LENGTH_SHORT).show();
 //                    alertDialog.setTitle("Error");
 //                    alertDialog.setMessage(description);
 //                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
@@ -107,7 +100,7 @@ public class EntertainmentNewsSec extends Activity {
         }
     }
     @Override
-      public boolean onKeyDown(int keyCode, KeyEvent event) {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(event.getAction() == KeyEvent.ACTION_DOWN){
             switch(keyCode)
             {

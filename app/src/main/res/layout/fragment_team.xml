@@ -2,11 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <WebView
-        android:id="@+id/web_designer"
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"></WebView>
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+        <WebView
+            android:id="@+id/web_designer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"></WebView>
+        <ProgressBar
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+
+            android:layout_centerInParent="true"
+            android:id="@+id/progressBar1"/>
+    </RelativeLayout>
+
+
     <ImageView
         android:id="@+id/adv_img"
         android:scaleType="fitXY"

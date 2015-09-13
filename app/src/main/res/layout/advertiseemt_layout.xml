@@ -12,16 +12,11 @@
             android:layout_height="fill_parent"></WebView>
         <ProgressBar
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:visibility="gone"
+            android:layout_width="wrap_content"
             android:layout_centerInParent="true"
             android:id="@+id/progressBar1"/>
     </RelativeLayout>
 
 
-    <ImageView
-        android:id="@+id/adv_img"
-        android:scaleType="fitXY"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp" />
 </LinearLayout>

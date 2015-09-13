@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
+import com.example.administrator.newsexplorer.sections.AdvertisementNews;
+import com.example.administrator.newsexplorer.sections.CommunityNew;
 import com.example.administrator.newsexplorer.sections.EntertainmentNewsSec;
 import com.example.administrator.newsexplorer.sections.MembersList;
 import com.example.administrator.newsexplorer.sections.NewsSection;
@@ -42,7 +44,7 @@ public class HomeFragment extends Fragment {
     ImageLoader imageLoader;
     StorageSharedPref sharedStorage;
 
-    ImageButton News, EnterNews, MembersSection;
+    ImageButton News, EnterNews, MembersSection,CommunityNews;
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -56,11 +58,18 @@ public class HomeFragment extends Fragment {
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+        AdvImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), AdvertisementNews.class);
+                startActivity(i);
+            }
+        });
 
         MembersSection = (ImageButton) rootView.findViewById(R.id.members_sec);
         News= (ImageButton) rootView.findViewById(R.id.news_sec);
         EnterNews = (ImageButton) rootView.findViewById(R.id.ent_news);
-
+        CommunityNews = (ImageButton) rootView.findViewById(R.id.comm_news);
         if(sharedStorage.GetPrefs("user_verified","0").equals("1")){
             ((LinearLayout)rootView.findViewById(R.id.members_list_layout)).setVisibility(View.VISIBLE);
         }else{
@@ -86,6 +95,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), EntertainmentNewsSec.class);
+                startActivity(i);
+            }
+        });
+        CommunityNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CommunityNew.class);
                 startActivity(i);
             }
         });

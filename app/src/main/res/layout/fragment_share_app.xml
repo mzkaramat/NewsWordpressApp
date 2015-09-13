@@ -14,11 +14,20 @@
         android:textStyle="bold"
         android:text="Share app" />
     <TextView
-        android:layout_below="@+id/temp_id"
+        android:layout_below="@+id/share_but"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is for showing about us contents"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:text="Find this app useful, kindly help us by sharing this with other people"
+        />
+    <ImageButton
+        android:id="@+id/share_but"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@mipmap/shareus"
+        android:layout_centerInParent="true"
         />
 
 

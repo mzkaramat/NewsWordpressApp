@@ -3,6 +3,8 @@ package com.example.administrator.newsexplorer.fragments;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,9 +14,11 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
+import com.example.administrator.newsexplorer.sections.AdvertisementNews;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -25,7 +29,7 @@ public class TeamFragment extends Fragment {
     WebView webDesigner;
     ImageView AdvImage;
     ImageLoader imageLoader;
-
+    ProgressBar progressBar;
     public TeamFragment(){}
 
     @Override
@@ -38,32 +42,44 @@ public class TeamFragment extends Fragment {
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         webDesigner = (WebView) rootView.findViewById(R.id.web_designer);
+
+        progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar1);
+        webDesigner.setWebViewClient(new myWebClient());
+        webDesigner.getSettings().setJavaScriptEnabled(true);
+        AdvImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), AdvertisementNews.class);
+                startActivity(i);
+            }
+        });
         if(isNetworkAvailable()){
+            progressBar.setVisibility(View.VISIBLE);
             webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/our-team/");
-            webDesigner.setWebViewClient(new WebViewClient() {
-                ProgressDialog progressDialog1;
-
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl(url);
-                    return true;
-                }
-
-                public void onLoadResource(WebView view, String url) {
-
-                    if (progressDialog1 == null) {
-                        progressDialog1 = new ProgressDialog(getActivity());
-                        progressDialog1.setMessage("Loading contents");
-                        progressDialog1.show();
-                    }
-                }
-
-                public void onPageFinished(WebView view, String url) {
-                    if (progressDialog1 != null&&progressDialog1.isShowing()) {
-                        progressDialog1.dismiss();
-                        progressDialog1 = null;
-                    }
-                }
-            });
+//            webDesigner.setWebViewClient(new WebViewClient() {
+//                ProgressDialog progressDialog1;
+//
+//                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                    view.loadUrl(url);
+//                    return true;
+//                }
+//
+//                public void onLoadResource(WebView view, String url) {
+//
+//                    if (progressDialog1 == null) {
+//                        progressDialog1 = new ProgressDialog(getActivity());
+//                        progressDialog1.setMessage("Loading contents");
+//                        progressDialog1.show();
+//                    }
+//                }
+//
+//                public void onPageFinished(WebView view, String url) {
+//                    if (progressDialog1 != null&&progressDialog1.isShowing()) {
+//                        progressDialog1.dismiss();
+//                        progressDialog1 = null;
+//                    }
+//                }
+//            });
         }else {
             Toast.makeText(getActivity(), "No internet connection present", Toast.LENGTH_LONG).show();
         }
@@ -74,5 +90,35 @@ public class TeamFragment extends Fragment {
                 = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    public class myWebClient extends WebViewClient
+    {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            // TODO Auto-generated method stub
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            // TODO Auto-generated method stub
+            progressBar.setVisibility(View.VISIBLE);
+            view.loadUrl(url);
+            return true;
+
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            // TODO Auto-generated method stub
+            super.onPageFinished(view, url);
+
+            progressBar.setVisibility(View.GONE);
+        }
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            getActivity().finish();
+            Toast.makeText(getActivity(), "No internet connection present", Toast.LENGTH_LONG).show();
+        }
     }
 }

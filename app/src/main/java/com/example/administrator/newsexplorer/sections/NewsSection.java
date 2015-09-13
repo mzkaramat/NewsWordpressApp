@@ -5,14 +5,18 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
@@ -26,6 +30,7 @@ public class NewsSection extends Activity {
     WebView webDesigner;
     ImageView AdvImage;
     ImageLoader imageLoader;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,49 +43,58 @@ public class NewsSection extends Activity {
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+        AdvImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), com.example.administrator.newsexplorer.sections.AdvertisementNews.class);
+                startActivity(i);
+            }
+        });
         if(isNetworkAvailable()){
         webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/category/Uncategorized/");
-        webDesigner.getSettings().setJavaScriptEnabled(true);
-        webDesigner.getSettings().setLoadWithOverviewMode(true);
-        webDesigner.getSettings().setUseWideViewPort(true);
-        webDesigner.getSettings().setBuiltInZoomControls(true);
-            webDesigner.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-
-            webDesigner.setWebViewClient(new WebViewClient() {
-            ProgressDialog progressDialog;
-                final AlertDialog alertDialog = new AlertDialog.Builder(NewsSection.this).create();
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-
-            public void onLoadResource(WebView view, String url) {
-
-                if (progressDialog == null) {
-                    progressDialog = new ProgressDialog(NewsSection.this);
-                    progressDialog.setMessage("Loading news");
-                    progressDialog.show();
-                }
-            }
-
-            public void onPageFinished(WebView view, String url) {
-                if (progressDialog != null&&progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                    progressDialog = null;
-                }
-            }
-                public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                    Toast.makeText(NewsSection.this, "Oh no! " + description, Toast.LENGTH_SHORT).show();
-                    alertDialog.setTitle("Error");
-                    alertDialog.setMessage(description);
-                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            return;
-                        }
-                    });
-                    alertDialog.show();
-                }
-        });
+        //webDesigner.getSettings().setJavaScriptEnabled(true);
+            progressBar = (ProgressBar) findViewById(R.id.progressBar1);
+            progressBar.setVisibility(View.VISIBLE);
+            webDesigner.setWebViewClient(new myWebClient());
+            webDesigner.getSettings().setJavaScriptEnabled(true);
+//        webDesigner.getSettings().setLoadWithOverviewMode(true);
+//        webDesigner.getSettings().setUseWideViewPort(true);
+//        webDesigner.getSettings().setBuiltInZoomControls(true);
+//        webDesigner.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+//        webDesigner.setWebViewClient(new WebViewClient() {
+//
+//                final AlertDialog alertDialog = new AlertDialog.Builder(NewsSection.this).create();
+//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                view.loadUrl(url);
+//                return true;
+//            }
+//
+//            public void onLoadResource(WebView view, String url) {
+//                if (progressDialog == null) {
+//                    progressDialog = new ProgressDialog(NewsSection.this);
+//                    progressDialog.setMessage("Loading news");
+//                    progressDialog.show();
+//                }
+//            }
+//
+//            public void onPageFinished(WebView view, String url) {
+//                if (progressDialog != null&&progressDialog.isShowing()) {
+//                    progressDialog.dismiss();
+//                    progressDialog = null;
+//                }
+//            }
+//                public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+//                    Toast.makeText(NewsSection.this, "Oh no! " + description, Toast.LENGTH_SHORT).show();
+//                    alertDialog.setTitle("Error");
+//                    alertDialog.setMessage(description);
+//                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            return;
+//                        }
+//                    });
+//                    alertDialog.show();
+//                }
+//        });
         }else {
             Toast.makeText(getApplicationContext(), "No internet connection present", Toast.LENGTH_LONG).show();
         }
@@ -118,5 +132,35 @@ public class NewsSection extends Activity {
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    public class myWebClient extends WebViewClient
+    {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            // TODO Auto-generated method stub
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            // TODO Auto-generated method stub
+            progressBar.setVisibility(View.VISIBLE);
+            view.loadUrl(url);
+            return true;
+
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            // TODO Auto-generated method stub
+            super.onPageFinished(view, url);
+
+            progressBar.setVisibility(View.GONE);
+        }
+        @Override
+        public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+            finish();
+            Toast.makeText(getApplicationContext(), "No internet connection present", Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
+import com.example.administrator.newsexplorer.sections.AdvertisementNews;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -49,6 +51,13 @@ public class ContactFragment extends Fragment {
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+        AdvImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), AdvertisementNews.class);
+                startActivity(i);
+            }
+        });
         MessageBody = (EditText) rootView.findViewById(R.id.body_edittext);
         SendMail = (Button) rootView.findViewById(R.id.send_mail);
         SendMail.setOnClickListener(new View.OnClickListener() {

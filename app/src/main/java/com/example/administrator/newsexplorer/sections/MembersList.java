@@ -69,6 +69,13 @@ public class MembersList extends Activity {
         imageLoader.init(config);
         imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+        AdvImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), com.example.administrator.newsexplorer.sections.AdvertisementNews.class);
+                startActivity(i);
+            }
+        });
         Members = (ListView) findViewById(R.id.members_list_);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);

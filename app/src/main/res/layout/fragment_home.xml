@@ -54,6 +54,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_weight="1"
+            android:id="@+id/members_list_layout"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
@@ -86,8 +88,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/members_list_layout"
-            android:visibility="gone"
+
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -116,6 +117,39 @@
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/ent_news"
                     android:text="Entertainment News"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/comm_news"
+                    android:layout_width="100dp"
+                    android:layout_centerHorizontal="true"
+
+                    android:layout_height="100dp"
+                    android:background="@mipmap/community"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/comm_news"
+                    android:text="Community News"/>
 
             </RelativeLayout>
         </LinearLayout>
