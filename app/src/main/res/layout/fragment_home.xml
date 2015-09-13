@@ -86,6 +86,8 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/members_list_layout"
+            android:visibility="gone"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

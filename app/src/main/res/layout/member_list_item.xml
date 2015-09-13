@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="Some user"
         android:layout_gravity="center_vertical"
-        android:textSize="30px" >
+        android:textSize="22px" >
     </TextView>
 
 </LinearLayout>

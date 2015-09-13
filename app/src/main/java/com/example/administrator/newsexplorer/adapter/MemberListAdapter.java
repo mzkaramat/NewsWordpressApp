@@ -21,6 +21,8 @@ package com.example.administrator.newsexplorer.adapter;
         import com.nostra13.universalimageloader.core.DisplayImageOptions;
         import com.nostra13.universalimageloader.core.ImageLoader;
         import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+        import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+        import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 
         import org.apache.http.HttpEntity;
         import org.apache.http.HttpResponse;
@@ -43,19 +45,23 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
     ImageLoader imageLoader;
     StorageSharedPref sharedStorage;
     boolean IsMoreData = true;
-    ImageLoaderConfiguration config;
+    DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true)
+            .cacheOnDisc(true).resetViewBeforeLoading(true).build();
+
     public MemberListAdapter(Context context, List<MemberModel>  values) {
         super(context, R.layout.member_list_item, values);
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true).cacheOnDisk(true)
                 .build();
-        config = new ImageLoaderConfiguration.Builder(context)
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .defaultDisplayImageOptions(defaultOptions)
                 .build();
         this.context = context;
         this.values = values;
 
         sharedStorage = new StorageSharedPref(context);
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(config);
 
 //        isProcessed = new ArrayList<>();
 //        for(int i = 0 ; i < values.size();i++){
@@ -67,15 +73,14 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context
+                      LayoutInflater inflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            convertView = inflater.inflate(R.layout.member_list_item, parent, false);
+            convertView = inflater.inflate(R.layout.member_list_item,null);
             holder = new ViewHolder();
             holder.textView = (TextView) convertView.findViewById(R.id.label);
             holder.imageView = (ImageView) convertView.findViewById(R.id.logo);
-            imageLoader = ImageLoader.getInstance();
-            imageLoader.init(config);
+
             convertView.setTag(holder);
 
         } else {
@@ -86,7 +91,13 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
 
 
             holder.textView.setText(values.get(position).name);
-            imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + values.get(position).id + ".jpg", holder.imageView);
+           // holder.imageView.setTag("http://ghanchidarpan.org/news/images/" + values.get(position).id + ".jpg");
+        if (holder.imageView.getTag() == null ||
+                !holder.imageView.getTag().equals("http://ghanchidarpan.org/news/images/" + values.get(position).id + ".jpg")) {
+            ImageAware imageAware = new ImageViewAware(holder.imageView, false);
+            imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + values.get(position).id + ".jpg", imageAware, options);
+            holder.imageView.setTag("http://ghanchidarpan.org/news/images/" + values.get(position).id + ".jpg");
+        }
 //            isProcessed.set(position,true);
 
         // Change icon based on name
@@ -195,4 +206,5 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
         TextView textView;
         ImageView imageView;
     }
+
 }

@@ -1,7 +1,12 @@
 package com.example.administrator.newsexplorer.fragments;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +14,25 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
+import com.example.administrator.newsexplorer.StorageSharedPref;
 import com.example.administrator.newsexplorer.sections.EntertainmentNewsSec;
 import com.example.administrator.newsexplorer.sections.MembersList;
 import com.example.administrator.newsexplorer.sections.NewsSection;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
 
 public class HomeFragment extends Fragment {
 	
@@ -23,6 +40,7 @@ public class HomeFragment extends Fragment {
 
     ImageView AdvImage;
     ImageLoader imageLoader;
+    StorageSharedPref sharedStorage;
 
     ImageButton News, EnterNews, MembersSection;
 	@Override
@@ -33,6 +51,7 @@ public class HomeFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
         );
+        sharedStorage = new StorageSharedPref(getActivity());
         AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
@@ -42,7 +61,11 @@ public class HomeFragment extends Fragment {
         News= (ImageButton) rootView.findViewById(R.id.news_sec);
         EnterNews = (ImageButton) rootView.findViewById(R.id.ent_news);
 
-
+        if(sharedStorage.GetPrefs("user_verified","0").equals("1")){
+            ((LinearLayout)rootView.findViewById(R.id.members_list_layout)).setVisibility(View.VISIBLE);
+        }else{
+            new UserVerfCheck().execute();
+        }
         MembersSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,5 +90,76 @@ public class HomeFragment extends Fragment {
             }
         });
         return rootView;
+    }
+    class UserVerfCheck extends AsyncTask<String, Void, Integer> {
+
+
+        public UserVerfCheck() {
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Integer doInBackground(String... urls) {
+
+            try {
+                //------------------>>
+                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/WpUserVerf.php?user_id=" +
+                        encodeHTML(sharedStorage.GetPrefs("user_id",null))
+                       ).replaceAll(" ", "%20") );
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpResponse response = httpclient.execute(httppost);
+
+                // StatusLine stat = response.getStatusLine();
+                int status = response.getStatusLine().getStatusCode();
+
+                if (status == 200) {
+                    HttpEntity entity = response.getEntity();
+                    String data = EntityUtils.toString(entity).trim();
+                    if(data.equals("1")){
+                        sharedStorage.StorePrefs("user_verified",data.trim());
+                    }
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                return 0;
+            }
+
+            return 0;
+        }
+
+        @Override
+        protected void onPostExecute(final Integer success) {
+
+        }
+    }
+
+
+    public static String encodeHTML(String s)
+    {
+        StringBuffer out = new StringBuffer();
+        for(int i=0; i<s.length(); i++)
+        {
+            char c = s.charAt(i);
+            if(c > 127 || c=='"' || c=='<' || c=='>')
+            {
+                out.append("&#"+(int)c+";");
+            }
+            else
+            {
+                out.append(c);
+            }
+        }
+        return out.toString();
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

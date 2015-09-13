@@ -20,6 +20,7 @@
             android:textStyle="bold" />
 
         <LinearLayout
+            android:id="@+id/temp_layout_id"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/temp_id"
@@ -110,6 +111,7 @@
                 android:gravity="top|left"
                 android:inputType="textEmailAddress|textMultiLine"
                 android:lines="3"
+                android:textColor="#000"
                 android:minLines="3"
                 android:scrollHorizontally="false"
                 android:scrollbars="vertical"
@@ -126,10 +128,10 @@
 
 
         <ImageView
+            android:layout_below="@+id/temp_layout_id"
             android:id="@+id/adv_img"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
             android:scaleType="fitXY" />
     </RelativeLayout>
 </ScrollView>

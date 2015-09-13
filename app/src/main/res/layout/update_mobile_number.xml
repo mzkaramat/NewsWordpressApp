@@ -15,7 +15,7 @@
     <EditText
         android:id="@+id/registration_code"
         android:layout_width="match_parent"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/com_parse_ui_xlarge_vertical_spacing"
         android:hint="Enter your mobile number"

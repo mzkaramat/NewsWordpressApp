@@ -10,7 +10,7 @@
         android:id="@+id/login_username_input"
         android:layout_width="match_parent"
         android:inputType="number"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:layout_height="wrap_content"
         style="@style/ParseLoginUI.EditText"
         android:hint="@string/com_parse_ui_username_input_hint"
@@ -23,7 +23,7 @@
         style="@style/ParseLoginUI.EditText"
         android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
         android:fontFamily="sans-serif"
-        android:textColor="#fff"
+        android:textColor="#000"
         android:hint="@string/com_parse_ui_password_input_hint"
         android:inputType="textPassword"
         android:selectAllOnFocus="true" />

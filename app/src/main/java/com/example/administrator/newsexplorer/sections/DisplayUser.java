@@ -1,8 +1,10 @@
 package com.example.administrator.newsexplorer.sections;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -56,6 +58,7 @@ public class DisplayUser extends Activity {
             p_post_place, student_course, student_school, student_place;
     EditText GenderSelect, MartialStatus, Cast, Occupation, HouseWifeStatus;
     ImageLoader imageLoader;
+    String urlImage="";
 
     ImageView CameraAct;
     StorageSharedPref sharedStorage;
@@ -148,6 +151,28 @@ public class DisplayUser extends Activity {
             Toast.makeText(getApplicationContext(), "No network present", Toast.LENGTH_LONG).show();
 
         }
+        CameraAct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView image = new ImageView(DisplayUser.this);
+                image.setMinimumWidth(200);
+                image.setMinimumHeight(600);
+                image.setScaleType(ImageView.ScaleType.FIT_XY);
+                imageLoader.displayImage(urlImage, image);
+
+                AlertDialog.Builder builder =
+                        new AlertDialog.Builder(DisplayUser.this).
+                                setMessage("Profile Image").
+                                setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                }).
+                                setView(image);
+                builder.create().show();
+            }
+        });
       //  hideKeyboard();
 //
     }
@@ -303,6 +328,7 @@ public class DisplayUser extends Activity {
             HouseWifeStatus.setText(data[46]);
 
             imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg", CameraAct);
+            urlImage = "http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg";
             getWindow().setSoftInputMode(
                     WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
             );

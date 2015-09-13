@@ -220,10 +220,10 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new TeamFragment();
                 break;
             case 8:
-                fragment = new ChangeMobileFragment();
+                fragment = new ChangePasswordFragment();
                 break;
             case 9:
-                fragment = new ChangePasswordFragment();
+                fragment = new ChangeMobileFragment();
                 break;
             case 10:
                 sharedStorage.StorePrefs("user_id",null);
