@@ -80,7 +80,7 @@
                     android:textSize="17dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/members_sec"
-                    android:text="Members"/>
+                    android:text="Find people"/>
             </RelativeLayout>
 
 

@@ -19,8 +19,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class TermsFragment extends Fragment {
-    ImageView AdvImage;
-    ImageLoader imageLoader;
+//    ImageView AdvImage;
+//    ImageLoader imageLoader;
 
 	public TermsFragment(){}
 	
@@ -29,10 +29,10 @@ public class TermsFragment extends Fragment {
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.fragment_terms, container, false);
-        AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
-        imageLoader = ImageLoader.getInstance();
-        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+//        AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
+//        imageLoader = ImageLoader.getInstance();
+//        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
+//        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         return rootView;
     }
 

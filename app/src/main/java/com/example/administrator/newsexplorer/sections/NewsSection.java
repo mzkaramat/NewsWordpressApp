@@ -1,8 +1,10 @@
 package com.example.administrator.newsexplorer.sections;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -38,8 +40,15 @@ public class NewsSection extends Activity {
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         if(isNetworkAvailable()){
         webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/category/Uncategorized/");
-        webDesigner.setWebViewClient(new WebViewClient() {
+        webDesigner.getSettings().setJavaScriptEnabled(true);
+        webDesigner.getSettings().setLoadWithOverviewMode(true);
+        webDesigner.getSettings().setUseWideViewPort(true);
+        webDesigner.getSettings().setBuiltInZoomControls(true);
+            webDesigner.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+
+            webDesigner.setWebViewClient(new WebViewClient() {
             ProgressDialog progressDialog;
+                final AlertDialog alertDialog = new AlertDialog.Builder(NewsSection.this).create();
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return true;
@@ -55,11 +64,22 @@ public class NewsSection extends Activity {
             }
 
             public void onPageFinished(WebView view, String url) {
-                if (progressDialog.isShowing()) {
+                if (progressDialog != null&&progressDialog.isShowing()) {
                     progressDialog.dismiss();
                     progressDialog = null;
                 }
             }
+                public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                    Toast.makeText(NewsSection.this, "Oh no! " + description, Toast.LENGTH_SHORT).show();
+                    alertDialog.setTitle("Error");
+                    alertDialog.setMessage(description);
+                    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            return;
+                        }
+                    });
+                    alertDialog.show();
+                }
         });
         }else {
             Toast.makeText(getApplicationContext(), "No internet connection present", Toast.LENGTH_LONG).show();

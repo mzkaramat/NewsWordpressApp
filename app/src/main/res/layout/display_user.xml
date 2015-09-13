@@ -51,6 +51,7 @@
                 android:layout_margin="5dp"
                 android:text="Name"/>
             <EditText
+                android:enabled="false"
                 android:id="@+id/name"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -65,6 +66,7 @@
                 android:text="Date of birth"/>
             <EditText
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:id="@+id/dob"
                 android:padding="10dp"
@@ -79,6 +81,7 @@
                 android:enabled="false"
                 android:id="@+id/select_gender"
                 android:padding="10dp"
+
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:layout_height="wrap_content"
@@ -103,6 +106,7 @@
                 android:padding="10dp"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
+
                 android:enabled="false"
                 android:entries="@array/maritial_status"
                 android:layout_height="wrap_content"
@@ -116,6 +120,7 @@
             <EditText
                 android:id="@+id/age_et"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -133,8 +138,10 @@
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:hint="Mother’s Name"
                 />
+
             <TextView
                 android:id="@+id/mother_age_tv"
                 android:layout_width="wrap_content"
@@ -145,6 +152,7 @@
                 android:id="@+id/mothers_age"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
+                android:enabled="false"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:hint="Mother’s Age"
@@ -157,6 +165,7 @@
                 android:text="Father(Husband) name"/>
             <EditText
                 android:id="@+id/father_name"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
@@ -175,6 +184,7 @@
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:hint="Father’s (Husband) Age"
                 />
             <TextView
@@ -186,6 +196,7 @@
             <EditText
                 android:id="@+id/grand_father_name"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -201,6 +212,7 @@
                 android:id="@+id/grand_father_age"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
+                android:enabled="false"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:hint="Grand Father’s (Father in low)  Age"
@@ -214,6 +226,7 @@
                 android:id="@+id/personal_select_cast"
                 android:padding="10dp"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:layout_height="wrap_content"
 
@@ -225,6 +238,7 @@
                 android:text="SubCast"/>
             <EditText
                 android:id="@+id/personal_sub_cast"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
@@ -240,6 +254,7 @@
                 android:id="@+id/personal_qualification"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
+                android:enabled="false"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:hint="Qualification"
@@ -252,6 +267,7 @@
                 android:background="#c0c0c0" />
             <TextView
                 android:layout_width="fill_parent"
+
                 android:textSize="22dp"
 
                 android:layout_marginLeft="10dp"
@@ -274,6 +290,7 @@
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
+                android:enabled="false"
                 android:layout_height="wrap_content"
                 android:hint="Wife (Father’s) Name"
                 />
@@ -287,6 +304,7 @@
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
+                android:enabled="false"
                 android:layout_height="wrap_content"
                 android:hint="Sub cast"
                 />
@@ -300,6 +318,7 @@
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
+                android:enabled="false"
                 android:layout_height="wrap_content"
                 android:hint="Nandiyal Place"
                 />
@@ -312,6 +331,7 @@
                 android:id="@+id/famliy_qualification"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
+                android:enabled="false"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:hint="Qualification"
@@ -325,6 +345,7 @@
             <EditText
                 android:id="@+id/famliy_dob"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -339,6 +360,7 @@
                 android:id="@+id/no_of_sons"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
+                android:enabled="false"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:hint="No of Sons"
@@ -351,6 +373,7 @@
             <EditText
                 android:id="@+id/no_of_daughters"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -383,6 +406,7 @@
             <EditText
                 android:id="@+id/mobile_no"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -396,6 +420,7 @@
             <EditText
                 android:id="@+id/landline_no"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -408,6 +433,7 @@
                 android:text="Email id"/>
             <EditText
                 android:id="@+id/email_id"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
@@ -421,6 +447,7 @@
                 android:text="Skype id"/>
             <EditText
                 android:id="@+id/skype_id"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
@@ -455,6 +482,7 @@
             <EditText
                 android:id="@+id/permanent_street"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -468,6 +496,7 @@
 
             <EditText
                 android:id="@+id/permanent_city"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
@@ -481,6 +510,7 @@
                 android:text="Pincode"/>
             <EditText
                 android:id="@+id/permanent_pincode"
+                android:enabled="false"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
@@ -496,6 +526,7 @@
                 android:id="@+id/permanent_tehsil"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
+                android:enabled="false"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
                 android:hint="Tehsil"
@@ -508,6 +539,7 @@
             <EditText
                 android:id="@+id/permanent_district"
                 android:layout_width="fill_parent"
+                android:enabled="false"
                 android:layout_margin="5dp"
                 android:padding="10dp"
                 android:layout_height="wrap_content"
@@ -523,6 +555,7 @@
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
                 android:padding="10dp"
+                android:enabled="false"
                 android:layout_height="wrap_content"
                 android:hint="State"
                 />
@@ -533,6 +566,7 @@
                 android:text="Select Occupation"/>
             <EditText
                 android:enabled="false"
+
                 android:id="@+id/select_occupation"
                 android:padding="10dp"
                 android:layout_width="fill_parent"
@@ -572,6 +606,7 @@
                     android:text="Shop name"/>
                 <EditText
                     android:id="@+id/business_shop_name"
+                    android:enabled="false"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -588,6 +623,7 @@
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:hint="Contact Number"
                     />
@@ -600,6 +636,7 @@
                     android:id="@+id/business_street"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
+                    android:enabled="false"
                     android:padding="10dp"
                     android:layout_height="wrap_content"
                     android:hint="Street"
@@ -612,6 +649,7 @@
                 <EditText
                     android:id="@+id/business_city"
                     android:layout_width="fill_parent"
+                    android:enabled="false"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:layout_height="wrap_content"
@@ -627,6 +665,7 @@
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:hint="Pin code"
                     />
@@ -637,6 +676,7 @@
                     android:text="Tehsil"/>
                 <EditText
                     android:id="@+id/business_tehsil"
+                    android:enabled="false"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -651,6 +691,7 @@
                 <EditText
                     android:id="@+id/business_district"
                     android:layout_width="fill_parent"
+                    android:enabled="false"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:layout_height="wrap_content"
@@ -666,6 +707,7 @@
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:hint="State"
                     />
@@ -705,6 +747,7 @@
                     android:id="@+id/govt_post"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
+                    android:enabled="false"
                     android:padding="10dp"
                     android:layout_height="wrap_content"
                     android:hint="Post"
@@ -716,6 +759,8 @@
                     android:text="Posting place"/>
                 <EditText
                     android:id="@+id/govt_post_place"
+
+                    android:enabled="false"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -757,6 +802,7 @@
                 <EditText
                     android:id="@+id/private_post"
                     android:layout_width="fill_parent"
+                    android:enabled="false"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:layout_height="wrap_content"
@@ -769,6 +815,7 @@
                     android:text="Posting place"/>
                 <EditText
                     android:id="@+id/private_post_place"
+                    android:enabled="false"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
@@ -812,6 +859,7 @@
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
                     android:padding="10dp"
+                    android:enabled="false"
                     android:layout_height="wrap_content"
                     android:hint="Class/Course"
                     />
@@ -823,6 +871,7 @@
                 <EditText
                     android:id="@+id/school_name"
                     android:layout_width="fill_parent"
+                    android:enabled="false"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:layout_height="wrap_content"
@@ -837,6 +886,7 @@
                     android:id="@+id/school_place"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
+                    android:enabled="false"
                     android:padding="10dp"
                     android:layout_height="wrap_content"
                     android:hint="Place"

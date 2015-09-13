@@ -22,17 +22,16 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 public class AboutFragment extends Fragment {
 //    WebView webDesigner;
 	public AboutFragment(){}
-    ImageView AdvImage;
-    ImageLoader imageLoader;
+
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.fragment_about, container, false);
-        AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
-        imageLoader = ImageLoader.getInstance();
-        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+//        AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
+//        imageLoader = ImageLoader.getInstance();
+//        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
+//        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
 //        webDesigner = (WebView) rootView.findViewById(R.id.web_designer);
 //        if(isNetworkAvailable()){
 //            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/about-us/");

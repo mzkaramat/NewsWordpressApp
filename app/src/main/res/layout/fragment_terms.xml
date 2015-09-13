@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:fillViewport="true"
+    android:layout_height="fill_parent" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,19 +18,59 @@
         android:textStyle="bold"
         android:text="Terms and conditions" />
     <TextView
+        android:layout_above="@+id/adv_img"
+        android:text="नियम एवं षर्ते\n
+
+1.  मोबाईल एप्प के यूजर हर प्रकार से नियम व षर्तो के   एप्प में दी जाने वाली हर प्रकार की सूचना समाज के हितों
+
+में होगी।\n
+
+2.  मोबाईल एप्प में किसी भी प्रकार की सूचना का संचार होगा तथा उसे बिना किसी सबूत गलत ठहरा नहीं सकते \n
+
+3.  अगर किसी भी प्रकार की सूचना से किसी भी व्यक्ति को ठेस पहुचती हैं तो उसकी सुचना तुरंत सम्पादक को \n
+
+4.  मोबाईल एप्प में प्रचारित होने वाली किसी भी सुचना के बारे में कोई भी व्यक्ति दावा नहीं कर सकता हैं। अगर
+
+करता हैं तो उसे गलत माना जायेगा।\n
+
+5.  मोबाईल एप्प में विज्ञापन देने वाले किसी भी व्यक्ति का फोटो या निजी सूचना अगर किसी भी प्रकार से वायरल
+
+हो जाती हैं तो उसका जिम्मेदार विज्ञापन दाता ही \n
+
+6. मोबाईल एप्प में प्रकाषित किसी भी विज्ञापन के बारे में अधिक जानकारी के लिए विज्ञापन दाता से संपर्क करे
+
+तथा कोई भी व्यक्ति अपने विवेक से काम लें।   \n
+
+7. अगर कोई व्यक्ति सूचना देना चाहता हैं तो उसे लिखित रूप में या स्केन कोपी देनी होगी। अन्यथा उसे प्रकाषित
+
+नहीं किया जायेगा।\n
+
+8.  मोबाईल एप्प में प्रकाषित विचारो से सम्पादक का सहमत होना आवष्यक नहीं हैं। \n
+
+8. मोबाईल एप्प में प्रकाषित किसी भी सूचना से समाज को ठेस पहुचाने का उददेष्य नहीं हैं \n
+
+10.  मोबाईल एप्प के नियम एवं षतों में परिवर्तन किया जा \n
+
+11. किसी भी प्रकार का न्याय क्षैत्र जालोर होगा।\n
+
+घांची दर्पण\n
+
+सम्पादक-प्रकाषक\n
+
+कमलेष घांची\n"
         android:layout_below="@+id/temp_id"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is for showing about us contents"
         />
 
 
 
-    <ImageView
-        android:id="@+id/adv_img"
-        android:layout_width="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_height="50dp"
-        android:scaleType="fitXY" />
+    <!--<ImageView-->
+        <!--android:id="@+id/adv_img"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:scaleType="fitXY" />-->
 </RelativeLayout>
+</ScrollView>

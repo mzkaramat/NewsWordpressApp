@@ -1,33 +1,37 @@
 package com.example.administrator.newsexplorer.adapter;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.administrator.newsexplorer.R;
-import com.example.administrator.newsexplorer.StorageSharedPref;
-import com.example.administrator.newsexplorer.model.MemberModel;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+        import android.net.ConnectivityManager;
+        import android.app.ProgressDialog;
+        import android.content.Context;
+        import android.net.ConnectivityManager;
+        import android.net.NetworkInfo;
+        import android.os.AsyncTask;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ArrayAdapter;
+        import android.widget.ImageView;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
+        import com.example.administrator.newsexplorer.R;
+        import com.example.administrator.newsexplorer.StorageSharedPref;
+        import com.example.administrator.newsexplorer.model.MemberModel;
+        import com.nostra13.universalimageloader.core.DisplayImageOptions;
+        import com.nostra13.universalimageloader.core.ImageLoader;
+        import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-import java.io.IOException;
-import java.util.List;
+        import org.apache.http.HttpEntity;
+        import org.apache.http.HttpResponse;
+        import org.apache.http.client.HttpClient;
+        import org.apache.http.client.methods.HttpGet;
+        import org.apache.http.impl.client.DefaultHttpClient;
+        import org.apache.http.util.EntityUtils;
+
+        import java.io.IOException;
+        import java.util.ArrayList;
+        import java.util.List;
 
 /**
  * Created by Administrator on 9/9/2015.
@@ -39,26 +43,52 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
     ImageLoader imageLoader;
     StorageSharedPref sharedStorage;
     boolean IsMoreData = true;
-
+    ImageLoaderConfiguration config;
     public MemberListAdapter(Context context, List<MemberModel>  values) {
         super(context, R.layout.member_list_item, values);
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true).cacheOnDisk(true)
+                .build();
+        config = new ImageLoaderConfiguration.Builder(context)
+                .defaultDisplayImageOptions(defaultOptions)
+                .build();
         this.context = context;
         this.values = values;
-        imageLoader = ImageLoader.getInstance();
-        imageLoader.init(ImageLoaderConfiguration.createDefault(context));
+
         sharedStorage = new StorageSharedPref(context);
+
+//        isProcessed = new ArrayList<>();
+//        for(int i = 0 ; i < values.size();i++){
+//            isProcessed.add(false);
+//        }
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ViewHolder holder = null;
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.member_list_item, parent, false);
-        TextView textView = (TextView) rowView.findViewById(R.id.label);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.logo);
-        textView.setText(values.get(position).name);
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + values.get(position).id + ".jpg", imageView);
+            convertView = inflater.inflate(R.layout.member_list_item, parent, false);
+            holder = new ViewHolder();
+            holder.textView = (TextView) convertView.findViewById(R.id.label);
+            holder.imageView = (ImageView) convertView.findViewById(R.id.logo);
+            imageLoader = ImageLoader.getInstance();
+            imageLoader.init(config);
+            convertView.setTag(holder);
+
+        } else {
+                holder = (ViewHolder) convertView.getTag();
+
+        }
+        holder = (ViewHolder) convertView.getTag();
+
+
+            holder.textView.setText(values.get(position).name);
+            imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + values.get(position).id + ".jpg", holder.imageView);
+//            isProcessed.set(position,true);
+
         // Change icon based on name
         //  String s = values[position];
 
@@ -80,7 +110,7 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
 
             }
         }
-        return rowView;
+        return convertView;
     }
     class uploadToServer extends AsyncTask<String, Void, String> {
 
@@ -116,6 +146,7 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
                         String[] data = resp.split(";",-1);
                         for(int i = 0 ; i < data.length;i++){
                             values.add(new MemberModel(data[i].split(":",-1)[1],data[i].split(":",-1)[0],data[i].split(":",-1)[2].trim()));
+//                            isProcessed.add(false);
                         }
                     }
 
@@ -159,5 +190,9 @@ public class MemberListAdapter  extends ArrayAdapter<MemberModel> {
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    private class ViewHolder {
+        TextView textView;
+        ImageView imageView;
     }
 }

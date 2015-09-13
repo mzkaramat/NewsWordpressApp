@@ -22,6 +22,7 @@ import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
 import com.example.administrator.newsexplorer.adapter.MemberListAdapter;
 import com.example.administrator.newsexplorer.model.MemberModel;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -51,13 +52,21 @@ public class MembersList extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+        .cacheInMemory(true).cacheOnDisk(true)
+        .build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
+        .defaultDisplayImageOptions(defaultOptions)
+        .build();
+       ;
         setContentView(R.layout.members_list);
         sharedStorage = new StorageSharedPref(MembersList.this);
         Memberslist = new ArrayList<>();
         SearchMember = (Button) findViewById(R.id.search_button);
         SearchString = (EditText) findViewById(R.id.member_name);
         AdvImage= (ImageView)findViewById(R.id.adv_img);
-        imageLoader = ImageLoader.getInstance();
+        imageLoader =  ImageLoader.getInstance();
+        imageLoader.init(config);
         imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
         imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         Members = (ListView) findViewById(R.id.members_list_);

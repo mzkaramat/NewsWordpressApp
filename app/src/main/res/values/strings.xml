@@ -30,7 +30,9 @@
         <item >Terms</item>
         <item >About</item>
         <item >Contact</item>
-        <item >Team</item>
+        <item >Media team</item>
+        <item >Password</item>
+        <item >Mobile no.</item>
         <item >Logout</item>
     </string-array>
 
@@ -45,6 +47,8 @@
         <item>@mipmap/about</item>
         <item>@mipmap/contact</item>
         <item>@mipmap/partners</item>
+        <item>@mipmap/sim</item>
+        <item>@mipmap/password</item>
         <item>@mipmap/logout</item>
     </array>
 

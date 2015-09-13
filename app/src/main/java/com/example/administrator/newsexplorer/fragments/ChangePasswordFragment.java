@@ -1,87 +1,86 @@
 package com.example.administrator.newsexplorer.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.administrator.newsexplorer.ConfirmRegistration;
 import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-public class ContactFragment extends Fragment {
-    ImageView AdvImage;
-    ImageLoader imageLoader;
-	public ContactFragment(){}
-    EditText MessageBody;
-    Button SendMail;
+/**
+ * Created by Xeaphii on 9/13/2015.
+ */
+public class ChangePasswordFragment extends Fragment {
+    EditText Password,ConfirmPassword;
+    Button SignupClick;
     StorageSharedPref sharedStorage;
-	
-	@Override
+
+    public ChangePasswordFragment(){}
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
- 
-        View rootView = inflater.inflate(R.layout.fragment_contact, container, false);
-        AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
+                             Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_change_password, container, false);
         sharedStorage = new StorageSharedPref(getActivity());
-        imageLoader = ImageLoader.getInstance();
-        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
-        MessageBody = (EditText) rootView.findViewById(R.id.body_edittext);
-        SendMail = (Button) rootView.findViewById(R.id.send_mail);
-        SendMail.setOnClickListener(new View.OnClickListener() {
+
+        Password= (EditText) rootView.findViewById(R.id.password_et);
+        ConfirmPassword= (EditText) rootView.findViewById(R.id.confirm_password_et);
+        SignupClick= (Button) rootView.findViewById(R.id.create_account);
+        SignupClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(isNetworkAvailable()){
-                    if (MessageBody.getText().toString().length()>6) {
+                    if (Password.getText().toString().length()>6) {
+                        if (Password.getText().toString().equals(ConfirmPassword.getText().toString())) {
 
-                            new SignUpTask(getActivity()).execute(new String[]{sharedStorage.GetPrefs("user_id","")
-                                    ,MessageBody.getText().toString()});
+                                    new SignUpTask(getActivity()).execute(new String[]{sharedStorage.GetPrefs("user_id","")
+                                            ,Password.getText().toString()});
 
-
+                        } else {
+                            Toast.makeText(getActivity(), "Password mismatch occer", Toast.LENGTH_LONG).show();
+                        }
 
                     } else {
-                        Toast.makeText(getActivity(), "Message must be of greater than 6 characters", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Password must be of greater than 6 characters", Toast.LENGTH_LONG).show();
                     }
                 }else {
                     Toast.makeText(getActivity(), "No internet connection present", Toast.LENGTH_LONG).show();
                 }}
         });
-
         return rootView;
     }
     class SignUpTask extends AsyncTask<String, Void, Integer> {
 
         private ProgressDialog dialog;
         Context context;
-
         public SignUpTask(Context c) {
             dialog = new ProgressDialog(c);
-            context = c;
+            context= c;
         }
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -92,29 +91,29 @@ public class ContactFragment extends Fragment {
         @Override
         protected Integer doInBackground(String... urls) {
 
-            try {
-                //------------------>>
-                HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/SendMail.php?user_id=" +
-                        encodeHTML(urls[0]) +
-                        "&msg=" +
-                        encodeHTML(urls[1])).replaceAll(" ", "%20"));
-                HttpClient httpclient = new DefaultHttpClient();
-                HttpResponse response = httpclient.execute(httppost);
+                try {
+                    //------------------>>
+                    HttpGet httppost = new HttpGet(("http://ghanchidarpan.org/news/ModifyPassword.php?user_id=" +
+                            encodeHTML(urls[0]) +
+                            "&password=" +
+                            encodeHTML(urls[1])).replaceAll(" ", "%20"));
+                    HttpClient httpclient = new DefaultHttpClient();
+                    HttpResponse response = httpclient.execute(httppost);
 
-                // StatusLine stat = response.getStatusLine();
-                int status = response.getStatusLine().getStatusCode();
+                    // StatusLine stat = response.getStatusLine();
+                    int status = response.getStatusLine().getStatusCode();
 
-                if (status == 200) {
-                    HttpEntity entity = response.getEntity();
+                    if (status == 200) {
+                        HttpEntity entity = response.getEntity();
 
-                    return 200;
+                        return 200;
+                    }
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return 0;
                 }
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                return 0;
-            }
 
             return 0;
         }
@@ -124,33 +123,27 @@ public class ContactFragment extends Fragment {
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            if (success == 200) {
+            if(success==200){
 //                Toast.makeText(context,"User Created Successfullly",Toast.LENGTH_LONG).show();
                 //sharedStorage.StorePrefs("login_cred","1");
 
 //                new ConfirmRegistration(Signup.this).execute(new String[]{sharedStorage.GetPrefs("user_id","")});
-                Toast.makeText(context, "Message send to admin", Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Password Changed",Toast.LENGTH_LONG).show();
                 Fragment fragment = new HomeFragment();
                 FragmentManager fragmentManager = getActivity().getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame_container, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-
-            } else if (success == 201) {
-                Toast.makeText(context, "Some error occurs", Toast.LENGTH_LONG).show();
+            }else if(success==201){
+                Toast.makeText(context,"Some error occurs",Toast.LENGTH_LONG).show();
                 //sharedStorage.StorePrefs("login_cred","1");
                 //showHomeListActivity();
-            } else if (success == 0) {
-                Toast.makeText(context, "Some error occurred", Toast.LENGTH_LONG).show();
+            }else if(success==0){
+                Toast.makeText(context,"Some error occurred",Toast.LENGTH_LONG).show();
             }
-            getActivity().getWindow().setSoftInputMode(
-                    WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
-            );
         }
-
     }
-
 
     public static String encodeHTML(String s)
     {
@@ -176,4 +169,5 @@ public class ContactFragment extends Fragment {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
+
 }

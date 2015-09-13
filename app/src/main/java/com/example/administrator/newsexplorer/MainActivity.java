@@ -2,6 +2,7 @@ package com.example.administrator.newsexplorer;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -20,6 +21,8 @@ import android.widget.ListView;
 
 import com.example.administrator.newsexplorer.adapter.NavDrawerListAdapter;
 import com.example.administrator.newsexplorer.fragments.AboutFragment;
+import com.example.administrator.newsexplorer.fragments.ChangeMobileFragment;
+import com.example.administrator.newsexplorer.fragments.ChangePasswordFragment;
 import com.example.administrator.newsexplorer.fragments.ContactFragment;
 import com.example.administrator.newsexplorer.fragments.GalleryFragment;
 import com.example.administrator.newsexplorer.fragments.TeamFragment;
@@ -48,6 +51,7 @@ public class MainActivity extends ActionBarActivity {
 
     // used to store app title
     private CharSequence mTitle;
+    boolean isHome = true;
 
     // slide menu items
     private String[] navMenuTitles;
@@ -92,6 +96,8 @@ public class MainActivity extends ActionBarActivity {
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons.getResourceId(6, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons.getResourceId(7, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[8], navMenuIcons.getResourceId(8, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[9], navMenuIcons.getResourceId(9, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[10], navMenuIcons.getResourceId(10, -1)));
         // Recycle the typed array
         navMenuIcons.recycle();
 
@@ -185,9 +191,10 @@ public class MainActivity extends ActionBarActivity {
      * */
     private void displayView(int position) {
         // update the main content by replacing fragments
-
+        isHome = false;
         switch (position) {
             case 0:
+                isHome = true;
                 fragment = new HomeFragment();
                 break;
             case 1:
@@ -213,6 +220,12 @@ public class MainActivity extends ActionBarActivity {
                 fragment = new TeamFragment();
                 break;
             case 8:
+                fragment = new ChangeMobileFragment();
+                break;
+            case 9:
+                fragment = new ChangePasswordFragment();
+                break;
+            case 10:
                 sharedStorage.StorePrefs("user_id",null);
                 sharedStorage.StorePrefs("fb_account", null);
 
@@ -266,17 +279,31 @@ public class MainActivity extends ActionBarActivity {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
-//    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if(event.getAction() == KeyEvent.ACTION_DOWN){
-//            switch(keyCode)
-//            {
-//                case KeyEvent.KEYCODE_BACK:
-//                    ((AboutFragment)fragment).myOnKeyDownTemp(keyCode);
-//                    return true;
-//            }
-//
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(event.getAction() == KeyEvent.ACTION_DOWN){
+            switch(keyCode)
+            {
+                case KeyEvent.KEYCODE_BACK:
+                    if(!isHome){
+                        Fragment fragment = new HomeFragment();
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.frame_container, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                        mDrawerList.setItemChecked(0, true);
+                        mDrawerList.setSelection(0);
+                        setTitle(navMenuTitles[0]);
+                        mDrawerLayout.closeDrawer(mDrawerList);
+                        isHome= true;
+                    }else{
+                        finish();
+                    }
+                    return true;
+            }
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
