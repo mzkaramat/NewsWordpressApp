@@ -226,6 +226,17 @@ public class UpdateUser extends Activity {
                 }else{
                     ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
                 }
+                if(GenderSelect.getSelectedItemPosition() == 1&& position == 0){
+                    FatherNameTv.setText("Father's Name");
+                    FatherAge.setHint("Father's Name");
+                    FatherAgeTv.setText("Father's Age");
+                    FatherAge.setHint("Father's Age");
+
+                    GrandFatheName.setText("Grand Father's Name");
+                    GrandFatherName.setHint("Grand Father's Name");
+                    GrandFahterAge.setText("Grand Father's Age");
+                    GrandFatherAge.setHint("Grand Father's Age");
+                }
             }
 
             @Override
@@ -782,6 +793,65 @@ public class UpdateUser extends Activity {
             GenderSelect.setSelection(GetArrayLoc(data[1],R.array.genders));
             Name.setText(data[2]);
             MartialStatus.setSelection(GetArrayLoc(data[3],R.array.maritial_status));
+                if(data[1].trim().equals("Male")){
+                    FatherNameTv.setText("Father's Name");
+                    FatherAgeTv.setText("Father's Age");
+                    GrandFatheName.setText("Grand Father's Name");
+                    GrandFahterAge.setText("Grand Father's Age");
+                    FamliyName.setText("Wife Name");
+
+                    FatherAge.setHint("Father's Age");
+                    FatherName.setHint("Father's Name");
+                    GrandFatheName.setHint("Grand Father's Name");
+                    GrandFahterAge.setHint("Grand Father's Age");
+                    FamliyName.setHint("Wife Name");
+                }else{
+                    FatherNameTv.setText("Husband Name");
+                    FatherAgeTv.setText("Husband Age");
+                    GrandFatheName.setText("Father in law Name");
+                    GrandFahterAge.setText("Father in law Age");
+                    FamliyName.setText("Father's Name");
+
+                    FatherAge.setHint("Husband Age");
+                    FatherName.setHint("Husband Name");
+                    GrandFatheName.setHint("Father in law Name");
+                    GrandFahterAge.setHint("Father in law Age");
+                    FamliyName.setHint("Father's Name");
+                }
+                if(data[3].trim().equals("Married")&&data[1].trim().equals("Female")){
+                    MotherName.setVisibility(View.GONE);
+                    MotherAge.setVisibility(View.GONE);
+                    family_dob.setVisibility(View.GONE);
+
+                    MotherNameTv.setVisibility(View.GONE);
+                    MotherAgeTv.setVisibility(View.GONE);
+                    FamilyDobTv.setVisibility(View.GONE);
+                }else{
+                    MotherName.setVisibility(View.VISIBLE);
+                    MotherAge.setVisibility(View.VISIBLE);
+                    family_dob.setVisibility(View.VISIBLE);
+
+                    MotherNameTv.setVisibility(View.VISIBLE);
+                    MotherAgeTv.setVisibility(View.VISIBLE);
+                    FamilyDobTv.setVisibility(View.VISIBLE);
+                }
+                if(data[3].trim().equals("Single")){
+                    ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.GONE);
+                }else{
+                    ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
+                }
+                if(data[3].trim().equals("Single")&&data[1].trim().equals("Female")){
+                    FatherNameTv.setText("Father's Name");
+                    FatherAge.setHint("Father's Name");
+                    FatherAgeTv.setText("Father's Age");
+                    FatherAge.setHint("Father's Age");
+
+                    GrandFatheName.setText("Grand Father's Name");
+                    GrandFatherName.setHint("Grand Father's Name");
+                    GrandFahterAge.setText("Grand Father's Age");
+                    GrandFatherAge.setHint("Grand Father's Age");
+                }
+
             MotherName.setText(data[4]);
             MotherAge.setText(data[5]);
             FatherName.setText(data[6]);

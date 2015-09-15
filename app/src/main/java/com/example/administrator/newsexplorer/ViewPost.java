@@ -12,6 +12,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -24,7 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
-import com.example.administrator.newsexplorer.sections.AdvertisementNews;
+import com.example.administrator.newsexplorer.AdvertisementNews;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -189,7 +190,14 @@ public class ViewPost extends Activity {
         public void onPageFinished(WebView view, String url) {
             // TODO Auto-generated method stub
             super.onPageFinished(view, url);
+            Handler handler = new Handler();
 
+            final Runnable r = new Runnable() {
+                public void run() {
+                    progressBar.setVisibility(View.GONE);
+                }
+            };
+            handler.postDelayed(r, 4000);
 
         }
 

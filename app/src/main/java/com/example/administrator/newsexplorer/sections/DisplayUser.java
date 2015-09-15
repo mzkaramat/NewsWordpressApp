@@ -273,6 +273,17 @@ public class DisplayUser extends Activity {
             }else{
                 ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
             }
+            if(data[3].trim().equals("Single")&&data[1].trim().equals("Female")){
+                FatherNameTv.setText("Father's Name");
+                FatherAge.setHint("Father's Name");
+                FatherAgeTv.setText("Father's Age");
+                FatherAge.setHint("Father's Age");
+
+                GrandFatheName.setText("Grand Father's Name");
+                GrandFatherName.setHint("Grand Father's Name");
+                GrandFahterAge.setText("Grand Father's Age");
+                GrandFatherAge.setHint("Grand Father's Age");
+            }
             MotherName.setText(data[4]);
             MotherAge.setText(data[5]);
             FatherName.setText(data[6]);

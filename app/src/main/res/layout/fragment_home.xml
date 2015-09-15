@@ -179,7 +179,31 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal" >
+            <RelativeLayout
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/advs_page"
+                    android:layout_width="100dp"
 
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="100dp"
+                    android:background="@mipmap/advertisement"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/advs_page"
+                    android:text="Advertisement"/>
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
     <ImageView

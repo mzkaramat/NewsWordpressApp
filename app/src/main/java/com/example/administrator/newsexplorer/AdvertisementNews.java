@@ -1,4 +1,4 @@
-package com.example.administrator.newsexplorer.sections;
+package com.example.administrator.newsexplorer;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -47,7 +47,7 @@ public class AdvertisementNews extends Activity {
         webDesigner.getSettings().setJavaScriptEnabled(true);
         if(isNetworkAvailable()){
             progressBar.setVisibility(View.VISIBLE);
-            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/ghanchi-darpan/");
+            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/category/AdvImage");
 //            webDesigner.setWebViewClient(new WebViewClient() {
 //                ProgressDialog progressDialog;
 //                final AlertDialog alertDialog = new AlertDialog.Builder(CommunityNew.this).create();

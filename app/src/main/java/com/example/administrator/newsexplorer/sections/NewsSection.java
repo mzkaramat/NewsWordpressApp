@@ -83,7 +83,7 @@ public class NewsSection extends Activity {
             AdvImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(getApplicationContext(), com.example.administrator.newsexplorer.sections.AdvertisementNews.class);
+                    Intent i = new Intent(getApplicationContext(), com.example.administrator.newsexplorer.AdvertisementNews.class);
                     startActivity(i);
                 }
             });

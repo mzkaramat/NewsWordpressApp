@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
-import com.example.administrator.newsexplorer.sections.AdvertisementNews;
+import com.example.administrator.newsexplorer.AdvertisementNews;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 

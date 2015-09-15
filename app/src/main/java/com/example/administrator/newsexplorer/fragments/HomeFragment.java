@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.example.administrator.newsexplorer.LatestPosts;
 import com.example.administrator.newsexplorer.R;
 import com.example.administrator.newsexplorer.StorageSharedPref;
-import com.example.administrator.newsexplorer.sections.AdvertisementNews;
+import com.example.administrator.newsexplorer.AdvertisementNews;
 import com.example.administrator.newsexplorer.sections.CommunityNew;
 import com.example.administrator.newsexplorer.sections.EntertainmentNewsSec;
 import com.example.administrator.newsexplorer.sections.MembersList;
@@ -47,7 +47,7 @@ public class HomeFragment extends Fragment {
     ImageLoader imageLoader;
     StorageSharedPref sharedStorage;
 
-    ImageButton News, EnterNews, MembersSection,CommunityNews;
+    ImageButton News, EnterNews, MembersSection,CommunityNews,AdvButt;
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
         );
         sharedStorage = new StorageSharedPref(getActivity());
         AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
+        AdvButt = (ImageButton) rootView.findViewById(R.id.advs_page);
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
         String Adv = sharedStorage.GetPrefs("AdsString",null);
@@ -120,6 +121,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), CommunityNew.class);
+                startActivity(i);
+            }
+        });
+        AdvButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), AdvertisementNews.class);
                 startActivity(i);
             }
         });
