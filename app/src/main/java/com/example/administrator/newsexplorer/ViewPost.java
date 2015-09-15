@@ -7,13 +7,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Picture;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -49,6 +52,22 @@ public class ViewPost extends Activity {
         StorageSharedPref sharedStorage;
         sharedStorage = new StorageSharedPref(getApplicationContext());
 
+        webDesigner.setWebViewClient(new myWebClient());
+//        webDesigner.setWebChromeClient(new myWebChromeClient());
+        webDesigner.getSettings().setJavaScriptEnabled(true);
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            WebView.PictureListener pictureListener = new WebView.PictureListener() {
+                @Override
+                @Deprecated
+                public void onNewPicture(WebView view, Picture picture) {
+                   // Log.i(TAG, "Picture changed!");
+                    progressBar.setVisibility(View.GONE);
+                }
+
+            };
+            webDesigner.setPictureListener(pictureListener);
+        }
 
         String Adv = sharedStorage.GetPrefs("AdsString",null);
         if(Adv !=null){
@@ -62,15 +81,16 @@ public class ViewPost extends Activity {
             });
         }
         if(isNetworkAvailable()){
+            progressBar = (ProgressBar) findViewById(R.id.progressBar1);
+
             Bundle extras = getIntent().getExtras();
             String id = extras.getString("post_id");
-            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/?p="+id);
-            Log.e("Error","http://ghanchidarpan.org/wp_site/wordpress/?p="+id);
-            //webDesigner.getSettings().setJavaScriptEnabled(true);
-            progressBar = (ProgressBar) findViewById(R.id.progressBar1);
             progressBar.setVisibility(View.VISIBLE);
-            webDesigner.setWebViewClient(new myWebClient());
-            webDesigner.getSettings().setJavaScriptEnabled(true);
+            webDesigner.loadUrl("http://ghanchidarpan.org/wp_site/wordpress/?p="+id);
+            //Log.e("Error","http://ghanchidarpan.org/wp_site/wordpress/?p="+id);
+            //webDesigner.getSettings().setJavaScriptEnabled(true);
+
+
 //        webDesigner.getSettings().setLoadWithOverviewMode(true);
 //        webDesigner.getSettings().setUseWideViewPort(true);
 //        webDesigner.getSettings().setBuiltInZoomControls(true);
@@ -164,17 +184,19 @@ public class ViewPost extends Activity {
 
         }
 
+
         @Override
         public void onPageFinished(WebView view, String url) {
             // TODO Auto-generated method stub
             super.onPageFinished(view, url);
 
-            progressBar.setVisibility(View.GONE);
+
         }
+
         @Override
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             finish();
-            Toast.makeText(getApplicationContext(), "No internet connection present", Toast.LENGTH_LONG).show();
+            Toast.makeText(ViewPost.this, "No internet connection present", Toast.LENGTH_LONG).show();
         }
     }
     public static int randInt(int min, int max) {
@@ -193,4 +215,7 @@ public class ViewPost extends Activity {
 
         return randomNum;
     }
+//    public class myWebChromeClient extends WebChromeClient {
+//
+//    }
 }

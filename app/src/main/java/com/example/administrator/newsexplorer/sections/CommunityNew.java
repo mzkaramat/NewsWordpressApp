@@ -47,10 +47,10 @@ import java.util.Random;
  */
 public class CommunityNew extends Activity {
     StorageSharedPref sharedStorage;
-    List<NewsItem> Memberslist;
+    List<NewsItem> Memberslist,TempMemberlist;
     ListView Members;
-    //Button SearchMember;
-    //EditText SearchString;
+    Button SearchMember;
+    EditText SearchString;
     CommNewsAdapter adapter;
     ImageView AdvImage;
     ImageLoader imageLoader;
@@ -68,8 +68,8 @@ public class CommunityNew extends Activity {
         setContentView(R.layout.news_section);
         sharedStorage = new StorageSharedPref(CommunityNew.this);
         Memberslist = new ArrayList<>();
-        //  SearchMember = (Button) findViewById(R.id.search_button);
-        // SearchString = (EditText) findViewById(R.id.member_name);
+          SearchMember = (Button) findViewById(R.id.search_button);
+        SearchString = (EditText) findViewById(R.id.member_name);
         AdvImage= (ImageView)findViewById(R.id.adv_img);
         imageLoader =  ImageLoader.getInstance();
         imageLoader.init(config);
@@ -110,27 +110,27 @@ public class CommunityNew extends Activity {
                 }
             }
         });
-//        SearchMember.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(!SearchString.getText().toString().trim().equals("")){
-//                    Memberslist.clear();
-//                    for(int i = 0 ; i <TempMemberlist.size();i++){
-//                        if(TempMemberlist.get(i).name.toLowerCase().trim().contains(SearchString.getText().toString().trim().toLowerCase())){
-//                            Memberslist.add((TempMemberlist.get(i)));
-//                        }
-//                    }
-//                    adapter.notifyDataSetChanged();
-//                }else{
-//                    Memberslist.clear();
-//                    for(int i = 0 ; i <TempMemberlist.size();i++){
-//                        Memberslist.add((TempMemberlist.get(i)));
-//
-//                    }
-//                    adapter.notifyDataSetChanged();
-//                }
-//            }
-//        });
+        SearchMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!SearchString.getText().toString().trim().equals("")){
+                    Memberslist.clear();
+                    for(int i = 0 ; i <TempMemberlist.size();i++){
+                        if(TempMemberlist.get(i).name.toLowerCase().trim().contains(SearchString.getText().toString().trim().toLowerCase())){
+                            Memberslist.add((TempMemberlist.get(i)));
+                        }
+                    }
+                    adapter.notifyDataSetChanged();
+                }else{
+                    Memberslist.clear();
+                    for(int i = 0 ; i <TempMemberlist.size();i++){
+                        Memberslist.add((TempMemberlist.get(i)));
+
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
         Members.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -170,7 +170,7 @@ public class CommunityNew extends Activity {
                     String[] temp = data[i].split("::::",-1);
                     Memberslist.add(new NewsItem(temp[1].trim(),temp[0].trim(),temp[2].trim(),temp[3].trim()));
                 }
-                //TempMemberlist = new ArrayList<>(Memberslist);
+                TempMemberlist = new ArrayList<>(Memberslist);
 
 
             } catch (IOException e) {
