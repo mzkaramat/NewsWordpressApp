@@ -12,7 +12,7 @@
             android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:hint="Enter member name"
+            android:hint="Search"
             android:layout_weight="1"
             />
         <Button

@@ -163,44 +163,44 @@ public class UpdateUser extends Activity {
 
         GenderSelect= (Spinner) findViewById(R.id.select_gender);
         MartialStatus= (Spinner) findViewById(R.id.select_maritial_status);
-        GenderSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
-                    case 0:
-                        FatherNameTv.setText("Father's Name");
-                        FatherAgeTv.setText("Father's Age");
-                        GrandFatheName.setText("Grand Father's Name");
-                        GrandFahterAge.setText("Grand Father's Age");
-                        FamliyName.setText("Wife Name");
-
-                        FatherAge.setHint("Father's Age");
-                        FatherName.setHint("Father's Name");
-                        GrandFatherName.setHint("Grand Father's Name");
-                        GrandFatherAge.setHint("Grand Father's Age");
-                        famliy_name.setHint("Wife Name");
-                        break;
-                    case 1:
-                        FatherNameTv.setText("Husband Name");
-                        FatherAgeTv.setText("Husband Age");
-                        GrandFatheName.setText("Father in law Name");
-                        GrandFahterAge.setText("Father in law Age");
-                        FamliyName.setText("Father's Name");
-
-                        FatherAge.setHint("Husband Age");
-                        FatherName.setHint("Husband Name");
-                        GrandFatherName.setHint("Father in law Name");
-                        GrandFatherAge.setHint("Father in law Age");
-                        famliy_name.setHint("Father's Name");
-                        break;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        GenderSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                switch (position){
+//                    case 0:
+//                        FatherNameTv.setText("Father's Name");
+//                        FatherAgeTv.setText("Father's Age");
+//                        GrandFatheName.setText("Grand Father's Name");
+//                        GrandFahterAge.setText("Grand Father's Age");
+//                        FamliyName.setText("Wife Name");
+//
+//                        FatherAge.setHint("Father's Age");
+//                        FatherName.setHint("Father's Name");
+//                        GrandFatherName.setHint("Grand Father's Name");
+//                        GrandFatherAge.setHint("Grand Father's Age");
+//                        famliy_name.setHint("Wife Name");
+//                        break;
+//                    case 1:
+//                        FatherNameTv.setText("Husband Name");
+//                        FatherAgeTv.setText("Husband Age");
+//                        GrandFatheName.setText("Father in law Name");
+//                        GrandFahterAge.setText("Father in law Age");
+//                        FamliyName.setText("Father's Name");
+//
+//                        FatherAge.setHint("Husband Age");
+//                        FatherName.setHint("Husband Name");
+//                        GrandFatherName.setHint("Father in law Name");
+//                        GrandFatherAge.setHint("Father in law Age");
+//                        famliy_name.setHint("Father's Name");
+//                        break;
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
         MartialStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -222,21 +222,33 @@ public class UpdateUser extends Activity {
                     FamilyDobTv.setVisibility(View.VISIBLE);
                 }
                 if(position == 0){
+                    FatherNameTv.setText("Father's Name");
+                    FatherAgeTv.setText("Father's Age");
+                    GrandFatheName.setText("Grand Father's Name");
+                    GrandFahterAge.setText("Grand Father's Age");
+                    //FamliyName.setText("Wife Name");
+
+                    FatherAge.setHint("Father's Age");
+                    FatherName.setHint("Father's Name");
+                    GrandFatherName.setHint("Grand Father's Name");
+                    GrandFatherAge.setHint("Grand Father's Age");
+                    //famliy_name.setHint("Wife Name");
                     ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.GONE);
                 }else{
+                    FatherNameTv.setText("Husband Name");
+                    FatherAgeTv.setText("Husband Age");
+                    GrandFatheName.setText("Father in law Name");
+                    GrandFahterAge.setText("Father in law Age");
+                    FamliyName.setText("Father's Name");
+
+                    FatherAge.setHint("Husband Age");
+                    FatherName.setHint("Husband Name");
+                    GrandFatherName.setHint("Father in law Name");
+                    GrandFatherAge.setHint("Father in law Age");
+                    famliy_name.setHint("Father's Name");
                     ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
                 }
-                if(GenderSelect.getSelectedItemPosition() == 1&& position == 0){
-                    FatherNameTv.setText("Father's Name");
-                    FatherAge.setHint("Father's Name");
-                    FatherAgeTv.setText("Father's Age");
-                    FatherAge.setHint("Father's Age");
 
-                    GrandFatheName.setText("Grand Father's Name");
-                    GrandFatherName.setHint("Grand Father's Name");
-                    GrandFahterAge.setText("Grand Father's Age");
-                    GrandFatherAge.setHint("Grand Father's Age");
-                }
             }
 
             @Override

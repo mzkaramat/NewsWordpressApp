@@ -274,15 +274,28 @@ public class DisplayUser extends Activity {
                 ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
             }
             if(data[3].trim().equals("Single")&&data[1].trim().equals("Female")){
-                FatherNameTv.setText("Father's Name");
-                FatherAge.setHint("Father's Name");
-                FatherAgeTv.setText("Father's Age");
-                FatherAge.setHint("Father's Age");
+//                FatherNameTv.setText("Father's Name");
+//                FatherAge.setHint("Father's Name");
+//                FatherAgeTv.setText("Father's Age");
+//                FatherAge.setHint("Father's Age");
+//
+//                GrandFatheName.setText("Grand Father's Name");
+//                GrandFatherName.setHint("Grand Father's Name");
+//                GrandFahterAge.setText("Grand Father's Age");
+//                GrandFatherAge.setHint("Grand Father's Age");
 
+
+                FatherNameTv.setText("Father's Name");
+                FatherAgeTv.setText("Father's Age");
                 GrandFatheName.setText("Grand Father's Name");
-                GrandFatherName.setHint("Grand Father's Name");
                 GrandFahterAge.setText("Grand Father's Age");
-                GrandFatherAge.setHint("Grand Father's Age");
+                FamliyName.setText("Father's Name");
+
+                FatherAge.setHint("Father's Age");
+                FatherName.setHint("Father's Name");
+                GrandFatheName.setHint("Grand Father's Age");
+                GrandFahterAge.setHint("Father in law Age");
+               // FamliyName.setHint("Father's Name");
             }
             MotherName.setText(data[4]);
             MotherAge.setText(data[5]);
