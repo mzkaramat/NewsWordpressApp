@@ -60,7 +60,7 @@ public class UserDetails extends Activity {
             p_tehsil,p_district,p_state,b_shopname,b_contactnumber,b_street,b_city,
             b_pincode,b_tehsil,b_state,b_district,govt_post,govt_post_place,p_post,
             p_post_place,student_course,student_school,student_place;
-    Spinner GenderSelect,MartialStatus,Cast,Occupation,HouseWifeStatus;
+    Spinner GenderSelect,MartialStatus,Cast,Occupation;
     Button SubmitButton;
     boolean isSnap = false;
     final Calendar myCalendar = Calendar.getInstance();
@@ -101,7 +101,7 @@ public class UserDetails extends Activity {
         sub_cast= (EditText) findViewById(R.id.personal_sub_cast);
         qualification= (EditText) findViewById(R.id.personal_qualification);
 
-        famliy_name= (EditText) findViewById(R.id.father_name);
+        famliy_name= (EditText) findViewById(R.id.wife_fathers_name);
         famliy_sub_cast= (EditText) findViewById(R.id.wife_fathers_sub_cast);
         family_nandial= (EditText) findViewById(R.id.nandial_place);
         family_qualiffication= (EditText) findViewById(R.id.famliy_qualification);
@@ -162,9 +162,9 @@ public class UserDetails extends Activity {
 
                         FatherAge.setHint("Father's Age");
                         FatherName.setHint("Father's Name");
-                        GrandFatheName.setHint("Grand Father's Name");
-                        GrandFahterAge.setHint("Grand Father's Age");
-                        FamliyName.setHint("Wife Name");
+                        GrandFatherName.setHint("Grand Father's Name");
+                        GrandFatherAge.setHint("Grand Father's Age");
+                        famliy_name.setHint("Wife Name");
                         break;
                     case 1:
                         FatherNameTv.setText("Husband Name");
@@ -175,9 +175,9 @@ public class UserDetails extends Activity {
 
                         FatherAge.setHint("Husband Age");
                         FatherName.setHint("Husband Name");
-                        GrandFatheName.setHint("Father in law Name");
-                        GrandFahterAge.setHint("Father in law Age");
-                        FamliyName.setHint("Father's Name");
+                        GrandFatherName.setHint("Father in law Name");
+                        GrandFatherAge.setHint("Father in law Age");
+                        famliy_name.setHint("Father's Name");
                         break;
                 }
             }
@@ -206,6 +206,22 @@ public class UserDetails extends Activity {
                     MotherNameTv.setVisibility(View.VISIBLE);
                     MotherAgeTv.setVisibility(View.VISIBLE);
                     FamilyDobTv.setVisibility(View.VISIBLE);
+                }
+                if(position == 0){
+                    ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.GONE);
+                }else{
+                    ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
+                }
+                if(GenderSelect.getSelectedItemPosition() == 1&& position == 0){
+                    FatherNameTv.setText("Father's Name");
+                    FatherAge.setHint("Father's Name");
+                    FatherAgeTv.setText("Father's Age");
+                    FatherAge.setHint("Father's Age");
+
+                    GrandFatheName.setText("Grand Father's Name");
+                    GrandFatherName.setHint("Grand Father's Name");
+                    GrandFahterAge.setText("Grand Father's Age");
+                    GrandFatherAge.setHint("Grand Father's Age");
                 }
             }
 
@@ -263,7 +279,7 @@ public class UserDetails extends Activity {
             }
         });
         Cast= (Spinner) findViewById(R.id.personal_select_cast);
-        HouseWifeStatus= (Spinner) findViewById(R.id.select_house_wifes);
+//        HouseWifeStatus= (Spinner) findViewById(R.id.select_house_wifes);
         Occupation= (Spinner) findViewById(R.id.select_occupation);
         Occupation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -365,7 +381,7 @@ public class UserDetails extends Activity {
                             student_course.getText().toString().trim(),
                             student_school.getText().toString().trim(),
                             student_place.getText().toString().trim(),
-                            HouseWifeStatus.getSelectedItem().toString()
+                            ""
                     });
 
                 } else {

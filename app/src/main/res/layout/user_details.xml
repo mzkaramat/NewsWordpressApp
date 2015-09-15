@@ -118,19 +118,19 @@
 
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Age"/>
-            <EditText
-                android:id="@+id/age_et"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Enter age"
-                />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text="Age"/>-->
+            <!--<EditText-->
+                <!--android:id="@+id/age_et"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:padding="10dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Enter age"-->
+                <!--/>-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -254,6 +254,12 @@
                 android:layout_height="wrap_content"
                 android:hint="Qualification"
                 />
+        <LinearLayout
+            android:id="@+id/family_details"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
@@ -365,6 +371,8 @@
                 android:layout_height="wrap_content"
                 android:hint="No of Daughters"
                 />
+            </LinearLayout>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
@@ -854,26 +862,26 @@
                     />
                 </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Select Housewife status"/>
-            <Spinner
-                android:id="@+id/select_house_wifes"
-                android:padding="10dp"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:entries="@array/house_wife_stats"
-                android:prompt="@string/select_wife_status"
-                android:layout_height="wrap_content"
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text="Select Housewife status"/>-->
+            <!--<Spinner-->
+                <!--android:id="@+id/select_house_wifes"-->
+                <!--android:padding="10dp"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:entries="@array/house_wife_stats"-->
+                <!--android:prompt="@string/select_wife_status"-->
+                <!--android:layout_height="wrap_content"-->
 
-                />
+                <!--/>-->
             <CheckBox
                 android:id="@+id/private_profile_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Make profile private"
+                android:text="Hide your profile"
                 android:layout_margin="10dp"
                 android:checked="false"
                 />

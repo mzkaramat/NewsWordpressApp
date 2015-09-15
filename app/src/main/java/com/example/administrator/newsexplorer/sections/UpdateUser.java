@@ -79,7 +79,7 @@ public class UpdateUser extends Activity {
     TextView MotherNameTv,MotherAgeTv,FamilyDobTv;
 
 
-    Spinner GenderSelect,MartialStatus,Cast,Occupation,HouseWifeStatus;
+    Spinner GenderSelect,MartialStatus,Cast,Occupation;
 
     String ba1,picturePath;
     Button SubmitButton;
@@ -125,7 +125,7 @@ public class UpdateUser extends Activity {
 
         imageLoader.init(ImageLoaderConfiguration.createDefault(UpdateUser.this));
 
-        famliy_name = (EditText) findViewById(R.id.father_name);
+        famliy_name = (EditText) findViewById(R.id.wife_fathers_name);
         famliy_sub_cast = (EditText) findViewById(R.id.wife_fathers_sub_cast);
         family_nandial = (EditText) findViewById(R.id.nandial_place);
         family_qualiffication = (EditText) findViewById(R.id.famliy_qualification);
@@ -176,9 +176,9 @@ public class UpdateUser extends Activity {
 
                         FatherAge.setHint("Father's Age");
                         FatherName.setHint("Father's Name");
-                        GrandFatheName.setHint("Grand Father's Name");
-                        GrandFahterAge.setHint("Grand Father's Age");
-                        FamliyName.setHint("Wife Name");
+                        GrandFatherName.setHint("Grand Father's Name");
+                        GrandFatherAge.setHint("Grand Father's Age");
+                        famliy_name.setHint("Wife Name");
                         break;
                     case 1:
                         FatherNameTv.setText("Husband Name");
@@ -189,9 +189,9 @@ public class UpdateUser extends Activity {
 
                         FatherAge.setHint("Husband Age");
                         FatherName.setHint("Husband Name");
-                        GrandFatheName.setHint("Father in law Name");
-                        GrandFahterAge.setHint("Father in law Age");
-                        FamliyName.setHint("Father's Name");
+                        GrandFatherName.setHint("Father in law Name");
+                        GrandFatherAge.setHint("Father in law Age");
+                        famliy_name.setHint("Father's Name");
                         break;
                 }
             }
@@ -220,6 +220,11 @@ public class UpdateUser extends Activity {
                     MotherNameTv.setVisibility(View.VISIBLE);
                     MotherAgeTv.setVisibility(View.VISIBLE);
                     FamilyDobTv.setVisibility(View.VISIBLE);
+                }
+                if(position == 0){
+                    ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.GONE);
+                }else{
+                    ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
                 }
             }
 
@@ -277,7 +282,7 @@ public class UpdateUser extends Activity {
             }
         });
         Cast= (Spinner) findViewById(R.id.personal_select_cast);
-        HouseWifeStatus= (Spinner) findViewById(R.id.select_house_wifes);
+//        HouseWifeStatus= (Spinner) findViewById(R.id.select_house_wifes);
         Occupation= (Spinner) findViewById(R.id.select_occupation);
 //        Occupation.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
@@ -410,7 +415,7 @@ public class UpdateUser extends Activity {
                             student_course.getText().toString().trim(),
                             student_school.getText().toString().trim(),
                             student_place.getText().toString().trim(),
-                            HouseWifeStatus.getSelectedItem().toString()
+                            ""
                     });
 
                 } else {
@@ -819,7 +824,7 @@ public class UpdateUser extends Activity {
             student_course.setText(data[43]);
             student_school.setText(data[44]);
             student_place.setText(data[45]);
-            HouseWifeStatus.setSelection(GetArrayLoc(data[46],R.array.house_wife_stats));
+//            HouseWifeStatus.setSelection(GetArrayLoc(data[46],R.array.house_wife_stats));
 
             imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg", CameraAct);
             }

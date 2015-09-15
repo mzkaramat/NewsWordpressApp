@@ -28,11 +28,11 @@
         <item >Sponsers</item>
         <item >Share app</item>
         <item >Terms</item>
-        <item >About</item>
-        <item >Contact</item>
-        <item >Media team</item>
-        <item >Password</item>
-        <item >Mobile no.</item>
+        <item >About Us</item>
+        <item >Contact Us</item>
+        <item >Media Team</item>
+        <item >Change your password</item>
+        <item >Change your mobile no.</item>
         <item >Logout</item>
     </string-array>
 
@@ -80,7 +80,7 @@
         <item>Govt. Service</item>
         <item>Private</item>
         <item>Student</item>
-
+        <item>House wife</item>
     </string-array>
     <string-array name="cast">
         <item>Ghanchi</item>

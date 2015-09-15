@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Select Martial Status"/>
+                android:text="Martial Status"/>
             <EditText
                 android:id="@+id/select_maritial_status"
                 android:padding="10dp"
@@ -112,20 +112,20 @@
                 android:layout_height="wrap_content"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Age"/>
-            <EditText
-                android:id="@+id/age_et"
-                android:layout_width="fill_parent"
-                android:enabled="false"
-                android:layout_margin="5dp"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:hint="Enter age"
-                />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text="Age"/>-->
+            <!--<EditText-->
+                <!--android:id="@+id/age_et"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:enabled="false"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:padding="10dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="Enter age"-->
+                <!--/>-->
             <TextView
                 android:id="@+id/mother_name_tv"
                 android:layout_width="wrap_content"
@@ -259,6 +259,12 @@
                 android:layout_height="wrap_content"
                 android:hint="Qualification"
                 />
+        <LinearLayout
+            android:id="@+id/family_details"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
@@ -379,6 +385,8 @@
                 android:layout_height="wrap_content"
                 android:hint="No of Daughters"
                 />
+            </LinearLayout>
+
             <View
                 android:layout_width="fill_parent"
                 android:layout_height="3dp"
@@ -893,21 +901,21 @@
                     />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Housewife status"/>
-            <EditText
-                android:enabled="false"
-                android:id="@+id/select_house_wifes"
-                android:padding="10dp"
-                android:layout_width="fill_parent"
-                android:layout_margin="5dp"
-                android:hint="status"
-                android:layout_height="wrap_content"
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:text="Housewife status"/>-->
+            <!--<EditText-->
+                <!--android:enabled="false"-->
+                <!--android:id="@+id/select_house_wifes"-->
+                <!--android:padding="10dp"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_margin="5dp"-->
+                <!--android:hint="status"-->
+                <!--android:layout_height="wrap_content"-->
 
-                />
+                <!--/>-->
             
         </LinearLayout>
 

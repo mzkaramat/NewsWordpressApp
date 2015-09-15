@@ -32,6 +32,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class ContactFragment extends Fragment {
     ImageView AdvImage;
@@ -50,14 +51,21 @@ public class ContactFragment extends Fragment {
         sharedStorage = new StorageSharedPref(getActivity());
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
-        AdvImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AdvertisementNews.class);
-                startActivity(i);
-            }
-        });
+        final StorageSharedPref sharedStorage;
+        sharedStorage = new StorageSharedPref(getActivity());
+
+
+        String Adv = sharedStorage.GetPrefs("AdsString",null);
+        if(Adv !=null){
+            imageLoader.displayImage(Adv.split("::::")[Math.abs(randInt(0,Adv.split("::::").length)-1)], AdvImage);
+            AdvImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), AdvertisementNews.class);
+                    startActivity(i);
+                }
+            });
+        }
         MessageBody = (EditText) rootView.findViewById(R.id.body_edittext);
         SendMail = (Button) rootView.findViewById(R.id.send_mail);
         SendMail.setOnClickListener(new View.OnClickListener() {
@@ -184,5 +192,21 @@ public class ContactFragment extends Fragment {
                 = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+    public static int randInt(int min, int max) {
+
+        // NOTE: This will (intentionally) not run as written so that folks
+        // copy-pasting have to think about how to initialize their
+        // Random instance.  Initialization of the Random instance is outside
+        // the main scope of the question, but some decent options are to have
+        // a field that is initialized once and then re-used as needed or to
+        // use ThreadLocalRandom (if using at least Java 1.7).
+        Random rand=new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
     }
 }

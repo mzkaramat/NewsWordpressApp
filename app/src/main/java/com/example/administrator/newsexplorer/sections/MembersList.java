@@ -36,6 +36,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Xeaphii on 9/6/2015.
@@ -68,14 +69,21 @@ public class MembersList extends Activity {
         imageLoader =  ImageLoader.getInstance();
         imageLoader.init(config);
         imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
-        AdvImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), com.example.administrator.newsexplorer.sections.AdvertisementNews.class);
-                startActivity(i);
-            }
-        });
+        StorageSharedPref sharedStorage;
+        sharedStorage = new StorageSharedPref(getApplicationContext());
+
+
+        String Adv = sharedStorage.GetPrefs("AdsString",null);
+        if(Adv !=null){
+            imageLoader.displayImage(Adv.split("::::")[Math.abs(randInt(0,Adv.split("::::").length)-1)], AdvImage);
+            AdvImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getApplicationContext(), com.example.administrator.newsexplorer.sections.AdvertisementNews.class);
+                    startActivity(i);
+                }
+            });
+        }
         Members = (ListView) findViewById(R.id.members_list_);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
@@ -205,4 +213,21 @@ public class MembersList extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    public static int randInt(int min, int max) {
+
+        // NOTE: This will (intentionally) not run as written so that folks
+        // copy-pasting have to think about how to initialize their
+        // Random instance.  Initialization of the Random instance is outside
+        // the main scope of the question, but some decent options are to have
+        // a field that is initialized once and then re-used as needed or to
+        // use ThreadLocalRandom (if using at least Java 1.7).
+        Random rand=new Random();;
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
+    }
+
 }

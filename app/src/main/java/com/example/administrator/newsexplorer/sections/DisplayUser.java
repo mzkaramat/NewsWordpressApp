@@ -56,7 +56,7 @@ public class DisplayUser extends Activity {
             p_tehsil, p_district, p_state, b_shopname, b_contactnumber, b_street, b_city,
             b_pincode, b_tehsil, b_state, b_district, govt_post, govt_post_place, p_post,
             p_post_place, student_course, student_school, student_place;
-    EditText GenderSelect, MartialStatus, Cast, Occupation, HouseWifeStatus;
+    EditText GenderSelect, MartialStatus, Cast, Occupation;
     ImageLoader imageLoader;
     String urlImage="";
 
@@ -96,7 +96,7 @@ public class DisplayUser extends Activity {
         sub_cast = (EditText) findViewById(R.id.personal_sub_cast);
         qualification = (EditText) findViewById(R.id.personal_qualification);
 
-        famliy_name = (EditText) findViewById(R.id.father_name);
+        famliy_name = (EditText) findViewById(R.id.wife_fathers_name);
         famliy_sub_cast = (EditText) findViewById(R.id.wife_fathers_sub_cast);
         family_nandial = (EditText) findViewById(R.id.nandial_place);
         family_qualiffication = (EditText) findViewById(R.id.famliy_qualification);
@@ -136,7 +136,7 @@ public class DisplayUser extends Activity {
         GenderSelect = (EditText) findViewById(R.id.select_gender);
         MartialStatus = (EditText) findViewById(R.id.select_maritial_status);
         Cast = (EditText) findViewById(R.id.personal_select_cast);
-        HouseWifeStatus = (EditText) findViewById(R.id.select_house_wifes);
+//        HouseWifeStatus = (EditText) findViewById(R.id.select_house_wifes);
         Occupation = (EditText) findViewById(R.id.select_occupation);
 
 //        Address = (EditText) findViewById(R.id.address);
@@ -265,6 +265,11 @@ public class DisplayUser extends Activity {
                 MotherAgeTv.setVisibility(View.VISIBLE);
                 FamilyDobTv.setVisibility(View.VISIBLE);
             }
+            if(data[3].trim().equals("Single")){
+                ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.GONE);
+            }else{
+                ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
+            }
             MotherName.setText(data[4]);
             MotherAge.setText(data[5]);
             FatherName.setText(data[6]);
@@ -325,7 +330,7 @@ public class DisplayUser extends Activity {
             student_course.setText(data[43]);
             student_school.setText(data[44]);
             student_place.setText(data[45]);
-            HouseWifeStatus.setText(data[46]);
+//            HouseWifeStatus.setText(data[46]);
 
             imageLoader.displayImage("http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg", CameraAct);
             urlImage = "http://ghanchidarpan.org/news/images/" + data[47].trim() + ".jpg";

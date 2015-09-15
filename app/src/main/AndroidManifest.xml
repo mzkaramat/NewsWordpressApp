@@ -101,6 +101,18 @@
             android:label="@string/app_name" >
 
         </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".LatestPosts"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:icon="@mipmap/ic_launcher"
+            android:name=".ViewPost"
+            android:label="@string/app_name" >
+
+        </activity>
     </application>
 
 </manifest>

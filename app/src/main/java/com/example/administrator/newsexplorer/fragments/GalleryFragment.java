@@ -18,9 +18,12 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.administrator.newsexplorer.R;
+import com.example.administrator.newsexplorer.StorageSharedPref;
 import com.example.administrator.newsexplorer.sections.AdvertisementNews;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import java.util.Random;
 
 /**
  * Created by Sunny on 9/2/2015.
@@ -41,17 +44,25 @@ public class GalleryFragment extends Fragment {
         AdvImage= (ImageView)rootView.findViewById(R.id.adv_img);
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
-        imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
+        //imageLoader.displayImage("http://ghanchidarpan.org/news/images/images.jpg", AdvImage);
         webDesigner = (WebView) rootView.findViewById(R.id.web_designer);
         progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar1);
         webDesigner.setWebViewClient(new myWebClient());
-        AdvImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), AdvertisementNews.class);
-                startActivity(i);
-            }
-        });
+        StorageSharedPref sharedStorage;
+        sharedStorage = new StorageSharedPref(getActivity());
+
+
+        String Adv = sharedStorage.GetPrefs("AdsString",null);
+        if(Adv !=null){
+            imageLoader.displayImage(Adv.split("::::")[Math.abs(randInt(0,Adv.split("::::").length)-1)], AdvImage);
+            AdvImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(getActivity(), AdvertisementNews.class);
+                    startActivity(i);
+                }
+            });
+        }
         webDesigner.getSettings().setJavaScriptEnabled(true);
         if(isNetworkAvailable()){
             progressBar.setVisibility(View.VISIBLE);
@@ -120,5 +131,21 @@ public class GalleryFragment extends Fragment {
             getActivity().finish();
             Toast.makeText(getActivity(), "No internet connection present", Toast.LENGTH_LONG).show();
         }
+    }
+    public static int randInt(int min, int max) {
+
+        // NOTE: This will (intentionally) not run as written so that folks
+        // copy-pasting have to think about how to initialize their
+        // Random instance.  Initialization of the Random instance is outside
+        // the main scope of the question, but some decent options are to have
+        // a field that is initialized once and then re-used as needed or to
+        // use ThreadLocalRandom (if using at least Java 1.7).
+        Random rand=new Random();
+
+        // nextInt is normally exclusive of the top value,
+        // so add 1 to make it inclusive
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        return randomNum;
     }
 }
