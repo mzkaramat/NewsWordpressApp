@@ -24,15 +24,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Some user"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:textSize="17dp"
         android:layout_gravity="center_vertical" >
     </TextView>
     <TextView
         android:layout_marginLeft="10dp"
         android:id="@+id/datTime"
         android:textColor="#000"
-        android:textSize="15dp"
+        android:textSize="13dp"
         android:layout_width="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_height="wrap_content"

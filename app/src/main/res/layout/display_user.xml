@@ -46,11 +46,11 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Name"/>
-            <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Name"/>
+            <TextView
                 android:enabled="false"
                 android:id="@+id/name"
                 android:layout_width="fill_parent"
@@ -63,8 +63,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:text="Mobile number"/>
+            <TextView
+                android:enabled="false"
+                android:id="@+id/mobile_num"
+                android:layout_width="fill_parent"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:hint="mobile_number"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:text="Date of birth"/>
-            <EditText
+            <TextView
                 android:layout_width="fill_parent"
                 android:enabled="false"
                 android:layout_margin="5dp"
@@ -77,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select Gender"/>
-            <EditText
+            <TextView
                 android:enabled="false"
                 android:id="@+id/select_gender"
                 android:padding="10dp"
@@ -91,6 +105,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginLeft="5dp"
             android:id="@+id/temp_id"
             android:layout_width="fill_parent"
             android:orientation="vertical"
@@ -101,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Martial Status"/>
-            <EditText
+            <TextView
                 android:id="@+id/select_maritial_status"
                 android:padding="10dp"
                 android:layout_width="fill_parent"
@@ -117,7 +132,7 @@
                 <!--android:layout_height="wrap_content"-->
                 <!--android:layout_margin="5dp"-->
                 <!--android:text="Age"/>-->
-            <!--<EditText-->
+            <!--<TextView-->
                 <!--android:id="@+id/age_et"-->
                 <!--android:layout_width="fill_parent"-->
                 <!--android:enabled="false"-->
@@ -132,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Mother name"/>
-            <EditText
+            <TextView
                 android:id="@+id/mothers_name"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -148,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Mother age"/>
-            <EditText
+            <TextView
                 android:id="@+id/mothers_age"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -163,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Father(Husband) name"/>
-            <EditText
+            <TextView
                 android:id="@+id/father_name"
                 android:enabled="false"
                 android:layout_width="fill_parent"
@@ -178,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Father(Husband) age"/>
-            <EditText
+            <TextView
                 android:id="@+id/father_age"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -193,7 +208,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Grand father(father in law) name"/>
-            <EditText
+            <TextView
                 android:id="@+id/grand_father_name"
                 android:layout_width="fill_parent"
                 android:enabled="false"
@@ -208,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Grand father(father in law) age"/>
-            <EditText
+            <TextView
                 android:id="@+id/grand_father_age"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -222,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Select Cast"/>
-            <EditText
+            <TextView
                 android:id="@+id/personal_select_cast"
                 android:padding="10dp"
                 android:layout_width="fill_parent"
@@ -236,7 +251,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="SubCast"/>
-            <EditText
+            <TextView
                 android:id="@+id/personal_sub_cast"
                 android:enabled="false"
                 android:layout_width="fill_parent"
@@ -250,7 +265,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Qualification"/>
-            <EditText
+            <TextView
                 android:id="@+id/personal_qualification"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -291,7 +306,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Wife(Father's) name"/>
-            <EditText
+            <TextView
                 android:id="@+id/wife_fathers_name"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -305,7 +320,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Subcast"/>
-            <EditText
+            <TextView
                 android:id="@+id/wife_fathers_sub_cast"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -319,7 +334,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Nandiyal place"/>
-            <EditText
+            <TextView
                 android:id="@+id/nandial_place"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -333,7 +348,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Qualification"/>
-            <EditText
+            <TextView
                 android:id="@+id/famliy_qualification"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -348,7 +363,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Date of birth"/>
-            <EditText
+            <TextView
                 android:id="@+id/famliy_dob"
                 android:layout_width="fill_parent"
                 android:enabled="false"
@@ -362,7 +377,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="No of sons"/>
-            <EditText
+            <TextView
                 android:id="@+id/no_of_sons"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -376,7 +391,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="No of daughters"/>
-            <EditText
+            <TextView
                 android:id="@+id/no_of_daughters"
                 android:layout_width="fill_parent"
                 android:enabled="false"
@@ -411,7 +426,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Mobile no."/>
-            <EditText
+            <TextView
                 android:id="@+id/mobile_no"
                 android:layout_width="fill_parent"
                 android:enabled="false"
@@ -425,7 +440,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Landline number"/>
-            <EditText
+            <TextView
                 android:id="@+id/landline_no"
                 android:layout_width="fill_parent"
                 android:enabled="false"
@@ -439,7 +454,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Email id"/>
-            <EditText
+            <TextView
                 android:id="@+id/email_id"
                 android:enabled="false"
                 android:layout_width="fill_parent"
@@ -453,7 +468,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Skype id"/>
-            <EditText
+            <TextView
                 android:id="@+id/skype_id"
                 android:enabled="false"
                 android:layout_width="fill_parent"
@@ -487,7 +502,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Street"/>
-            <EditText
+            <TextView
                 android:id="@+id/permanent_street"
                 android:layout_width="fill_parent"
                 android:enabled="false"
@@ -502,7 +517,7 @@
                 android:layout_margin="5dp"
                 android:text="City"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/permanent_city"
                 android:enabled="false"
                 android:layout_width="fill_parent"
@@ -516,7 +531,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Pincode"/>
-            <EditText
+            <TextView
                 android:id="@+id/permanent_pincode"
                 android:enabled="false"
                 android:layout_width="fill_parent"
@@ -530,7 +545,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Tehsil"/>
-            <EditText
+            <TextView
                 android:id="@+id/permanent_tehsil"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -544,7 +559,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="District"/>
-            <EditText
+            <TextView
                 android:id="@+id/permanent_district"
                 android:layout_width="fill_parent"
                 android:enabled="false"
@@ -558,7 +573,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="State:"/>
-            <EditText
+            <TextView
                 android:id="@+id/permanent_state"
                 android:layout_width="fill_parent"
                 android:layout_margin="5dp"
@@ -572,7 +587,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Select Occupation"/>
-            <EditText
+            <TextView
                 android:enabled="false"
 
                 android:id="@+id/select_occupation"
@@ -612,7 +627,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Shop name"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_shop_name"
                     android:enabled="false"
                     android:layout_width="fill_parent"
@@ -626,7 +641,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Contact number"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_contact_number"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
@@ -640,7 +655,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Steet"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_street"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
@@ -654,7 +669,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="City"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_city"
                     android:layout_width="fill_parent"
                     android:enabled="false"
@@ -668,7 +683,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Pincode"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_pincode"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
@@ -682,7 +697,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Tehsil"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_tehsil"
                     android:enabled="false"
                     android:layout_width="fill_parent"
@@ -696,7 +711,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="District"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_district"
                     android:layout_width="fill_parent"
                     android:enabled="false"
@@ -710,7 +725,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="State"/>
-                <EditText
+                <TextView
                     android:id="@+id/business_state"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
@@ -751,7 +766,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Post"/>
-                <EditText
+                <TextView
                     android:id="@+id/govt_post"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
@@ -765,7 +780,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Posting place"/>
-                <EditText
+                <TextView
                     android:id="@+id/govt_post_place"
 
                     android:enabled="false"
@@ -807,7 +822,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Place"/>
-                <EditText
+                <TextView
                     android:id="@+id/private_post"
                     android:layout_width="fill_parent"
                     android:enabled="false"
@@ -821,7 +836,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Posting place"/>
-                <EditText
+                <TextView
                     android:id="@+id/private_post_place"
                     android:enabled="false"
                     android:layout_width="fill_parent"
@@ -862,7 +877,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Class/Course"/>
-                <EditText
+                <TextView
                     android:id="@+id/school_course"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
@@ -876,7 +891,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="School/College"/>
-                <EditText
+                <TextView
                     android:id="@+id/school_name"
                     android:layout_width="fill_parent"
                     android:enabled="false"
@@ -890,7 +905,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Place"/>
-                <EditText
+                <TextView
                     android:id="@+id/school_place"
                     android:layout_width="fill_parent"
                     android:layout_margin="5dp"
@@ -906,7 +921,7 @@
                 <!--android:layout_height="wrap_content"-->
                 <!--android:layout_margin="5dp"-->
                 <!--android:text="Housewife status"/>-->
-            <!--<EditText-->
+            <!--<TextView-->
                 <!--android:enabled="false"-->
                 <!--android:id="@+id/select_house_wifes"-->
                 <!--android:padding="10dp"-->
