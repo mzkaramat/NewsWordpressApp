@@ -91,6 +91,7 @@ public class ForgotPassword extends Activity {
                     if(data.equals("200")){
                         return 200;
                     }else{
+
                         return 404;
                     }
                 }
@@ -112,7 +113,7 @@ public class ForgotPassword extends Activity {
             if(success==200){
                 Toast.makeText(context,"Change password sms sent",Toast.LENGTH_LONG).show();
             }else if(success==404){
-                Toast.makeText(context,"Username not exist",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Mobile number need to be reigstered",Toast.LENGTH_LONG).show();
             }else if(success==0){
                 Toast.makeText(context,"Some error occurred",Toast.LENGTH_LONG).show();
             }

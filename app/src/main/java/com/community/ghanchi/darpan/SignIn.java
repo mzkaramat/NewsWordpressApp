@@ -210,6 +210,7 @@ public class SignIn extends Activity {
 
     private void showHomeListActivity() {
         if(sharedStorage.GetPrefs("confirm_user",null).equals("0")){
+            Toast.makeText(SignIn.this,"Need to register number first",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, ConfirmRegistration.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK
                     | Intent.FLAG_ACTIVITY_NEW_TASK);

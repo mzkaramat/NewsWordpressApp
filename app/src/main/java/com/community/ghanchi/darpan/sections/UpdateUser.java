@@ -232,14 +232,14 @@ public class UpdateUser extends Activity {
                     ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.GONE);
                 }else{
                     if(GenderSelect.getSelectedItemPosition() == 0){
-                        FatherNameTv.setText("Wife's Name");
-                        FatherAgeTv.setText("Wife's Age");
+                        FatherNameTv.setText("Father's Name");
+                        FatherAgeTv.setText("Father's Age");
                         GrandFatheName.setText("Grand father's Name");
                         GrandFahterAge.setText("Grand father's Age");
                         FamliyName.setText("Wife's Name");
 
-                        FatherAge.setHint("Wife's Age");
-                        FatherName.setHint("Wife's Name");
+                        FatherAge.setHint("Father's Age");
+                        FatherName.setHint("Father's Name");
                         GrandFatherName.setHint("Grand father's Name");
                         GrandFatherAge.setHint("Grand father's Age");
                         famliy_name.setHint("Wife's Name");

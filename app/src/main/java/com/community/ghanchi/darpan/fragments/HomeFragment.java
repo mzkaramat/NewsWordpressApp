@@ -87,10 +87,9 @@ public class HomeFragment extends Fragment {
         CommunityNews = (ImageButton) rootView.findViewById(R.id.comm_news);
         if(sharedStorage.GetPrefs("user_verified","0").equals("1")){
             ((RelativeLayout)rootView.findViewById(R.id.members_list_layout)).setVisibility(View.VISIBLE);
-        }else{
-            if(isNetworkAvailable())
-                 new UserVerfCheck().execute();
         }
+        if(isNetworkAvailable())
+            new UserVerfCheck().execute();
         MembersSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,7 +161,7 @@ public class HomeFragment extends Fragment {
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
                     String data = EntityUtils.toString(entity).trim();
-                    if(data.equals("1")){
+                    if(!data.equals("")){
                         sharedStorage.StorePrefs("user_verified",data.trim());
                     }
                 }
