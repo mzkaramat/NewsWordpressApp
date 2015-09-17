@@ -150,6 +150,8 @@ public class SignIn extends Activity {
                         String data = EntityUtils.toString(entity);
                         if(data.equals("404:")){
                             return 404;
+                        }else if(data.equals("111:")){
+                            return 111;
                         }else{
                             sharedStorage.StorePrefs("user_id",data.split(":")[1].trim());
                             sharedStorage.StorePrefs("confirm_user",data.split(":")[2].trim());
@@ -174,7 +176,9 @@ public class SignIn extends Activity {
               //  sharedStorage.StorePrefs("login_cred","1");
                 showHomeListActivity();
             }else if(success==404){
-                Toast.makeText(context,"Wrong Password or email",Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"Your number is not registered",Toast.LENGTH_LONG).show();
+            }else if(success==111){
+                Toast.makeText(context,"Enter correct password",Toast.LENGTH_LONG).show();
             }else if(success==0){
                 Toast.makeText(context,"Some error occurred",Toast.LENGTH_LONG).show();
             }
