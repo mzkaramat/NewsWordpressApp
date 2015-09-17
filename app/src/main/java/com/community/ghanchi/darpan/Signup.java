@@ -26,7 +26,7 @@ import java.io.IOException;
  * Created by Administrator on 7/7/2015.
  */
 public class Signup extends Activity {
-    EditText Email,UserName,Password,ConfirmPassword;
+    EditText Name,UserName,Password,ConfirmPassword;
     Button SignupClick;
     StorageSharedPref sharedStorage;
     @Override
@@ -34,7 +34,7 @@ public class Signup extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_parse_signup_fragment);
         sharedStorage = new StorageSharedPref(Signup.this);
-        Email= (EditText) findViewById(R.id.signup_email_input);
+        Name= (EditText) findViewById(R.id.signup_name_input);
         UserName= (EditText) findViewById(R.id.signup_username_input);
         Password= (EditText) findViewById(R.id.signup_password_input);
         ConfirmPassword= (EditText) findViewById(R.id.signup_confirm_password_input);
@@ -45,9 +45,9 @@ public class Signup extends Activity {
                 if(isNetworkAvailable()){
                 if (Password.getText().toString().length()>6) {
                     if (Password.getText().toString().equals(ConfirmPassword.getText().toString())) {
-                        if (!Email.getText().toString().equals("")) {
+                        if (!Name.getText().toString().equals("")) {
                             if (!UserName.getText().toString().equals("")) {
-                                new SignUpTask(Signup.this).execute(new String[]{UserName.getText().toString(),Password.getText().toString(),Email.getText().toString()});
+                                new SignUpTask(Signup.this).execute(new String[]{UserName.getText().toString(),Password.getText().toString(),Name.getText().toString()});
                             } else {
                                 Toast.makeText(getApplicationContext(), "UserName should'nt be empty", Toast.LENGTH_LONG).show();
                             }

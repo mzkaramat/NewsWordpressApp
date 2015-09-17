@@ -268,7 +268,9 @@ public class MembersList extends Activity {
                         }
                         adapter.IsMoreData = false;
                     }else{
+
                         adapter.IsMoreData = true;
+                        return "404";
                     }
 //                    TempMemberlist = new ArrayList<>(Memberslist);
                 }
@@ -285,7 +287,8 @@ public class MembersList extends Activity {
             super.onPostExecute(result);
             pd.hide();
             pd.dismiss();
-
+            if(result.equals("404"))
+                Toast.makeText(getApplicationContext(),"No user found",Toast.LENGTH_LONG).show();
             adapter.notifyDataSetChanged();
             getWindow().setSoftInputMode(
                     WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN

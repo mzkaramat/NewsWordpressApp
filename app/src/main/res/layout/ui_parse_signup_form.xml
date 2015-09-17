@@ -3,14 +3,15 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical">
+
     <EditText
-        android:id="@+id/signup_email_input"
+        android:id="@+id/signup_name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/ParseLoginUI.EditText"
         android:textColor="#000"
         android:layout_marginTop="@dimen/com_parse_ui_small_vertical_spacing"
-        android:hint="@string/com_parse_ui_email_input_hint"
+        android:hint="Name"
         android:inputType="textEmailAddress" />
 
     <EditText

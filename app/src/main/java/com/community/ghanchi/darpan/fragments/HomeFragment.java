@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.community.ghanchi.darpan.R;
 import com.community.ghanchi.darpan.StorageSharedPref;
@@ -88,13 +89,18 @@ public class HomeFragment extends Fragment {
             ((RelativeLayout)rootView.findViewById(R.id.members_list_layout)).setVisibility(View.VISIBLE);
         }else{
             if(isNetworkAvailable())
-            new UserVerfCheck().execute();
+                 new UserVerfCheck().execute();
         }
         MembersSection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), MembersList.class);
-                startActivity(i);
+                if(sharedStorage.GetPrefs("user_verified","0").equals("1")){
+                    Intent i = new Intent(getActivity(), MembersList.class);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(getActivity(),"Can't access members",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 

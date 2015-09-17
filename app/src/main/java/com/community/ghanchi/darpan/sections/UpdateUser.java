@@ -232,17 +232,17 @@ public class UpdateUser extends Activity {
                     ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.GONE);
                 }else{
                     if(GenderSelect.getSelectedItemPosition() == 0){
-                        FatherNameTv.setText("Father's Name");
-                        FatherAgeTv.setText("Father's Age");
+                        FatherNameTv.setText("Wife's Name");
+                        FatherAgeTv.setText("Wife's Age");
                         GrandFatheName.setText("Grand father's Name");
                         GrandFahterAge.setText("Grand father's Age");
-                        FamliyName.setText("Father's Name");
+                        FamliyName.setText("Wife's Name");
 
-                        FatherAge.setHint("Father's Age");
-                        FatherName.setHint("Father's Name");
+                        FatherAge.setHint("Wife's Age");
+                        FatherName.setHint("Wife's Name");
                         GrandFatherName.setHint("Grand father's Name");
                         GrandFatherAge.setHint("Grand father's Age");
-                        famliy_name.setHint("Father's Name");
+                        famliy_name.setHint("Wife's Name");
                         ((LinearLayout) findViewById(R.id.family_details)).setVisibility(View.VISIBLE);
                     }else{
                         FatherNameTv.setText("Husband Name");
@@ -690,7 +690,7 @@ public class UpdateUser extends Activity {
 ////            cursor.close();
 //            Bitmap bm = BitmapFactory.decodeFile(picturePath);
             ByteArrayOutputStream bao = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+            photo.compress(Bitmap.CompressFormat.JPEG, 60, bao);
             byte[] ba = bao.toByteArray();
             ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
         }else{
@@ -705,7 +705,7 @@ public class UpdateUser extends Activity {
                 isSnap = true;
                 CameraAct.setImageBitmap(imageStream);
                 ByteArrayOutputStream bao = new ByteArrayOutputStream();
-                imageStream.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+                imageStream.compress(Bitmap.CompressFormat.JPEG, 60, bao);
                 byte[] ba = bao.toByteArray();
                 ba1 = Base64.encodeToString(ba,Base64.DEFAULT);
             }
@@ -757,7 +757,7 @@ public class UpdateUser extends Activity {
         // Image
         Bitmap bm = BitmapFactory.decodeFile(picturePath);
         ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+        bm.compress(Bitmap.CompressFormat.JPEG, 60, bao);
         byte[] ba = bao.toByteArray();
         ba1 = Base64.encodeToString(ba, Base64.DEFAULT);
 
